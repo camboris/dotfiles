@@ -1,1 +1,3 @@
-# dotfiles
+# Dotfiles
+
+Yep, that, my dotfiles.
