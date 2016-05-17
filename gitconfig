@@ -1,0 +1,9 @@
+[user]
+	email = camboris@gmail.com
+	name = Mario G. Pozzo
+[push]
+	default = simple
+[core]
+	editor = nvim
+[credential]
+	helper = cache --timeout=3600
