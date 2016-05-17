@@ -1,0 +1,229 @@
+# vim:filetype=i3
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+
+font pango:Inconsolata for Powerline 9
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec termite
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+set $w1 ❶ 
+set $w2 ❷ 
+set $w3 ❸ 
+set $w4 ❹ 
+set $w5 ❺ 
+set $w6 ❻ 
+set $w7 ❼ ☘
+set $w8 ❽ 
+set $w9 ❾ 
+set $w0 ❿ 
+
+# switch to workspace
+bindsym $mod+1 workspace $w1
+bindsym $mod+2 workspace $w2
+bindsym $mod+3 workspace $w3
+bindsym $mod+4 workspace $w4
+bindsym $mod+5 workspace $w5
+bindsym $mod+6 workspace $w6
+bindsym $mod+7 workspace $w7
+bindsym $mod+8 workspace $w8
+bindsym $mod+9 workspace $w9
+bindsym $mod+0 workspace $w0
+
+bindsym $mod+Shift+1 move container to workspace $w1
+bindsym $mod+Shift+2 move container to workspace $w2
+bindsym $mod+Shift+3 move container to workspace $w3
+bindsym $mod+Shift+4 move container to workspace $w4
+bindsym $mod+Shift+5 move container to workspace $w5
+bindsym $mod+Shift+6 move container to workspace $w6
+bindsym $mod+Shift+7 move container to workspace $w7
+bindsym $mod+Shift+8 move container to workspace $w8
+bindsym $mod+Shift+9 move container to workspace $w9
+bindsym $mod+Shift+0 move container to workspace $w0
+
+# move current workspace between monitors
+bindsym $mod+Control+h move workspace to output left
+bindsym $mod+Control+j move workspace to output down
+bindsym $mod+Control+k move workspace to output up
+bindsym $mod+Control+l move workspace to output right
+
+# always open some programs on specified workspace
+assign [class="Firefox"]    $w2
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+bindsym XF86AudioLowerVolume exec pulseaudio-ctl down 5 && pkill -RTMIN+2 i3blocks
+bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up 5 && pkill -RTMIN+2 i3blocks
+bindsym XF86AudioMute exec pulseaudio-ctl mute && pkill -RTMIN+2 i3blocks
+bindsym XF86MonBrightnessDown  exec  light -U 10
+bindsym XF86MonBrightnessUp  exec  light -A 10
+bindsym Print                  exec  scrot
+bindsym XF86AudioPlay exec mpc toggle && pkill -RTMIN+3 i3blocks
+bindsym XF86AudioStop exec mpc stop && pkill -RTMIN+3 i3blocks
+bindsym XF86AudioPrev exec mpc prev && pkill -RTMIN+3 i3blocks
+bindsym XF86AudioNext exec mpc next && pkill -RTMIN+3 i3blocks
+
+#configure el lock de pantalla
+set $Locker i3lock-wrapper && sleep 1
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym Ctrl+$mod+BackSpace mode "$mode_system"
+
+# Start i3bar to display a workspace bar
+bar {
+  strip_workspace_numbers yes
+    #tray_output none
+    font pango:Source Code Pro for Powerline, FontAwesome 9
+    position top
+
+    #status_command i3status
+    status_command i3blocks
+  colors {
+    separator #AAAAAA
+    background #222133
+    statusline #FFFFFF
+    focused_workspace #664477 #664477 #cccccc
+    active_workspace #DCCD69 #DCCD69 #181715
+    inactive_workspace #222133 #222133 #AAAAAA
+    urgent_workspace #CE4045 #CE4045 #FFFFFF
+  }
+}
+
+for_window [class="Flashplayerdebugger" instance="flashplayerdebugger"] floating enable
+for_window [class="Firefox"] border none
+
+exec --no-startup-id compton -CGb 
+exec --no-startup-id feh --bg-max ~/dotfiles/fondo-ballena.jpg
+exec --no-startup-id ~/dotfiles/bin/autoxrand
+
+bindsym $mod+Tab exec --no-startup-id rofi -show window 
+bindsym $mod+d exec --no-startup-id rofi -show run 
+
+## English, US international
+bindsym Ctrl+$mod+F1 exec --no-startup-id setxkbmap us -variant altgr-intl && pkill -RTMIN+1 i3blocks 
+## English, US colemak
+bindsym Ctrl+$mod+F2 exec --no-startup-id setxkbmap us -variant colemak && pkill -RTMIN+1 i3blocks
+bindsym Ctrl+$mod+F3 exec --no-startup-id setxkbmap es && pkill -RTMIN+1 i3blocks
+
+#for_window [class="^.*"] border pixel 0
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [title="Preferences$"] floating enable
+for_window [class="(?i)mpv"] floating enable
+
+client.focused #664477 #664477 #cccccc #e7d8b1
+client.focused_inactive #e7d8b1 #e7d8b1 #181715 #A074C4
+client.unfocused #222133 #222133 #AAAAAA #A074C4
+client.urgent #CE4045 #CE4045 #e7d8b1 #DCCD69
+
+set $default_gaps_inner 10
+set $default_gaps_outer 5
+gaps inner $default_gaps_inner
+gaps outer $default_gaps_outer
+smart_gaps on
+smart_borders on
+for_window [class="^.*"] border pixel 0
