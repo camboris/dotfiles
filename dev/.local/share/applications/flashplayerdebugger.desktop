@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Flash Player Debugger
+Exec=/usr/bin/flashplayerdebugger %u
+MimeType=application/swf-flash;application/x-shockwave-flash;
+Terminal=false
+Type=Application
+Categories=GTK;GNOME;AudioVideo;Player;Video;
