@@ -8,12 +8,17 @@ Yep, that, my dotfiles.
 Estoy usando i3-gaps desde la AUR.
 El theme es purple, aplicado con i3-style
 
-instalar los dotfiles con stow:
+Instalar los dotfiles con stow:
 
-    - nvim
+    - X
     - adobe
+    - dev
+    - git
     - i3
     - ncmpcpp
+    - nvim
     - termite
-    - X
     - zshrc
+
+
+Cuando es posible estoy usando los directorios definidos por xdg
