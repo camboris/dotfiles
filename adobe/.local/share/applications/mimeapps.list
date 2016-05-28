@@ -1,0 +1,5 @@
+
+[Default Applications]
+application/x-shockwave-flash=flashplayerdebugger.desktop
+application/swf-flash=flashplayerdebugger.desktop
+application/vnd.adobe.flash.movie=flashplayerdebugger.desktop
