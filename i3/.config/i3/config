@@ -5,7 +5,7 @@
 
 set $mod Mod4
 
-font pango:Inconsolata for Powerline 9
+font pango:Inconsolata for Powerline 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -177,28 +177,28 @@ bindsym Ctrl+$mod+BackSpace mode "$mode_system"
 bar {
   strip_workspace_numbers yes
     #tray_output none
-    font pango:Source Code Pro for Powerline, FontAwesome 9
+    font pango:Inconsolata for Powerline 10, FontAwesome 10
+
     position top
 
-    #status_command i3status
     status_command i3blocks
-  colors {
-    separator #AAAAAA
-    background #222133
-    statusline #FFFFFF
-    focused_workspace #664477 #664477 #cccccc
-    active_workspace #DCCD69 #DCCD69 #181715
-    inactive_workspace #222133 #222133 #AAAAAA
-    urgent_workspace #CE4045 #CE4045 #FFFFFF
-  }
+    colors {
+        separator #AAAAAA
+            background #222133
+            statusline #FFFFFF
+            focused_workspace #664477 #664477 #cccccc
+            active_workspace #DCCD69 #DCCD69 #181715
+            inactive_workspace #222133 #222133 #AAAAAA
+            urgent_workspace #CE4045 #CE4045 #FFFFFF
+    }
 }
 
 for_window [class="Flashplayerdebugger" instance="flashplayerdebugger"] floating enable
 for_window [class="Firefox"] border none
 
 exec --no-startup-id compton -CGb 
-exec --no-startup-id feh --bg-max ~/dotfiles/fondo-ballena.jpg
-exec --no-startup-id ~/dotfiles/bin/autoxrand
+exec --no-startup-id feh --bg-max ~/dotfiles-gh/i3extra/fondo-ballena.jpg
+exec --no-startup-id ~/dotfiles-gh/bin/autoxrand
 
 bindsym $mod+Tab exec --no-startup-id rofi -show window 
 bindsym $mod+d exec --no-startup-id rofi -show run 
