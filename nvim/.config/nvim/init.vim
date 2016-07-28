@@ -123,7 +123,7 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 " }}}
 " replaces autoclose
 Plug 'Raimondi/delimitMate'
-Plug 'valloric/MatchTagAlways'
+"Plug 'valloric/MatchTagAlways'
 Plug 'justinmk/vim-sneak'
 "Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'justinmk/vim-dirvish'
