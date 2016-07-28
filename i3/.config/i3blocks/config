@@ -66,6 +66,11 @@ label=
 #instance=/mnt/data
 interval=30
 
+[disk2]
+command=~/dotfiles-gh/i3blocks/scripts/disk2
+label=
+#instance=/mnt/data
+interval=30
 # Network interface monitoring
 #
 # If the instance is not specified, use the interface used for default route.
