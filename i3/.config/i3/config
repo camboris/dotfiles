@@ -153,6 +153,8 @@ bindsym XF86AudioPlay exec mpc toggle && pkill -RTMIN+3 i3blocks
 bindsym XF86AudioStop exec mpc stop && pkill -RTMIN+3 i3blocks
 bindsym XF86AudioPrev exec mpc prev && pkill -RTMIN+3 i3blocks
 bindsym XF86AudioNext exec mpc next && pkill -RTMIN+3 i3blocks
+bindsym $mod+F1 exec ~/dotfiles-gh/bin/toggle_tele.sh
+bindsym $mod+F2 exec ~/dotfiles-gh/bin/toggle_nb.sh
 
 #configure el lock de pantalla
 set $Locker i3lock-wrapper && sleep 1
@@ -198,7 +200,7 @@ for_window [class="Firefox"] border none
 
 exec --no-startup-id compton -CGb 
 exec --no-startup-id feh --bg-max ~/dotfiles-gh/i3extra/fondo-ballena.jpg
-exec --no-startup-id ~/dotfiles-gh/bin/autoxrand
+#exec --no-startup-id ~/dotfiles-gh/bin/autoxrand
 
 bindsym $mod+Tab exec --no-startup-id rofi -show window 
 bindsym $mod+d exec --no-startup-id rofi -show run 
