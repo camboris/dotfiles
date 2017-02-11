@@ -13,6 +13,21 @@ Plug 'w0rp/ale'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \}
+
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '']
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+let g:ale_lint_on_save = 1
+
+" let g:ale_sign_error = "\u2639"     " sad smiley face
+" let g:ale_sign_warning = "\u2614"     " umbrela under rain
+let g:ale_sign_error = "EE"
+let g:ale_sign_warning = "WW"
+
 "let g:ale_sign_column_always = 1
 "let g:ale_javascript_eslint_use_global = 1
 " }}}
@@ -168,7 +183,7 @@ let g:lightline = {
       \ 'colorscheme': 'molokai',
       \ 'mode_map': { 'c': 'NORMAL' },
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+      \   'left': [ [ 'mode', 'paste', 'alestatus' ], [ 'fugitive', 'filename' ] ]
       \ },
       \ 'component_function': {
       \   'modified': 'LightlineModified',
@@ -183,6 +198,20 @@ let g:lightline = {
       \ 'separator': { 'left': '', 'right': ''},
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
+
+let g:lightline.component_expand = {'alestatus': 'g:LightLineAleStatus'}
+
+function! g:LightLineAleStatus()
+    let l:s = ALEGetStatusLine()
+    return ('' != l:s ? ['', l:s, '' ] : '')
+endfunction
+
+augroup alestatusupdate
+    autocmd!
+    autocmd BufEnter,BufRead * call ale#Queue(0)
+    autocmd User ALELint call lightline#update()
+augroup END
+
 
 function! LightlineModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
