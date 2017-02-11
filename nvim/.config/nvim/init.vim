@@ -8,43 +8,18 @@ Plug 'jdonaldson/vaxe'
 " {{{
 let g:vaxe_acp_defaults = 0
 " }}}
-Plug 'benekastah/neomake'
-" neomake {{{
-map <F5> :Neomake!<CR>
-autocmd! BufWritePost * Neomake
-let g:neomake_open_list = 2
-let g:neomake_airline = 1
-let g:neomake_error_sign = { 'text': '✘', 'texthl': 'ErrorSign' }
-let g:neomake_warning_sign = { 'text': ':(', 'texthl': 'WarningSign' }
-
-"let g:neomake_ruby_enabled_makers = ['mri']
-
-"map <F5> :Neomake<CR>
-map <F6> :lopen<CR>
-let g:neomake_javascript_jscs_maker = {
-      \ 'exe': 'jscs',
-      \ 'args': ['--no-color', '--preset', 'idiomatic', '--reporter', 'inline', '--esnext'],
-      \ 'errorformat': '%f: line %l\, col %c\, %m',
-      \ }
-let g:neomake_javascript_enabled_makers = ['jscs']
-
+Plug 'w0rp/ale'
+" {{{
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+"let g:ale_sign_column_always = 1
+"let g:ale_javascript_eslint_use_global = 1
 " }}}
 Plug 'tpope/vim-fugitive'
 " Code commenter
 Plug 'scrooloose/nerdcommenter'
 
-"Plug 'mbbill/undotree'
-"" {{{
-"set undofile
-"" Auto create undodir if not exists
-"let undodir = expand($HOME . '/.config/nvim/cache/undodir')
-"if !isdirectory(undodir)
-  "call mkdir(undodir, 'p')
-"endif
-"let &undodir = undodir
-
-"nnoremap <F11> :UndotreeToggle<CR>
-"" }}}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
 " {{{
@@ -91,51 +66,74 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'Shougo/deoplete.nvim' 
 " {{{
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#omni#functions = {}
+let g:deoplete#omni#functions.javascript = [
+  \ 'tern#Complete',
+  \ 'jspc#omni'
+\]
+let g:deoplete#sources = {}
+let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
 " }}}
-"Plug 'Shougo/echodoc.vim'
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-"" {{{
-""let g:airline_enable_tagbar=1
-""let g:airline#extensions#tagbar#enabled=1
-""let g:airline#extensions#syntastic#enabled=1
-"let g:airline_detect_modified=1
-"let g:airline_theme='molokai'
-"let g:airline_powerline_fonts = 1
-"" Tabline
-""let g:airline#extensions#tabline#enabled = 1
-""let g:airline#extensions#tabline#show_buffers = 1
-""let g:airline#extensions#tabline#show_tabs = 0
-""let g:airline#extensions#tabline#buffer_idx_mode = 1
-""let g:airline#extensions#tabline#fnamecollapse = 1
-""let g:airline#extensions#tabline#show_close_button = 0
-""let g:airline#extensions#tabline#show_tab_type = 0
-""let g:airline#extensions#tabline#buffer_min_count = 2
+" Completion from other opened files
+Plug 'Shougo/context_filetype.vim'
+" Python autocompletion
+Plug 'zchee/deoplete-jedi', { 'do': ':UpdateRemotePlugins' }
+" Just to add the python go-to-definition and similar features, autocompletion
+" from this plugin is disabled
+Plug 'davidhalter/jedi-vim'
+" {{{
+" Disable autocompletion (using deoplete instead)
+let g:jedi#completions_enabled = 0
 
-""nmap <leader>1 <Plug>AirlineSelectTab1
-""nmap <leader>2 <Plug>AirlineSelectTab2
-""nmap <leader>3 <Plug>AirlineSelectTab3
-""nmap <leader>4 <Plug>AirlineSelectTab4
-""nmap <leader>5 <Plug>AirlineSelectTab5
-""nmap <leader>6 <Plug>AirlineSelectTab6
-""nmap <leader>7 <Plug>AirlineSelectTab7
-""nmap <leader>8 <Plug>AirlineSelectTab8
-""nmap <leader>9 <Plug>AirlineSelectTab9
-"" }}}
+" All these mappings work only for python code:
+" Go to definition
+let g:jedi#goto_command = ',d'
+" Find ocurrences
+let g:jedi#usages_command = ',o'
+" Find assignments
+let g:jedi#goto_assignments_command = ',a'
+" Go to definition in new tab
+nmap ,D :tab split<CR>:call jedi#goto()<CR>
+" }}}
 " replaces autoclose
 Plug 'Raimondi/delimitMate'
-"Plug 'valloric/MatchTagAlways'
 Plug 'justinmk/vim-sneak'
 Plug 'justinmk/vim-dirvish'
 Plug 'othree/html5.vim', {'for': ['html', 'htmldjango']}
 
+"Plug 'gavocanov/vim-js-indent'
+" for json
+Plug 'tpope/vim-jdaddy'
+
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+"{{{
+let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_null                 = "ø"
+let g:javascript_conceal_this                 = "@"
+let g:javascript_conceal_return               = "⇚"
+let g:javascript_conceal_undefined            = "¿"
+let g:javascript_conceal_NaN                  = "ℕ"
+let g:javascript_conceal_prototype            = "¶"
+let g:javascript_conceal_static               = "•"
+let g:javascript_conceal_super                = "Ω"
+let g:javascript_conceal_arrow_function       = "⇒"
+let g:javascript_conceal_noarg_arrow_function = "🞅"
+let g:javascript_conceal_underscore_arrow_function = "🞅"
+"}}}
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 " {{{
 let g:jsx_ext_required = 0
+
 " }}}
-Plug 'gavocanov/vim-js-indent'
-Plug 'tpope/vim-jdaddy'
+
+Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
+" {{{
+let g:tern#command = ['tern']
+let g:tern#arguments = ['--persistent']
+" }}}
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+
 "sass
 Plug 'tpope/vim-haml', {'for': ['sass', 'css', 'scss']}
 Plug 'hail2u/vim-css3-syntax', {'for': ['sass', 'css', 'scss']}
@@ -153,7 +151,6 @@ Plug 'mattn/emmet-vim'
 let g:user_emmet_leader_key = '<c-e>'
 " }}}
 Plug 'mhinz/vim-startify'
-"Plug 'christoomey/vim-sort-motion'
 " Track the engine.
 Plug 'SirVer/ultisnips'
 " {{{
@@ -239,6 +236,11 @@ colorscheme molokai
 :set tabstop=4
 :set softtabstop=4
 :set shiftwidth=4
+
+set conceallevel=1
+"set foldmethod=syntax
+
+set completeopt=longest,menuone,preview
 
 set autowrite " vaxe likes autowrite
 " tablength exceptions
