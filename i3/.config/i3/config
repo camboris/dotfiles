@@ -196,6 +196,7 @@ bar {
 }
 
 for_window [class="Flashplayerdebugger" instance="flashplayerdebugger"] floating enable
+for_window [class="Ir" instance="Ir"] floating enable
 for_window [class="Firefox"] border none
 
 exec --no-startup-id compton -CGb 
@@ -229,3 +230,9 @@ gaps outer $default_gaps_outer
 smart_gaps on
 smart_borders on
 for_window [class="^.*"] border pixel 0
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
