@@ -160,10 +160,15 @@ let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 " }}}
 " Zen coding
-Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim', { 'for': ['javascript.jsx', 'html', 'css'] }
 " {{{
 " use zencoding with <C-E>
 let g:user_emmet_leader_key = '<c-e>'
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
 " }}}
 Plug 'mhinz/vim-startify'
 " Track the engine.
@@ -256,6 +261,7 @@ call plug#end()
 
 " Colors and highlightings {{{
 colorscheme molokai
+"set termguicolors
 " }}}
 " general {{{
 :imap jj <Esc>
@@ -266,7 +272,7 @@ colorscheme molokai
 :set softtabstop=4
 :set shiftwidth=4
 
-set conceallevel=1
+"set conceallevel=1
 "set foldmethod=syntax
 
 set completeopt=longest,menuone,preview
@@ -276,6 +282,7 @@ set autowrite " vaxe likes autowrite
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript.jsx setlocal shiftwidth=2 tabstop=2
 
 "busqueda ignore el case
 set ignorecase
