@@ -8,6 +8,7 @@ Plug 'jdonaldson/vaxe'
 " {{{
 let g:vaxe_acp_defaults = 0
 " }}}
+
 Plug 'w0rp/ale'
 " {{{
 let g:ale_linters = {
@@ -30,6 +31,10 @@ let g:ale_sign_warning = "WW"
 
 "let g:ale_sign_column_always = 1
 "let g:ale_javascript_eslint_use_global = 1
+let g:ale_fixers = {
+  \ 'javascript': ['eslint']
+  \ }
+nmap <leader>d <Plug>(ale_fix)
 " }}}
 Plug 'tpope/vim-fugitive'
 " Code commenter
@@ -47,7 +52,7 @@ nnoremap <silent> <leader>. :Lines<CR>
 nnoremap <silent> <leader>o :BTags<CR>
 nnoremap <silent> <leader>O :Tags<CR>
 nnoremap <silent> <leader>? :History<CR>
-nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
+  nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
 nnoremap <silent> K :call SearchWordWithAg()<CR>
 vnoremap <silent> K :call SearchVisualSelectionWithAg()<CR>
 nnoremap <silent> <leader>gl :Commits<CR>
@@ -81,13 +86,14 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'Shougo/deoplete.nvim' 
 " {{{
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#omni#functions = {}
-let g:deoplete#omni#functions.javascript = [
-  \ 'tern#Complete',
-  \ 'jspc#omni'
-\]
-let g:deoplete#sources = {}
-let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+"let g:deoplete#omni#functions = {}
+"let g:deoplete#omni#functions.javascript = [
+  "\ 'tern#Complete',
+  "\ 'jspc#omni'
+"\]
+"let g:deoplete#sources = {}
+"let g:deoplete#sources['javascript.jsx'] = ['file', 'ternjs']
+"let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
 " }}}
 " Completion from other opened files
 Plug 'Shougo/context_filetype.vim'
@@ -172,16 +178,16 @@ let g:user_emmet_settings = {
 " }}}
 Plug 'mhinz/vim-startify'
 " Track the engine.
-Plug 'SirVer/ultisnips'
-" {{{
-" UltiSnips config
-inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-" }}}
-" Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"" {{{
+"" UltiSnips config
+"inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+"" }}}
+"" Snippets are separated from the engine. Add this if you want them:
+"Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 "{{{
 let g:lightline = {
@@ -261,10 +267,15 @@ call plug#end()
 
 " Colors and highlightings {{{
 colorscheme molokai
+"set guicursor=a:block-blinkon1
+set guicursor=n-v-c:block-Cursor/lCursor-blinkon1,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 "set termguicolors
 " }}}
 " general {{{
+
 :imap jj <Esc>
+
+set inccommand=split
 
 " tabs and spaces handling
 :set expandtab
@@ -272,6 +283,7 @@ colorscheme molokai
 :set softtabstop=4
 :set shiftwidth=4
 
+set mouse=a
 "set conceallevel=1
 "set foldmethod=syntax
 
