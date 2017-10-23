@@ -4,9 +4,9 @@ export ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="random"
 ZSH_THEME="agnoster"
 
-alias pcu="packer-color -Syu"
-alias pcs="packer-color -Ss"
-alias pci="packer-color -S"
+#alias pcu="packer-color -Syu"
+#alias pcs="packer-color -Ss"
+#alias pci="packer-color -S"
 
 #plugins=(git python django virtualenv virtualenvwrapper pip pyenv archlinux)
 plugins=(git python django virtualenvwrapper pip archlinux)
@@ -21,10 +21,18 @@ export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
 #export NVIM_TUI_ENABLE_TRUE_COLOR=1
-export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+#export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 #rutas flex
 #export PLAYERGLOBAL_HOME=/opt/apache-flex-sdk/player
 #export PATH="${PATH}":/opt/apache-flex-sdk/bin
 
 source ~/dev/k/k.sh
+
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > ~/.ssh-agent-thing
+fi
+#if [[ "$SSH_AGENT_PID" == "" ]]; then
+    #eval "$(<~/.ssh-agent-thing)"
+#fi
+
