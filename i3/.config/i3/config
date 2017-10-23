@@ -197,6 +197,8 @@ bar {
 
 for_window [class="Flashplayerdebugger" instance="flashplayerdebugger"] floating enable
 for_window [class="Ir" instance="Ir"] floating enable
+for_window [class="Slack"] floating enable resize set 800 700
+for_window [class="skypeforlinux"] floating enable resize set 800 700
 for_window [class="Firefox"] border none
 
 exec --no-startup-id compton -CGb 
@@ -204,7 +206,7 @@ exec --no-startup-id feh --bg-max ~/dotfiles-gh/i3extra/fondo-ballena.jpg
 #exec --no-startup-id ~/dotfiles-gh/bin/autoxrand
 
 bindsym $mod+Tab exec --no-startup-id rofi -show window 
-bindsym $mod+d exec --no-startup-id rofi -show run 
+bindsym $mod+d exec --no-startup-id rofi -show drun 
 
 ## English, US international
 bindsym Ctrl+$mod+F1 exec --no-startup-id setxkbmap us -variant altgr-intl && pkill -RTMIN+1 i3blocks 

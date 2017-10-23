@@ -1,5 +1,5 @@
 ! Enabled modi
-rofi.modi:                           window,run,ssh
+rofi.modi:                           window,run,ssh,drun
 ! Window opacity
 ! Window width
 rofi.width:                          50
@@ -99,7 +99,7 @@ rofi.kb-primary-paste:               Control+Shift+v,Shift+Insert
 ! Keybinding
 rofi.kb-secondary-paste:             Control+v,Insert
 ! Keybinding
-rofi.kb-clear-line:                  Control+u
+! rofi.kb-clear-line:                  Control+u
 ! Keybinding
 rofi.kb-move-front:                  Control+a
 ! Keybinding
@@ -123,7 +123,7 @@ rofi.kb-remove-char-back:            BackSpace,Control+h
 ! Keybinding
 rofi.kb-accept-entry:                Control+j,Control+m,Return,KP_Enter
 ! Keybinding
-rofi.kb-accept-custom:               Control+Return,Shift+Return
+! rofi.kb-accept-custom:               Control+Return,Shift+Return
 ! Keybinding
 rofi.kb-mode-next:                   Shift+Right,Control+Tab
 ! Keybinding
@@ -208,3 +208,5 @@ rofi.display-window:                 (window)
 rofi.display-windowcd:               (windowcd)
 ! The display name of this browser
 rofi.display-combi:                  (combi)
+! "Whether to load and show icons" Set from: Default
+rofi.show-icons:                     true
