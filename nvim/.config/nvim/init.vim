@@ -6,7 +6,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'justinmk/molokai'
 Plug 'jdonaldson/vaxe'
 " {{{
-let g:vaxe_acp_defaults = 0
+"let g:vaxe_acp_defaults = 0
 " }}}
 
 Plug 'w0rp/ale'
@@ -40,6 +40,8 @@ Plug 'tpope/vim-fugitive'
 " Code commenter
 Plug 'scrooloose/nerdcommenter'
 
+Plug 'ludovicchabant/vim-gutentags'
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
 " {{{
@@ -52,7 +54,7 @@ nnoremap <silent> <leader>. :Lines<CR>
 nnoremap <silent> <leader>o :BTags<CR>
 nnoremap <silent> <leader>O :Tags<CR>
 nnoremap <silent> <leader>? :History<CR>
-  nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
+nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
 nnoremap <silent> K :call SearchWordWithAg()<CR>
 vnoremap <silent> K :call SearchVisualSelectionWithAg()<CR>
 nnoremap <silent> <leader>gl :Commits<CR>
@@ -86,14 +88,9 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'Shougo/deoplete.nvim' 
 " {{{
 let g:deoplete#enable_at_startup = 1
-"let g:deoplete#omni#functions = {}
-"let g:deoplete#omni#functions.javascript = [
-  "\ 'tern#Complete',
-  "\ 'jspc#omni'
-"\]
-"let g:deoplete#sources = {}
-"let g:deoplete#sources['javascript.jsx'] = ['file', 'ternjs']
-"let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+" enables omni completion on haxe files
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#omni#input_patterns.haxe = '[^. *\t]\.\w*'
 " }}}
 " Completion from other opened files
 Plug 'Shougo/context_filetype.vim'
@@ -187,7 +184,7 @@ Plug 'mhinz/vim-startify'
 "let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 "" }}}
 "" Snippets are separated from the engine. Add this if you want them:
-"Plug 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 "{{{
 let g:lightline = {
@@ -262,13 +259,21 @@ function! LightlineMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 "}}}
+Plug 'Shougo/neosnippet'
+" {{{
+imap <expr> <tab> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<c-n>" : "\<tab>")
+smap <expr> <tab> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>"
+
+let g:neosnippet#snippets_directory="~/.config/nvim/plugged/vim-snippets/snippets"
+" }}}
+Plug 'Shougo/neosnippet-snippets'
 Plug 'ClaudiaJ/lightline-molokai.vim'
 call plug#end()
 
 " Colors and highlightings {{{
 colorscheme molokai
 "set guicursor=a:block-blinkon1
-set guicursor=n-v-c:block-Cursor/lCursor-blinkon1,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+set guicursor=n-v-c:block-Cursor/lCursor-blinkon1,i-ci:ver25-Cursor/lCursor-blinkon1,r-cr:hor20-Cursor/lCursor
 "set termguicolors
 " }}}
 " general {{{
@@ -341,7 +346,6 @@ map <C-S-Left> :tabp<CR>
 imap <C-S-Left> <ESC>:tabp<CR>
 
 " experimental neovim terminal mappings
-if has('nvim') && exists(':tnoremap')
   tnoremap <Esc> <C-\><C-n>
   tnoremap <A-h> <C-\><C-n><C-w>h
   tnoremap <A-j> <C-\><C-n><C-w>j
@@ -359,7 +363,6 @@ if has('nvim') && exists(':tnoremap')
   nnoremap <Leader>l<Enter> :rightbelow vnew<CR>:terminal<CR>
   nnoremap <Leader>k<Enter> :leftabove  new<CR>:terminal<CR>
   nnoremap <Leader>j<Enter> :rightbelow new<CR>:terminal<CR>
-endif
 
 "Make switching windows more natural
 set splitbelow
