@@ -5,14 +5,16 @@
 
 set $mod Mod4
 
-font pango:Inconsolata for Powerline 10
+
+font pango:Monofur for Powerline Bold 10
+#font pango:Inconsolata for Powerline 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -24,13 +26,14 @@ bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # bind so it works like osx
-bindsym $mod+Left workspace prev
-bindsym $mod+Right workspace next
+# bindsym $mod+Left workspace prev
+# bindsym $mod+Right workspace next
+
 # alternatively, you can use the cursor keys:
-# bindsym $mod+Left focus left
-# bindsym $mod+Down focus down
-# bindsym $mod+Up focus up
-# bindsym $mod+Right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+j move left
@@ -70,39 +73,63 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $w1 ❶ 
-set $w2 ❷ 
-set $w3 ❸ 
-set $w4 ❹ 
-set $w5 ❺ 
-set $w6 ❻ 
-set $w7 ❼ ☘
-set $w8 ❽ 
-set $w9 ❾ 
-set $w0 ❿ 
+# set $w1 ❶ 
+# set $w2 ❷ 
+# set $w3 ❸ 
+# set $w4 ❹ 
+# set $w5 ❺ 
+# set $w6 ❻ 
+# set $w7 ❼ ☘
+# set $w8 ❽ 
+# set $w9 ❾ 
+# set $w0 ❿ 
 
 # switch to workspace
-bindsym $mod+1 workspace $w1
-bindsym $mod+2 workspace $w2
-bindsym $mod+3 workspace $w3
-bindsym $mod+4 workspace $w4
-bindsym $mod+5 workspace $w5
-bindsym $mod+6 workspace $w6
-bindsym $mod+7 workspace $w7
-bindsym $mod+8 workspace $w8
-bindsym $mod+9 workspace $w9
-bindsym $mod+0 workspace $w0
+# bindsym $mod+1 workspace $w1
+# bindsym $mod+2 workspace $w2
+# bindsym $mod+3 workspace $w3
+# bindsym $mod+4 workspace $w4
+# bindsym $mod+5 workspace $w5
+# bindsym $mod+6 workspace $w6
+# bindsym $mod+7 workspace $w7
+# bindsym $mod+8 workspace $w8
+# bindsym $mod+9 workspace $w9
+# bindsym $mod+0 workspace $w0
 
-bindsym $mod+Shift+1 move container to workspace $w1
-bindsym $mod+Shift+2 move container to workspace $w2
-bindsym $mod+Shift+3 move container to workspace $w3
-bindsym $mod+Shift+4 move container to workspace $w4
-bindsym $mod+Shift+5 move container to workspace $w5
-bindsym $mod+Shift+6 move container to workspace $w6
-bindsym $mod+Shift+7 move container to workspace $w7
-bindsym $mod+Shift+8 move container to workspace $w8
-bindsym $mod+Shift+9 move container to workspace $w9
-bindsym $mod+Shift+0 move container to workspace $w0
+# bindsym $mod+Shift+1 move container to workspace $w1
+# bindsym $mod+Shift+2 move container to workspace $w2
+# bindsym $mod+Shift+3 move container to workspace $w3
+# bindsym $mod+Shift+4 move container to workspace $w4
+# bindsym $mod+Shift+5 move container to workspace $w5
+# bindsym $mod+Shift+6 move container to workspace $w6
+# bindsym $mod+Shift+7 move container to workspace $w7
+# bindsym $mod+Shift+8 move container to workspace $w8
+# bindsym $mod+Shift+9 move container to workspace $w9
+# bindsym $mod+Shift+0 move container to workspace $w0
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
 
 # move current workspace between monitors
 bindsym $mod+Control+h move workspace to output left
@@ -111,7 +138,7 @@ bindsym $mod+Control+k move workspace to output up
 bindsym $mod+Control+l move workspace to output right
 
 # always open some programs on specified workspace
-assign [class="Firefox"]    $w2
+# assign [class="Firefox"]    $w2
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -146,21 +173,39 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym XF86AudioLowerVolume exec pulseaudio-ctl down 5 && pkill -RTMIN+2 i3blocks
-bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up 5 && pkill -RTMIN+2 i3blocks
-bindsym XF86AudioMute exec pulseaudio-ctl mute && pkill -RTMIN+2 i3blocks
-bindsym XF86MonBrightnessDown  exec  light -U 10
-bindsym XF86MonBrightnessUp  exec  light -A 10
-bindsym Print                  exec  scrot
-bindsym XF86AudioPlay exec mpc toggle && pkill -RTMIN+3 i3blocks
-bindsym XF86AudioStop exec mpc stop && pkill -RTMIN+3 i3blocks
-bindsym XF86AudioPrev exec mpc prev && pkill -RTMIN+3 i3blocks
-bindsym XF86AudioNext exec mpc next && pkill -RTMIN+3 i3blocks
-bindsym $mod+F1 exec ~/dotfiles-gh/bin/toggle_tele.sh
-bindsym $mod+F2 exec ~/dotfiles-gh/bin/toggle_nb.sh
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# bindsym XF86AudioLowerVolume exec pulseaudio-ctl down 5
+# bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up 5
+
+# bindsym XF86AudioLowerVolume exec pulseaudio-ctl down 5 && pkill -RTMIN+2 i3blocks
+# bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up 5 && pkill -RTMIN+2 i3blocks
+# bindsym XF86AudioMute exec pulseaudio-ctl mute && pkill -RTMIN+2 i3blocks
+# bindsym XF86MonBrightnessDown  exec  light -U 10
+# bindsym XF86MonBrightnessUp  exec  light -A 10
+# bindsym Print                  exec  scrot
+# bindsym XF86AudioPlay exec mpc toggle && pkill -RTMIN+3 i3blocks
+# bindsym XF86AudioStop exec mpc stop && pkill -RTMIN+3 i3blocks
+# bindsym XF86AudioPrev exec mpc prev && pkill -RTMIN+3 i3blocks
+# bindsym XF86AudioNext exec mpc next && pkill -RTMIN+3 i3blocks
+# # bindsym $mod+F1 exec ~/dotfiles-gh/bin/toggle_tele.sh
+# bindsym $mod+F2 exec ~/dotfiles-gh/bin/toggle_nb.sh
 
 #configure el lock de pantalla
-set $Locker i3lock-wrapper && sleep 1
+# set $Locker i3lock-wrapper && sleep 1
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
@@ -179,24 +224,26 @@ mode "$mode_system" {
 bindsym Ctrl+$mod+BackSpace mode "$mode_system"
 
 # Start i3bar to display a workspace bar
-bar {
-  strip_workspace_numbers yes
-    #tray_output none
-    font pango:Inconsolata for Powerline 10, FontAwesome 10
+# bar {
+#   strip_workspace_numbers yes
+#     #tray_output none
+#     font pango:Inconsolata for Powerline 10, FontAwesome 10
+# 
+#     position top
+# 
+#     status_command i3blocks
+#     colors {
+#         separator #AAAAAA
+#             background #222133
+#             statusline #FFFFFF
+#             focused_workspace #664477 #664477 #cccccc
+#             active_workspace #DCCD69 #DCCD69 #181715
+#             inactive_workspace #222133 #222133 #AAAAAA
+#             urgent_workspace #CE4045 #CE4045 #FFFFFF
+#     }
+# }
 
-    position top
-
-    status_command i3blocks
-    colors {
-        separator #AAAAAA
-            background #222133
-            statusline #FFFFFF
-            focused_workspace #664477 #664477 #cccccc
-            active_workspace #DCCD69 #DCCD69 #181715
-            inactive_workspace #222133 #222133 #AAAAAA
-            urgent_workspace #CE4045 #CE4045 #FFFFFF
-    }
-}
+exec_always --no-startup-id ~/.config/i3/bar.sh &
 
 for_window [class="Flashplayerdebugger" instance="flashplayerdebugger"] floating enable
 for_window [class="Ir" instance="Ir"] floating enable
@@ -205,17 +252,19 @@ for_window [class="skypeforlinux"] floating enable resize set 800 700
 for_window [class="Firefox"] border none
 
 exec --no-startup-id compton -CGb 
-exec --no-startup-id feh --bg-max ~/dotfiles-gh/i3extra/fondo-ballena.jpg
+exec --no-startup-id feh --bg-max ~/dotfiles/i3extra/fondo-ballena.jpg
 #exec --no-startup-id ~/dotfiles-gh/bin/autoxrand
 
 bindsym $mod+Tab exec --no-startup-id rofi -show window 
-bindsym $mod+d exec --no-startup-id rofi -show drun 
+bindsym $mod+d exec --no-startup-id rofi -show combi 
+
+exec --no-startup-id setxkbmap us -variant altgr-intl
 
 ## English, US international
-bindsym Ctrl+$mod+F1 exec --no-startup-id setxkbmap us -variant altgr-intl && pkill -RTMIN+1 i3blocks 
+# bindsym Ctrl+$mod+F1 exec --no-startup-id setxkbmap us -variant altgr-intl && pkill -RTMIN+1 i3blocks 
 ## English, US colemak
-bindsym Ctrl+$mod+F2 exec --no-startup-id setxkbmap us -variant colemak && pkill -RTMIN+1 i3blocks
-bindsym Ctrl+$mod+F3 exec --no-startup-id setxkbmap es && pkill -RTMIN+1 i3blocks
+# bindsym Ctrl+$mod+F2 exec --no-startup-id setxkbmap us -variant colemak && pkill -RTMIN+1 i3blocks
+# bindsym Ctrl+$mod+F3 exec --no-startup-id setxkbmap es && pkill -RTMIN+1 i3blocks
 
 #for_window [class="^.*"] border pixel 0
 for_window [window_role="pop-up"] floating enable

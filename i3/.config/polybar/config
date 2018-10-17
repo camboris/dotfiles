@@ -1,0 +1,242 @@
+[bar/top]
+monitor = eDP-1
+width = 100%
+height = 30
+
+background = #00000000
+foreground = #ccffffff
+
+line-color = #00000000
+
+; override-redirect = true
+tray-position = left
+tray-offset-y = -3
+
+
+padding-right = 4
+padding-left = 4
+module-margin= 2
+
+font-0 = MonofurForPowerline:weight=Bold:size=10;
+;font-0 = "Monofur for Powerline-Regular:size=10";
+font-1 = unifont:size=10;
+font-2 = FontAwesome:size=12;
+
+;modules-left = powermenu i3 spotify
+modules-left = i3 spotify
+modules-center = date wired-network wireless-network
+modules-right = battery cpu memory volume
+
+
+[module/i3]
+type = internal/i3
+
+ws-icon-0 = 1;❶ 
+ws-icon-1 = 2;❷ 
+ws-icon-2 = 3;❸  
+ws-icon-3 = 4;❹  
+ws-icon-4 = 5;❺  
+ws-icon-5 = 6;❻  
+ws-icon-6 = 7;❼ ☘ 
+ws-icon-7 = 8;❽  
+ws-icon-8 = 9;❾  
+ws-icon-9 = 0;❿  
+ws-icon-default = 
+
+format = <label-state> <label-mode>
+
+label-dimmed-underline = ${BAR.background}
+
+index-sort = true
+wrapping-scroll = false
+
+; workspace-label = %index%: %icon%
+workspace-label =  %icon%
+
+label-focused = ${self.workspace-label}
+label-focused-padding = 1
+
+label-unfocused = ${self.workspace-label}
+label-unfocused-padding = 1
+label-unfocused-foreground = #555555
+
+label-urgent = ${self.workspace-label}
+label-urgent-padding = 1
+
+label-visible = ${self.workspace-label}
+label-visible-padding = 1
+label-visible-foregroud = #888888
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP0
+full-at = 98
+
+format-charging = <ramp-capacity> <label-charging>
+label-charging = %percentage% 
+
+format-discharging = <ramp-capacity> <label-discharging>
+label-discharging = %percentage% 
+
+format-full = <ramp-capacity> <label-full>
+label-full = Full
+
+ramp-capacity-0 = " "
+ramp-capacity-1 = " "
+ramp-capacity-2 = " "
+ramp-capacity-3 = " "
+ramp-capacity-4 = " "
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+format = <label> <ramp-coreload>
+label = CPU
+
+ramp-coreload-0 = ▁
+ramp-coreload-0-font = 2
+ramp-coreload-0-foreground = #aaff77
+ramp-coreload-1 = ▂
+ramp-coreload-1-font = 2
+ramp-coreload-1-foreground = #aaff77
+ramp-coreload-2 = ▃
+ramp-coreload-2-font = 2
+ramp-coreload-2-foreground = #aaff77
+ramp-coreload-3 = ▄
+ramp-coreload-3-font = 2
+ramp-coreload-3-foreground = #aaff77
+ramp-coreload-4 = ▅
+ramp-coreload-4-font = 2
+ramp-coreload-4-foreground = #fba922
+ramp-coreload-5 = ▆
+ramp-coreload-5-font = 2
+ramp-coreload-5-foreground = #fba922
+ramp-coreload-6 = ▇
+ramp-coreload-6-font = 2
+ramp-coreload-6-foreground = #ff5555
+ramp-coreload-7 = █
+ramp-coreload-7-font = 2
+ramp-coreload-7-foreground = #ff5555
+
+
+[module/date]
+type = internal/date
+date =    %%{F#99}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
+date-alt = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
+
+
+[module/memory]
+type = internal/memory
+format = <label> <bar-used>
+label = RAM
+
+bar-used-width = 10
+bar-used-foreground-0 = #aaff77
+bar-used-foreground-1 = #aaff77
+bar-used-foreground-2 = #fba922
+bar-used-foreground-3 = #ff5555
+bar-used-indicator = |
+bar-used-indicator-font = 6
+bar-used-indicator-foreground = #ff
+bar-used-fill = ─
+bar-used-fill-font = 6
+bar-used-empty = ─
+bar-used-empty-font = 6
+bar-used-empty-foreground = #444444
+
+
+[module/spotify]
+type = custom/script
+; all of this could of course be put in a single script... or just move the piping to the spotify script
+exec =  ~/.config/i3/spoty.sh %artist% - %title% | while read -r status; do echo $status; done
+; tail since scroller will output continuously
+tail = true
+; when the script has ended, wait this time and then launch it again
+interval = 1
+
+[module/wireless-network]
+type = internal/network
+interface = wlp2s0
+
+interval = 3
+
+format-connected = <label-connected>
+label-connected = "  %essid%"
+;label-connected = "  Home"
+
+format-disconnected = <label-disconnected>
+label-disconnected = " No connection"
+
+[module/wired-network]
+type = internal/network
+interface = enp1s0
+interval = 3.0
+
+label-connected =    %{T3}%local_ip%%{T-}
+label-disconnected-foreground = #66
+
+
+[module/volume]
+type = internal/pulseaudio
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = " "
+format-muted-foreground = #444444
+label-muted = sound muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = #444444
+
+
+[module/powermenu]
+type = custom/menu
+expand-right = true
+format-spacing = 1
+
+label-open = 
+label-close = 
+
+label-separator = |
+label-separator-foreground = #00000000
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = reboot
+
+menu-2-0 = power off
+menu-2-0-exec = poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0 
+
+
+[module/clock]
+type = internal/date
+interval = 2
+date = %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
+
+; vim:ft=dosini
+
