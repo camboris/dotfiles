@@ -1,1 +1,4 @@
 tags
+tags.lock
+tags.temp
+nvim/.config/nvim/plugged/
