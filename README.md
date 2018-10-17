@@ -22,3 +22,10 @@ Instalar los dotfiles con stow:
 
 
 Cuando es posible estoy usando los directorios definidos por xdg
+
+Para usar temas, usar lxappearance
+
+Tema: https://github.com/daniruiz/flat-remix
+
+Si al usar un tema dark, firefox se ve mal, agregar esta entrada en el about: config
+https://github.com/DmitriK/darkContrast#text-contrast-for-dark-themes
