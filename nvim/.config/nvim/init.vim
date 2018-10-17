@@ -4,7 +4,7 @@ let g:mapleader = "\<Space>"
 call plug#begin('~/.config/nvim/plugged')
 "colo scheme
 Plug 'justinmk/molokai'
-Plug 'jdonaldson/vaxe'
+"Plug 'jdonaldson/vaxe'
 " {{{
 "let g:vaxe_acp_defaults = 0
 " }}}
@@ -35,6 +35,8 @@ let g:ale_fixers = {
   \ 'javascript': ['eslint']
   \ }
 nmap <leader>d <Plug>(ale_fix)
+nmap <silent> <leader>aj :ALENext<cr>
+nmap <silent> <leader>ak :ALEPrevious<cr>
 " }}}
 Plug 'tpope/vim-fugitive'
 " Code commenter
@@ -144,6 +146,8 @@ let g:jsx_ext_required = 0
 
 " }}}
 
+"Plug 'chemzqm/vim-jsx-improve', { 'for': ['javascript', 'javascript.jsx'] }
+
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
 " {{{
 let g:tern#command = ['tern']
@@ -163,7 +167,7 @@ let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 " }}}
 " Zen coding
-Plug 'mattn/emmet-vim', { 'for': ['javascript.jsx', 'html', 'css'] }
+Plug 'mattn/emmet-vim', { 'for': ['javascript.jsx', 'html', 'css', 'scss', 'jsp'] }
 " {{{
 " use zencoding with <C-E>
 let g:user_emmet_leader_key = '<c-e>'
@@ -184,7 +188,7 @@ Plug 'mhinz/vim-startify'
 "let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 "" }}}
 "" Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
+"Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 "{{{
 let g:lightline = {
@@ -210,7 +214,8 @@ let g:lightline = {
 let g:lightline.component_expand = {'alestatus': 'g:LightLineAleStatus'}
 
 function! g:LightLineAleStatus()
-    let l:s = ALEGetStatusLine()
+    "let l:s = ALEGetStatusLine()
+    let l:s = ale#statusLine#Status()
     return ('' != l:s ? ['', l:s, '' ] : '')
 endfunction
 
@@ -230,8 +235,9 @@ function! LightlineReadonly()
 endfunction
 
 function! LightlineFilename()
+        "\ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
   return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-        \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != expand('%') ? expand('%') : '[No Name]') .
         \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
 endfunction
 
@@ -259,15 +265,20 @@ function! LightlineMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 "}}}
-Plug 'Shougo/neosnippet'
-" {{{
-imap <expr> <tab> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<c-n>" : "\<tab>")
-smap <expr> <tab> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>"
+"Plug 'Shougo/neosnippet'
+"" {{{
+"imap <expr> <tab> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<c-n>" : "\<tab>")
+"smap <expr> <tab> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>"
 
-let g:neosnippet#snippets_directory="~/.config/nvim/plugged/vim-snippets/snippets"
-" }}}
-Plug 'Shougo/neosnippet-snippets'
+"let g:neosnippet#snippets_directory="~/.config/nvim/plugged/vim-snippets/snippets"
+"" }}}
+"Plug 'Shougo/neosnippet-snippets'
 Plug 'ClaudiaJ/lightline-molokai.vim'
+
+Plug 'NathanNeff/grails-vim'
+"Plug 'sjurgemeyer/vimport'
+
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 " Colors and highlightings {{{
@@ -298,8 +309,8 @@ set autowrite " vaxe likes autowrite
 " tablength exceptions
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-autocmd FileType javascript.jsx setlocal shiftwidth=2 tabstop=2
+"autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+"autocmd FileType javascript.jsx setlocal shiftwidth=2 tabstop=2
 
 "busqueda ignore el case
 set ignorecase
@@ -329,6 +340,7 @@ set wildignore+=migrations "Django migrations"
 set wildignore+=*.pyc "Python Object codes"
 set wildignore+=*.orig "Merge resolution files"
 set wildignore+=export "openfl"
+set wildignore+=.eslintrc.js "eslint"
 
 set spelllang=es
 
