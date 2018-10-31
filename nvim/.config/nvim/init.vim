@@ -4,7 +4,7 @@ let g:mapleader = "\<Space>"
 call plug#begin('~/.config/nvim/plugged')
 "colo scheme
 Plug 'justinmk/molokai'
-Plug 'jdonaldson/vaxe'
+"Plug 'jdonaldson/vaxe'
 " {{{
 "let g:vaxe_acp_defaults = 0
 " }}}
@@ -184,7 +184,7 @@ Plug 'mhinz/vim-startify'
 "let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 "" }}}
 "" Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
+"Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 "{{{
 let g:lightline = {
@@ -259,14 +259,14 @@ function! LightlineMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 "}}}
-Plug 'Shougo/neosnippet'
-" {{{
-imap <expr> <tab> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<c-n>" : "\<tab>")
-smap <expr> <tab> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>"
+"Plug 'Shougo/neosnippet'
+"" {{{
+"imap <expr> <tab> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<c-n>" : "\<tab>")
+"smap <expr> <tab> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>"
 
-let g:neosnippet#snippets_directory="~/.config/nvim/plugged/vim-snippets/snippets"
-" }}}
-Plug 'Shougo/neosnippet-snippets'
+"let g:neosnippet#snippets_directory="~/.config/nvim/plugged/vim-snippets/snippets"
+"" }}}
+"Plug 'Shougo/neosnippet-snippets'
 Plug 'ClaudiaJ/lightline-molokai.vim'
 call plug#end()
 
@@ -329,6 +329,7 @@ set wildignore+=migrations "Django migrations"
 set wildignore+=*.pyc "Python Object codes"
 set wildignore+=*.orig "Merge resolution files"
 set wildignore+=export "openfl"
+set wildignore+=tags "openfl"
 
 set spelllang=es
 
