@@ -9,7 +9,7 @@ foreground = #ccffffff
 line-color = #00000000
 
 ; override-redirect = true
-tray-position = left
+tray-position = right
 tray-offset-y = -3
 
 
