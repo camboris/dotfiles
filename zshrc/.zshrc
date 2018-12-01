@@ -19,6 +19,8 @@ export ANDROID_HOME=~/dev/android-sdk
 
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
+source /etc/profile.d/android-ndk.sh
+source /etc/profile.d/android-sdk.sh
 
 #export NVIM_TUI_ENABLE_TRUE_COLOR=1
 #export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
