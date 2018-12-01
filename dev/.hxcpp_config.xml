@@ -2,9 +2,9 @@
 
 	<section id="vars">
 
-        <set name="ANDROID_SDK" value="/home/boris/dev/android-sdk" />
+        <set name="ANDROID_SDK" value="/opt/android-sdk" />
 		<set name="ANDROID_SETUP" value="true" />
-        <set name="ANDROID_NDK_ROOT" value="/home/boris/dev/android-ndk" />
+        <set name="ANDROID_NDK_ROOT" value="/opt/android-ndk" />
 		<set name="ANT_HOME" value="/usr" />
 		<set name="JAVA_HOME" value="/usr" />
 	</section>
