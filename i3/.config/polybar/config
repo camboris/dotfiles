@@ -1,5 +1,5 @@
 [bar/top]
-monitor = eDP-1
+monitor = LVDS1
 width = 100%
 height = 30
 
@@ -18,8 +18,8 @@ padding-left = 4
 module-margin= 2
 
 font-0 = MonofurForPowerline:weight=Bold:size=10;
-;font-0 = "Monofur for Powerline-Regular:size=10";
-font-1 = unifont:size=10;
+;font-0 = monofur for Powerline:style=bold:size=10;
+font-1 = Unifont:size=10;
 font-2 = FontAwesome:size=12;
 
 ;modules-left = powermenu i3 spotify
