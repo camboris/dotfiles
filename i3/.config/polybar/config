@@ -25,7 +25,7 @@ font-2 = FontAwesome:size=12;
 ;modules-left = powermenu i3 spotify
 modules-left = i3 spotify
 modules-center = date wired-network wireless-network
-modules-right = battery cpu memory volume
+modules-right = filesystem battery cpu memory volume
 
 
 [module/i3]
@@ -157,7 +157,7 @@ interval = 1
 
 [module/wireless-network]
 type = internal/network
-interface = wlp2s0
+interface = wlp7s0
 
 interval = 3
 
@@ -170,7 +170,7 @@ label-disconnected = " No connection"
 
 [module/wired-network]
 type = internal/network
-interface = enp1s0
+interface = enp9s0
 interval = 3.0
 
 label-connected =    %{T3}%local_ip%%{T-}
@@ -238,5 +238,51 @@ type = internal/date
 interval = 2
 date = %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
 
+[module/filesystem]
+type = internal/fs
+
+; Mountpoints to display
+mount-0 = /
+
+; Seconds to sleep between updates
+; Default: 30
+interval = 10
+
+; Display fixed precision values
+; Default: false
+fixed-values = true
+
+; Spacing between entries
+; Default: 2
+spacing = 2
+; Available tags:
+;   <label-mounted> (default)
+;   <bar-free>
+;   <bar-used>
+;   <ramp-capacity>
+format-mounted = <label-mounted>
+
+; Available tags:
+;   <label-unmounted> (default)
+format-unmounted = <label-unmounted>
+
+; Available tokens:
+;   %mountpoint%
+;   %type%
+;   %fsname%
+;   %percentage_free%
+;   %percentage_used%
+;   %total%
+;   %free%
+;   %used%
+; Default: %mountpoint% %percentage_free%%
+;label-mounted = %mountpoint%: %percentage_free%% of %total%
+label-mounted = %mountpoint%: %free%
+
+; Available tokens:
+;   %mountpoint%
+; Default: %mountpoint% is not mounted
+label-unmounted = %mountpoint%: not mounted
+label-unmounted-foreground = #55
 ; vim:ft=dosini
 
