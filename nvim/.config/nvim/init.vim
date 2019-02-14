@@ -4,10 +4,12 @@ let g:mapleader = "\<Space>"
 call plug#begin('~/.config/nvim/plugged')
 "colo scheme
 Plug 'justinmk/molokai'
-"Plug 'jdonaldson/vaxe'
-" {{{
-"let g:vaxe_acp_defaults = 0
-" }}}
+" Code commenter
+Plug 'scrooloose/nerdcommenter'
+
+Plug 'ludovicchabant/vim-gutentags'
+
+Plug 'machakann/vim-sandwich'
 
 Plug 'w0rp/ale'
 " {{{
@@ -37,10 +39,60 @@ let g:ale_fixers = {
 nmap <leader>d <Plug>(ale_fix)
 " }}}
 Plug 'tpope/vim-fugitive'
-" Code commenter
-Plug 'scrooloose/nerdcommenter'
+" unimpaired
+Plug 'tpope/vim-unimpaired'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'Raimondi/delimitMate'
+Plug 'justinmk/vim-sneak'
+Plug 'justinmk/vim-dirvish'
 
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'tpope/vim-jdaddy'
+
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+"{{{
+let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_null                 = "ø"
+let g:javascript_conceal_this                 = "@"
+let g:javascript_conceal_return               = "⇚"
+let g:javascript_conceal_undefined            = "¿"
+let g:javascript_conceal_NaN                  = "ℕ"
+let g:javascript_conceal_prototype            = "¶"
+let g:javascript_conceal_static               = "•"
+let g:javascript_conceal_super                = "Ω"
+let g:javascript_conceal_arrow_function       = "⇒"
+let g:javascript_conceal_noarg_arrow_function = "🞅"
+let g:javascript_conceal_underscore_arrow_function = "🞅"
+"}}}
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
+" {{{
+let g:jsx_ext_required = 0
+
+" }}}
+
+Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+
+"sass
+Plug 'tpope/vim-haml', {'for': ['sass', 'css', 'scss']}
+Plug 'hail2u/vim-css3-syntax', {'for': ['sass', 'css', 'scss']}
+Plug 'lilydjwg/colorizer'
+Plug 'airblade/vim-gitgutter'
+" {{{
+let g:gitgutter_enabled = 1
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+" }}}
+" Zen coding
+Plug 'mattn/emmet-vim', { 'for': ['javascript.jsx', 'html', 'css'] }
+" {{{
+" use zencoding with <C-E>
+let g:user_emmet_leader_key = '<c-e>'
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
+" }}}
+Plug 'mhinz/vim-startify'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
@@ -79,119 +131,16 @@ function! SearchVisualSelectionWithAg() range
   execute 'Ag' selection
 endfunction
 " }}}
-" Surround
-Plug 'tpope/vim-surround'
 
-" unimpaired
-Plug 'tpope/vim-unimpaired'
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'Shougo/deoplete.nvim' 
-" {{{
-let g:deoplete#enable_at_startup = 1
-" enables omni completion on haxe files
-let g:deoplete#omni#input_patterns = {}
-let g:deoplete#omni#input_patterns.haxe = '[^. *\t]\.\w*'
-" }}}
-" Completion from other opened files
-Plug 'Shougo/context_filetype.vim'
-" Python autocompletion
-Plug 'zchee/deoplete-jedi', { 'do': ':UpdateRemotePlugins' }
-" Just to add the python go-to-definition and similar features, autocompletion
-" from this plugin is disabled
-Plug 'davidhalter/jedi-vim'
-" {{{
-" Disable autocompletion (using deoplete instead)
-let g:jedi#completions_enabled = 0
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
-" All these mappings work only for python code:
-" Go to definition
-let g:jedi#goto_command = ',d'
-" Find ocurrences
-let g:jedi#usages_command = ',o'
-" Find assignments
-let g:jedi#goto_assignments_command = ',a'
-" Go to definition in new tab
-nmap ,D :tab split<CR>:call jedi#goto()<CR>
-" }}}
-" replaces autoclose
-Plug 'Raimondi/delimitMate'
-Plug 'justinmk/vim-sneak'
-Plug 'justinmk/vim-dirvish'
-Plug 'othree/html5.vim', {'for': ['html', 'htmldjango']}
-
-"Plug 'gavocanov/vim-js-indent'
-" for json
-Plug 'tpope/vim-jdaddy'
-
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
-"{{{
-let g:javascript_conceal_function             = "ƒ"
-let g:javascript_conceal_null                 = "ø"
-let g:javascript_conceal_this                 = "@"
-let g:javascript_conceal_return               = "⇚"
-let g:javascript_conceal_undefined            = "¿"
-let g:javascript_conceal_NaN                  = "ℕ"
-let g:javascript_conceal_prototype            = "¶"
-let g:javascript_conceal_static               = "•"
-let g:javascript_conceal_super                = "Ω"
-let g:javascript_conceal_arrow_function       = "⇒"
-let g:javascript_conceal_noarg_arrow_function = "🞅"
-let g:javascript_conceal_underscore_arrow_function = "🞅"
-"}}}
-Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
-" {{{
-let g:jsx_ext_required = 0
-
-" }}}
-
-Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
-" {{{
-let g:tern#command = ['tern']
-let g:tern#arguments = ['--persistent']
-" }}}
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-
-"sass
-Plug 'tpope/vim-haml', {'for': ['sass', 'css', 'scss']}
-Plug 'hail2u/vim-css3-syntax', {'for': ['sass', 'css', 'scss']}
-Plug 'lilydjwg/colorizer'
-Plug 'airblade/vim-gitgutter'
-" {{{
-let g:gitgutter_enabled = 1
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
-" }}}
-" Zen coding
-Plug 'mattn/emmet-vim', { 'for': ['javascript.jsx', 'html', 'css'] }
-" {{{
-" use zencoding with <C-E>
-let g:user_emmet_leader_key = '<c-e>'
-let g:user_emmet_settings = {
-\  'javascript.jsx' : {
-\      'extends' : 'jsx',
-\  },
-\}
-" }}}
-Plug 'mhinz/vim-startify'
-" Track the engine.
-"Plug 'SirVer/ultisnips'
-"" {{{
-"" UltiSnips config
-"inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-"" }}}
-"" Snippets are separated from the engine. Add this if you want them:
-"Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 "{{{
 let g:lightline = {
       \ 'colorscheme': 'molokai',
       \ 'mode_map': { 'c': 'NORMAL' },
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste', 'alestatus' ], [ 'fugitive', 'filename' ] ]
+      \   'left': [ [ 'mode', 'paste', 'cocstatus', 'alestatus' ], [ 'fugitive', 'filename' ] ]
       \ },
       \ 'component_function': {
       \   'modified': 'LightlineModified',
@@ -201,11 +150,13 @@ let g:lightline = {
       \   'fileformat': 'LightlineFileformat',
       \   'filetype': 'LightlineFiletype',
       \   'fileencoding': 'LightlineFileencoding',
+      \   'cocstatus': 'coc#status',
       \   'mode': 'LightlineMode',
       \ },
       \ 'separator': { 'left': '', 'right': ''},
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
+
 
 let g:lightline.component_expand = {'alestatus': 'g:LightLineAleStatus'}
 
@@ -259,23 +210,128 @@ function! LightlineMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 "}}}
-"Plug 'Shougo/neosnippet'
-"" {{{
-"imap <expr> <tab> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<c-n>" : "\<tab>")
-"smap <expr> <tab> neosnippet#expandable_or_jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>"
-
-"let g:neosnippet#snippets_directory="~/.config/nvim/plugged/vim-snippets/snippets"
-"" }}}
-"Plug 'Shougo/neosnippet-snippets'
 Plug 'ClaudiaJ/lightline-molokai.vim'
 call plug#end()
 
 " Colors and highlightings {{{
 colorscheme molokai
+"autocmd User CocNvimInit hi CocHighlightText ctermfg=0 ctermbg=215 guifg=#000000 guibg=#ffb733
+autocmd User CocNvimInit hi CocHighlightText ctermfg=255 ctermbg=239 guifg=#FFFFFF guibg=#4C4745
+
 "set guicursor=a:block-blinkon1
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon1,i-ci:ver25-Cursor/lCursor-blinkon1,r-cr:hor20-Cursor/lCursor
 "set termguicolors
 " }}}
+
+" if hidden not set, TextEdit might fail.
+set hidden
+
+" Better display for messages
+"set cmdheight=2
+
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> for trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[c` and `]c` for navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+vmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Use `:Format` for format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` for fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
 " general {{{
 
 :imap jj <Esc>
@@ -405,4 +461,4 @@ autocmd FileType actionscript :set dictionary=~/.nvim/plugged/actionscript-vim-b
 
 autocmd CompleteDone * pclose!
 " }}}
-" vim: set sw=2 ts=2 et foldlevel=0 foldmethod=marker:
+" vim: set sw=2 ts=2 et
