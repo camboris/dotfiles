@@ -2,6 +2,7 @@ filetype plugin indent on
 let g:mapleader = "\<Space>"
 
 call plug#begin('~/.config/nvim/plugged')
+Plug 'aklt/plantuml-syntax'
 "colo scheme
 Plug 'justinmk/molokai'
 " Code commenter
@@ -26,10 +27,10 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 let g:ale_lint_on_save = 1
 
-" let g:ale_sign_error = "\u2639"     " sad smiley face
-" let g:ale_sign_warning = "\u2614"     " umbrela under rain
-let g:ale_sign_error = "EE"
-let g:ale_sign_warning = "WW"
+let g:ale_sign_error = "\u2639"     " sad smiley face
+let g:ale_sign_warning = "\u2614"     " umbrela under rain
+" let g:ale_sign_error = "EE"
+" let g:ale_sign_warning = "WW"
 
 "let g:ale_sign_column_always = 1
 "let g:ale_javascript_eslint_use_global = 1
@@ -44,9 +45,12 @@ Plug 'tpope/vim-unimpaired'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'Raimondi/delimitMate'
 Plug 'justinmk/vim-sneak'
+"{{{
+let g:sneak#label = 1
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S
+""}}}
 Plug 'justinmk/vim-dirvish'
-
-Plug 'tpope/vim-jdaddy'
 
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 "{{{
@@ -69,8 +73,6 @@ let g:jsx_ext_required = 0
 
 " }}}
 
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-
 "sass
 Plug 'tpope/vim-haml', {'for': ['sass', 'css', 'scss']}
 Plug 'hail2u/vim-css3-syntax', {'for': ['sass', 'css', 'scss']}
@@ -82,25 +84,25 @@ let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 " }}}
 " Zen coding
-Plug 'mattn/emmet-vim', { 'for': ['javascript.jsx', 'html', 'css'] }
-" {{{
-" use zencoding with <C-E>
-let g:user_emmet_leader_key = '<c-e>'
-let g:user_emmet_settings = {
-\  'javascript.jsx' : {
-\      'extends' : 'jsx',
-\  },
-\}
-" }}}
+"Plug 'mattn/emmet-vim', { 'for': ['javascript.jsx', 'html', 'css'] }
+"" {{{
+"" use zencoding with <C-E>
+"let g:user_emmet_leader_key = '<c-e>'
+"let g:user_emmet_settings = {
+"\  'javascript.jsx' : {
+"\      'extends' : 'jsx',
+"\  },
+"\}
+"" }}}
 Plug 'mhinz/vim-startify'
-
+Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
 " {{{
 let g:fzf_nvim_statusline = 0 " disable statusline overwriting
 
 nnoremap <silent> <leader><space> :Files<CR>
-nnoremap <silent> <leader>a :Buffers<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>; :BLines<CR>
 nnoremap <silent> <leader>. :Lines<CR>
 nnoremap <silent> <leader>o :BTags<CR>
@@ -297,9 +299,9 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-vmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+"" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+"vmap <leader>a  <Plug>(coc-codeaction-selected)
+"nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap for do codeAction of current line
 nmap <leader>ac  <Plug>(coc-codeaction)
@@ -331,6 +333,34 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? coc#rpc#request('doKeymap', ['snippets-expand-jump','']) :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 
 " general {{{
 

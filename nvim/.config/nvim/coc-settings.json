@@ -1,0 +1,6 @@
+{
+    "coc.preferences.diagnostic.displayByAle": true,
+    "snippets.extends": {
+        "javascript.jsx": ["javascript"]
+    }
+}
