@@ -12,5 +12,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'sheerun/vim-polyglot'
     Plug 'joshdick/onedark.vim'
     Plug 'justinmk/molokai'
+    " Stable version of coc
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
