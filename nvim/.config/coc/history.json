@@ -1,0 +1,37 @@
+{
+  "diagnostics": {
+    "%2FUsers%2Fmpozzo%2Fdesarrollo%2Fcredits%2Fcredits-landings": [
+      ":q`"
+    ]
+  },
+  "extensions": {
+    "%2FUsers%2Fmpozzo%2Fdesarrollo%2Fcredits%2Fcredits-landings": [
+      "q`"
+    ]
+  },
+  "outline": {
+    "%2FUsers%2Fmpozzo%2Fdesarrollo%2Fcredits%2Fcredits-landings": [
+      ":q",
+      "hand"
+    ]
+  },
+  "snippets": {
+    "%2FUsers%2Fmpozzo%2Fdesarrollo%2Fbuilds": [
+      ":q"
+    ]
+  },
+  "commands": {
+    "%2FUsers%2Fmpozzo%2Fdesarrollo%2Fpruebas": [
+      "post"
+    ],
+    "%2FUsers%2Fmpozzo%2Fdesarrollo%2Fcapacitaciones%2Fpython-itec": [
+      "run",
+      "python"
+    ]
+  },
+  "lists": {
+    "%2FUsers%2Fmpozzo%2Fdesarrollo%2Fpruebas": [
+      "post"
+    ]
+  }
+}
