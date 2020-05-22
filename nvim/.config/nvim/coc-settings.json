@@ -1,4 +1,7 @@
 {
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "⚠️",
+  "diagnostic.infoSign": "ⓘ",
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "markdown",
@@ -15,5 +18,8 @@
     "UltiSnips",
     "~/.config/nvim/utils/snips"
   ],
-  "tsserver.npm": "/usr/local/bin/npm"
+  "tsserver.npm": "/usr/local/bin/npm",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  }
 }
