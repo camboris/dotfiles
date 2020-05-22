@@ -16,5 +16,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'honza/vim-snippets'
     Plug 'itchyny/lightline.vim'
+    Plug 'tpope/vim-commentary'
 
 call plug#end()
