@@ -1,6 +1,6 @@
 {
   "diagnostic.errorSign": "✘",
-  "diagnostic.warningSign": "⚠️",
+  "diagnostic.warningSign": "⚠",
   "diagnostic.infoSign": "ⓘ",
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
