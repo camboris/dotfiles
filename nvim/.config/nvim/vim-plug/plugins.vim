@@ -15,5 +15,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Stable version of coc
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'honza/vim-snippets'
+    Plug 'itchyny/lightline.vim'
 
 call plug#end()
