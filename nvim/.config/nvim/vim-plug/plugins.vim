@@ -17,5 +17,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'honza/vim-snippets'
     Plug 'itchyny/lightline.vim'
     Plug 'tpope/vim-commentary'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+    Plug 'airblade/vim-rooter'
+    Plug 'sirtaj/vim-openscad'
 
 call plug#end()
