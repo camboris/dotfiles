@@ -22,5 +22,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'sirtaj/vim-openscad'
     Plug 'aklt/plantuml-syntax'
     Plug 'mhinz/vim-startify'
+    Plug 'justinmk/vim-sneak'
 
 call plug#end()
