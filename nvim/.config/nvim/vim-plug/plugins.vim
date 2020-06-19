@@ -23,5 +23,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'aklt/plantuml-syntax'
     Plug 'mhinz/vim-startify'
     Plug 'justinmk/vim-sneak'
+    Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 call plug#end()
