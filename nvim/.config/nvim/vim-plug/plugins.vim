@@ -24,5 +24,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'mhinz/vim-startify'
     Plug 'justinmk/vim-sneak'
     Plug 'jeffkreeftmeijer/vim-numbertoggle'
+    Plug 'voldikss/vim-floaterm'
 
 call plug#end()
