@@ -19,7 +19,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'tpope/vim-commentary'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
-    Plug 'airblade/vim-rooter'
     Plug 'sirtaj/vim-openscad'
+    Plug 'aklt/plantuml-syntax'
+    Plug 'mhinz/vim-startify'
 
 call plug#end()
