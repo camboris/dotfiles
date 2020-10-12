@@ -25,5 +25,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'voldikss/vim-floaterm'
     Plug 'jiangmiao/auto-pairs'
     Plug 'machakann/vim-sandwich'
+    Plug 'justinmk/vim-dirvish'
 
 call plug#end()
