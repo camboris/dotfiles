@@ -26,5 +26,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'jiangmiao/auto-pairs'
     Plug 'machakann/vim-sandwich'
     Plug 'justinmk/vim-dirvish'
-
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-lua/completion-nvim'
+    
 call plug#end()
