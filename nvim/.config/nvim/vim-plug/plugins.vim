@@ -28,5 +28,5 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'justinmk/vim-dirvish'
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-lua/completion-nvim'
-    
+    Plug 'nvim-lua/diagnostic-nvim'    
 call plug#end()

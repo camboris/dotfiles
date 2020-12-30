@@ -11,3 +11,4 @@ source $HOME/.config/nvim/plug-config/floaterm.vim
 source $HOME/.config/nvim/themes/lightline.vim
 
 lua require("lsp")
+source /Users/mpozzo/.config/nvim/plug-config/lsp.vim

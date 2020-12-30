@@ -11,7 +11,7 @@ nvim_lsp.tsserver.setup{}
 -- nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
    local on_attach = function(_, bufnr)
   -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-    -- require'diagnostic'.on_attach()
+    require'diagnostic'.on_attach()
     require'completion'.on_attach()
 
     -- Mappings.
@@ -28,7 +28,7 @@ nvim_lsp.tsserver.setup{}
   end
 
   -- local servers = {'cssls', 'bashls', 'diagnosticls', 'dockerls', 'flow', 'ghcide', 'gopls', 'hie', 'html', 'intelephense', 'tsserver', 'jsonls', 'kotlin_language_server', 'pyls', 'rls', 'rust_analyzer', 'sourcekit', 'vimls', 'vuels'}
-  local servers = {'tsserver'}
+  local servers = {'tsserver', 'pyls'}
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
       on_attach = on_attach,
