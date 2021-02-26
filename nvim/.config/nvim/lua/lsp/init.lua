@@ -1,5 +1,5 @@
-local nvim_lsp = require'nvim_lsp'
-nvim_lsp.tsserver.setup{}
+local lspconfig = require'lspconfig'
+lspconfig.tsserver.setup{}
 
 -- nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 -- nnoremap <silent> gh     <cmd>lua vim.lsp.buf.hover()<CR>
@@ -30,7 +30,7 @@ nvim_lsp.tsserver.setup{}
   -- local servers = {'cssls', 'bashls', 'diagnosticls', 'dockerls', 'flow', 'ghcide', 'gopls', 'hie', 'html', 'intelephense', 'tsserver', 'jsonls', 'kotlin_language_server', 'pyls', 'rls', 'rust_analyzer', 'sourcekit', 'vimls', 'vuels'}
   local servers = {'tsserver', 'pyls'}
   for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup {
+    lspconfig[lsp].setup {
       on_attach = on_attach,
     }
   end
