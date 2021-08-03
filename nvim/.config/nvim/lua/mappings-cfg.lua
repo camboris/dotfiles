@@ -40,7 +40,15 @@ map ('n', '<C-l>', '<C-w>l')
 --
 -- terminal
 map('n', '<leader>t', '<cmd>terminal<CR>')
+-- 
+-- Tab to switch buffers in Normal mode
+map("n", "<Tab>", ":bnext<CR>")
+map("n", "<S-Tab>", ":bprevious<CR>")
 
+-- Easier file save
+map("n", "<Leader>w", "<cmd>:w<CR>")
+map('n', '<C-s>', ':w<CR>')
+map('i', '<C-s>', '<ESC>:w<CR>')
 
 function toggle_wrap()
   wo.breakindent = not wo.breakindent
