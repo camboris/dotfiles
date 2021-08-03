@@ -14,15 +14,20 @@ end
 --- plugins
 cmd 'packadd paq-nvim'
 local paq = require('paq-nvim').paq
-paq {'savq/paq-nvim', opt = true}
-paq {'sainnhe/sonokai'}
-paq {'neovim/nvim-lspconfig'}
-paq {'hrsh7th/nvim-compe'}
-paq {'hoob3rt/lualine.nvim'}
-paq {'kyazdani42/nvim-web-devicons', opt = true}
+paq {'savq/paq-nvim', opt = true} -- packages
+paq {'sainnhe/sonokai'} -- theme
+paq {'neovim/nvim-lspconfig'} -- lsp
+paq {'hrsh7th/nvim-compe'} -- completion
+paq {'hoob3rt/lualine.nvim'} -- status line
+paq {'kyazdani42/nvim-web-devicons', opt = true} -- idcons
+paq {'nvim-treesitter/nvim-treesitter'} -- tresistter
+paq {'nvim-treesitter/nvim-treesitter-textobjects'} -- treesiter text objects
 
 -- lua-line
 require('lualine-cfg')
+
+-- tresitter
+require('treesitter-cfg')
 
 -- LSP settings
 local nvim_lsp = require 'lspconfig'
