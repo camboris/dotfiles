@@ -40,6 +40,7 @@ require('compe-cfg')
 
 -- options
 require('options-cfg')
+require('mappings-cfg')
 
 -- theme
 require('theme-cfg')
