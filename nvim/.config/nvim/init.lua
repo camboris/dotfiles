@@ -25,6 +25,7 @@ paq {'nvim-treesitter/nvim-treesitter-textobjects'} -- treesiter text objects
 paq {'nvim-lua/plenary.nvim'}
 paq {'nvim-lua/popup.nvim'}
 paq {'nvim-telescope/telescope.nvim'}
+paq {'windwp/nvim-autopairs'}
 
 -- lua-line
 require('lualine-cfg')
@@ -47,3 +48,6 @@ require('theme-cfg')
 
 -- telescope
 require('telescope-cfg')
+
+-- autoparis
+require('autopairs-cfg')
