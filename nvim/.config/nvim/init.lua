@@ -22,6 +22,9 @@ paq {'hoob3rt/lualine.nvim'} -- status line
 paq {'kyazdani42/nvim-web-devicons', opt = true} -- idcons
 paq {'nvim-treesitter/nvim-treesitter'} -- tresistter
 paq {'nvim-treesitter/nvim-treesitter-textobjects'} -- treesiter text objects
+paq {'nvim-lua/plenary.nvim'}
+paq {'nvim-lua/popup.nvim'}
+paq {'nvim-telescope/telescope.nvim'}
 
 -- lua-line
 require('lualine-cfg')
@@ -40,3 +43,6 @@ require('options-cfg')
 
 -- theme
 require('theme-cfg')
+
+-- telescope
+require('telescope-cfg')

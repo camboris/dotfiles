@@ -1,4 +1,10 @@
 local opt = vim.opt
+local g = vim.g
+
+--Remap space as leader key
+vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- options
 local indent, width = 2, 80
