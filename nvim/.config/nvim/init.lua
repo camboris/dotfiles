@@ -18,6 +18,11 @@ paq {'savq/paq-nvim', opt = true}
 paq {'sainnhe/sonokai'}
 paq {'neovim/nvim-lspconfig'}
 paq {'hrsh7th/nvim-compe'}
+paq {'hoob3rt/lualine.nvim'}
+paq {'kyazdani42/nvim-web-devicons', opt = true}
+
+-- lua-line
+require('lualine-cfg')
 
 -- LSP settings
 local nvim_lsp = require 'lspconfig'
