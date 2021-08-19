@@ -40,6 +40,13 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+require "lsp_signature".setup({
+  bind = true, -- This is mandatory, otherwise border config won't get registered.
+  handler_opts = {
+    border = "single"
+  }
+})
+
 nvim_lsp.diagnosticls.setup {
   filetypes = {"javascript", "javascriptreact", "typescript", "typescriptreact", "css"},
   init_options = {
