@@ -30,6 +30,7 @@ paq {'terrortylor/nvim-comment'}
 paq {'glepnir/dashboard-nvim'}
 paq {'akinsho/nvim-toggleterm.lua'}
 paq {'lewis6991/gitsigns.nvim'}
+paq {'folke/which-key.nvim'}
 
 -- lua-line
 require('lualine-cfg')
@@ -67,3 +68,5 @@ require('toggleterm-cfg')
 
 -- gitsifng
 require('gitsigns').setup()
+
+require('which-key').setup()
