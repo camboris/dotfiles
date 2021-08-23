@@ -14,7 +14,8 @@ end
 cmd 'packadd paq-nvim'
 local paq = require('paq-nvim').paq
 paq {'savq/paq-nvim', opt = true} -- packages
-paq {'sainnhe/sonokai'} -- theme
+-- paq {'sainnhe/sonokai'} -- theme
+paq {'Pocco81/Catppuccino.nvim'}
 paq {'neovim/nvim-lspconfig'} -- lsp
 paq {'ray-x/lsp_signature.nvim'}
 paq {'hrsh7th/nvim-compe'} -- completion
@@ -32,6 +33,9 @@ paq {'akinsho/nvim-toggleterm.lua'}
 paq {'lewis6991/gitsigns.nvim'}
 paq {'folke/which-key.nvim'}
 
+-- theme
+require('theme-cfg')
+
 -- lua-line
 require('lualine-cfg')
 
@@ -47,9 +51,6 @@ require('compe-cfg')
 -- options
 require('options-cfg')
 require('mappings-cfg')
-
--- theme
-require('theme-cfg')
 
 -- telescope
 require('telescope-cfg')
