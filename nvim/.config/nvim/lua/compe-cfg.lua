@@ -1,5 +1,6 @@
 -- Compe setup
 require('compe').setup {
+  preselect = 'always';
   source = {
     path = true,
     nvim_lsp = true,
