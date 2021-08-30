@@ -23,6 +23,7 @@ paq {'ray-x/lsp_signature.nvim'}
 paq {'hrsh7th/nvim-cmp'}
 paq {'hrsh7th/cmp-buffer'}
 paq {'hrsh7th/cmp-nvim-lua'}
+paq {'hrsh7th/cmp-nvim-lsp'}
 paq {'saadparwaiz1/cmp_luasnip'}
 
 paq {'L3MON4D3/LuaSnip'} -- Snippets plugin
