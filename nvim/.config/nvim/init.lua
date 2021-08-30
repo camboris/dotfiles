@@ -40,6 +40,7 @@ paq {'glepnir/dashboard-nvim'}
 paq {'akinsho/nvim-toggleterm.lua'}
 paq {'lewis6991/gitsigns.nvim'}
 paq {'folke/which-key.nvim'}
+paq {'stevearc/qf_helper.nvim'}
 
 -- theme
 require('theme-cfg')
@@ -81,3 +82,5 @@ require('gitsigns').setup()
 require('which-key').setup()
 
 require('cmp-cfg')
+
+require('qf-helper-cfg')
