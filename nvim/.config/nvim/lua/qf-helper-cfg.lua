@@ -13,6 +13,6 @@ require'qf_helper'.setup()
 map('n', '<C-N>', '<cmd>QNext<CR>', { silent = true})
 map('n', '<C-P>', '<cmd>QPrev<CR>', { silent = true})
 -- " toggle the quickfix open/closed without jumping to it
-map('n', '<leader>q', '<cmd>QFToggle<CR>', { silent = true})
-map('n', '<leader>l', '<cmd>LLToggle<CR>', { silent = true})
+map('n', '<leader>tq', '<cmd>QFToggle<CR>', { silent = true})
+map('n', '<leader>tl', '<cmd>LLToggle<CR>', { silent = true})
 

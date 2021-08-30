@@ -39,7 +39,7 @@ map ('n', '<C-k>', '<C-w>k')
 map ('n', '<C-l>', '<C-w>l')
 --
 -- terminal
-map('n', '<leader>t', '<cmd>terminal<CR>')
+map('n', '<leader>tt', '<cmd>terminal<CR>')
 -- 
 -- Tab to switch buffers in Normal mode
 map("n", "<Tab>", ":bnext<CR>")
