@@ -18,7 +18,15 @@ paq {'savq/paq-nvim', opt = true} -- packages
 paq {'Pocco81/Catppuccino.nvim'}
 paq {'neovim/nvim-lspconfig'} -- lsp
 paq {'ray-x/lsp_signature.nvim'}
-paq {'hrsh7th/nvim-compe'} -- completion
+-- paq {'hrsh7th/nvim-compe'} -- completion
+-- completion
+paq {'hrsh7th/nvim-cmp'}
+paq {'hrsh7th/cmp-buffer'}
+paq {'hrsh7th/cmp-nvim-lua'}
+paq {'hrsh7th/cmp-nvim-lsp'}
+paq {'saadparwaiz1/cmp_luasnip'}
+
+paq {'L3MON4D3/LuaSnip'} -- Snippets plugin
 paq {'hoob3rt/lualine.nvim'} -- status line
 paq {'kyazdani42/nvim-web-devicons'} -- idcons
 paq {'nvim-treesitter/nvim-treesitter'} -- tresistter
@@ -32,6 +40,7 @@ paq {'glepnir/dashboard-nvim'}
 paq {'akinsho/nvim-toggleterm.lua'}
 paq {'lewis6991/gitsigns.nvim'}
 paq {'folke/which-key.nvim'}
+paq {'stevearc/qf_helper.nvim'}
 
 -- theme
 require('theme-cfg')
@@ -46,7 +55,7 @@ require('treesitter-cfg')
 require('lsp-cfg')
 
 -- compe
-require('compe-cfg')
+-- require('compe-cfg')
 
 -- options
 require('options-cfg')
@@ -71,3 +80,7 @@ require('toggleterm-cfg')
 require('gitsigns').setup()
 
 require('which-key').setup()
+
+require('cmp-cfg')
+
+require('qf-helper-cfg')

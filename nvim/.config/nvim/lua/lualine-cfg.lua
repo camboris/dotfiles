@@ -1,7 +1,7 @@
 require('lualine').setup({
   options = {
     icons_enabled = true,
-    theme = 'horizon',
+    theme = 'catppuccino',
   },
   sections = {
     lualine_a = { "mode", "paste" },
