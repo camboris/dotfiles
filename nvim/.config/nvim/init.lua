@@ -18,14 +18,14 @@ paq {'savq/paq-nvim', opt = true} -- packages
 paq {'Pocco81/Catppuccino.nvim'}
 paq {'neovim/nvim-lspconfig'} -- lsp
 paq {'ray-x/lsp_signature.nvim'}
--- paq {'hrsh7th/nvim-compe'} -- completion
 -- completion
 paq {'hrsh7th/nvim-cmp'}
 paq {'hrsh7th/cmp-buffer'}
+paq {'hrsh7th/cmp-path'}
 paq {'hrsh7th/cmp-nvim-lua'}
 paq {'hrsh7th/cmp-nvim-lsp'}
 paq {'saadparwaiz1/cmp_luasnip'}
-
+paq {'onsails/lspkind-nvim'}
 paq {'L3MON4D3/LuaSnip'} -- Snippets plugin
 paq {'hoob3rt/lualine.nvim'} -- status line
 paq {'kyazdani42/nvim-web-devicons'} -- idcons
