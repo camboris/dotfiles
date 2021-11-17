@@ -15,7 +15,7 @@ cmd 'packadd paq-nvim'
 local paq = require('paq-nvim').paq
 paq {'savq/paq-nvim', opt = true} -- packages
 -- paq {'sainnhe/sonokai'} -- theme
-paq {'Pocco81/Catppuccino.nvim'}
+paq {'catppuccin/nvim'}
 paq {'neovim/nvim-lspconfig'} -- lsp
 paq {'ray-x/lsp_signature.nvim'}
 -- completion
@@ -36,7 +36,7 @@ paq {'nvim-lua/popup.nvim'}
 paq {'nvim-telescope/telescope.nvim'}
 paq {'windwp/nvim-autopairs'}
 paq {'terrortylor/nvim-comment'}
-paq {'glepnir/dashboard-nvim'}
+paq {'goolord/alpha-nvim'}
 paq {'akinsho/nvim-toggleterm.lua'}
 paq {'lewis6991/gitsigns.nvim'}
 paq {'folke/which-key.nvim'}
@@ -70,8 +70,7 @@ require('autopairs-cfg')
 -- comment
 require('nvim_comment').setup()
 
--- dashboard
-g.dashboard_default_executive = 'telescope'
+require'alpha'.setup(require'alpha.themes.startify'.opts)
 
 -- terminal
 require('toggleterm-cfg')
