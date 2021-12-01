@@ -29,7 +29,7 @@ paq {'onsails/lspkind-nvim'}
 paq {'L3MON4D3/LuaSnip'} -- Snippets plugin
 paq {'hoob3rt/lualine.nvim'} -- status line
 paq {'kyazdani42/nvim-web-devicons'} -- idcons
-paq {'nvim-treesitter/nvim-treesitter'} -- tresistter
+paq {'nvim-treesitter/nvim-treesitter', run=TSUpdate} -- tresistter
 paq {'nvim-treesitter/nvim-treesitter-textobjects'} -- treesiter text objects
 paq {'nvim-lua/plenary.nvim'}
 paq {'nvim-lua/popup.nvim'}
@@ -41,6 +41,10 @@ paq {'akinsho/nvim-toggleterm.lua'}
 paq {'lewis6991/gitsigns.nvim'}
 paq {'folke/which-key.nvim'}
 paq {'stevearc/qf_helper.nvim'}
+paq {'nvim-telescope/telescope-fzf-native.nvim', run='make' }
+paq {'phaazon/hop.nvim'}
+paq {'blackCauldron7/surround.nvim'}
+
 
 -- theme
 require('theme-cfg')
@@ -83,3 +87,18 @@ require('which-key').setup()
 require('cmp-cfg')
 
 require('qf-helper-cfg')
+
+-- surround
+require('surround').setup {
+  mappings_style = 'surround'
+}
+-- hop
+require('hop').setup()
+-- -- place this in one of your configuration file(s)
+-- vim.api.nvim_set_keymap('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
+-- vim.api.nvim_set_keymap('n', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
+-- vim.api.nvim_set_keymap('o', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>", {})
+-- vim.api.nvim_set_keymap('o', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>", {})
+-- vim.api.nvim_set_keymap('', 't', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
+-- vim.api.nvim_set_keymap('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
+api.nvim_set_keymap('n', 's', '<cmd>HopChar2<CR>', {})
