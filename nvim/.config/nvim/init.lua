@@ -14,10 +14,16 @@ end
 cmd 'packadd paq-nvim'
 local paq = require('paq-nvim').paq
 paq {'savq/paq-nvim', opt = true} -- packages
--- paq {'sainnhe/sonokai'} -- theme
+--
+-- theme and visual
 paq {'catppuccin/nvim'}
+paq {'kyazdani42/nvim-web-devicons'} -- idcons
+--
+-- lsp
 paq {'neovim/nvim-lspconfig'} -- lsp
+paq {'onsails/lspkind-nvim'}
 paq {'ray-x/lsp_signature.nvim'}
+--
 -- completion
 paq {'hrsh7th/nvim-cmp'}
 paq {'hrsh7th/cmp-buffer'}
@@ -25,26 +31,47 @@ paq {'hrsh7th/cmp-path'}
 paq {'hrsh7th/cmp-nvim-lua'}
 paq {'hrsh7th/cmp-nvim-lsp'}
 paq {'saadparwaiz1/cmp_luasnip'}
-paq {'onsails/lspkind-nvim'}
 paq {'L3MON4D3/LuaSnip'} -- Snippets plugin
+--
+-- status line
 paq {'hoob3rt/lualine.nvim'} -- status line
-paq {'kyazdani42/nvim-web-devicons'} -- idcons
+--
+-- treesitter
 paq {'nvim-treesitter/nvim-treesitter', run=TSUpdate} -- tresistter
 paq {'nvim-treesitter/nvim-treesitter-textobjects'} -- treesiter text objects
+--
+-- telescope
 paq {'nvim-lua/plenary.nvim'}
 paq {'nvim-lua/popup.nvim'}
 paq {'nvim-telescope/telescope.nvim'}
-paq {'windwp/nvim-autopairs'}
-paq {'numToStr/Comment.nvim'}
-paq {'goolord/alpha-nvim'}
-paq {'akinsho/nvim-toggleterm.lua'}
-paq {'lewis6991/gitsigns.nvim'}
-paq {'folke/which-key.nvim'}
-paq {'stevearc/qf_helper.nvim'}
 paq {'nvim-telescope/telescope-fzf-native.nvim', run='make' }
+--
+-- autopairs
+paq {'windwp/nvim-autopairs'}
+--
+-- comments
+paq {'numToStr/Comment.nvim'}
+--
+-- start screens
+paq {'goolord/alpha-nvim'}
+--
+-- terminal management
+paq {'akinsho/nvim-toggleterm.lua'}
+--
+-- git signs
+paq {'lewis6991/gitsigns.nvim'}
+--
+-- key mapping help
+paq {'folke/which-key.nvim'}
+-- quick fix toogle
+paq {'stevearc/qf_helper.nvim'}
+-- easymotion movement
 paq {'phaazon/hop.nvim'}
+-- surround stuff
 paq {'blackCauldron7/surround.nvim'}
 
+-- file tree
+paq {'kyazdani42/nvim-tree.lua'}
 
 -- theme
 require('theme-cfg')
@@ -92,11 +119,9 @@ require('surround').setup {
 }
 -- hop
 require('hop').setup()
--- -- place this in one of your configuration file(s)
--- vim.api.nvim_set_keymap('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
--- vim.api.nvim_set_keymap('n', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
--- vim.api.nvim_set_keymap('o', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>", {})
--- vim.api.nvim_set_keymap('o', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>", {})
--- vim.api.nvim_set_keymap('', 't', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
--- vim.api.nvim_set_keymap('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
 api.nvim_set_keymap('n', 's', '<cmd>HopChar2<CR>', {})
+
+vim.g.nvim_tree_quit_on_open = 1
+require'nvim-tree'.setup()
+api.nvim_set_keymap('n', '<F3>', '<cmd>NvimTreeToggle<CR>', {})
+api.nvim_set_keymap('n', '<F4>', '<cmd>NvimTreeFindFileToggle<CR>', {})

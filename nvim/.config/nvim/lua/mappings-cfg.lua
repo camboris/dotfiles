@@ -23,9 +23,6 @@ map('i', '<C-S-Right>', '<ESC><cmd>tabn<CR>')
 map('n', '<C-S-Left>', '<cmd>tabp<CR>')
 map('i', '<C-S-Left>', '<ESC><cmd>tabp<CR>')
 
--- misc
-map('n', '<F3>', '<cmd>lua toggle_wrap()<CR>')
-
 -- windows
 map('n', '<S-Down>', '<C-w>2-')
 map('n', '<S-Left>', '<C-w>2<')
@@ -49,9 +46,3 @@ map("n", "<S-Tab>", ":bprevious<CR>")
 map("n", "<Leader>w", "<cmd>:w<CR>")
 map('n', '<C-s>', ':w<CR>')
 map('i', '<C-s>', '<ESC>:w<CR>')
-
-function toggle_wrap()
-  wo.breakindent = not wo.breakindent
-  wo.linebreak = not wo.linebreak
-  wo.wrap = not wo.wrap
-end
