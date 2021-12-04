@@ -35,7 +35,7 @@ paq {'nvim-lua/plenary.nvim'}
 paq {'nvim-lua/popup.nvim'}
 paq {'nvim-telescope/telescope.nvim'}
 paq {'windwp/nvim-autopairs'}
-paq {'terrortylor/nvim-comment'}
+paq {'numToStr/Comment.nvim'}
 paq {'goolord/alpha-nvim'}
 paq {'akinsho/nvim-toggleterm.lua'}
 paq {'lewis6991/gitsigns.nvim'}
@@ -58,9 +58,6 @@ require('treesitter-cfg')
 -- lsp
 require('lsp-cfg')
 
--- compe
--- require('compe-cfg')
-
 -- options
 require('options-cfg')
 require('mappings-cfg')
@@ -72,8 +69,9 @@ require('telescope-cfg')
 require('autopairs-cfg')
 
 -- comment
-require('nvim_comment').setup()
+require('Comment').setup()
 
+-- start screen
 require'alpha'.setup(require'alpha.themes.startify'.opts)
 
 -- terminal
