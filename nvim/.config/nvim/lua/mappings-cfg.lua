@@ -12,8 +12,9 @@ map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<S-Tab>"', {expr = true})
 map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 -- esc
 map('i', 'jj', '<ESC>')
-map('t', 'jj', '<ESC>', {noremap = false})
-map('t', '<ESC>', '<C-\\><C-n>')
+map('i', 'jk', '<ESC>')
+-- map('t', 'jj', '<ESC>', {noremap = false})
+-- map('t', '<ESC>', '<C-\\><C-n>')
 
 -- tabs
 map('n', '<C-w>T', '<cmd>tabclose<CR>')
