@@ -45,6 +45,7 @@ paq {'nvim-lua/plenary.nvim'}
 paq {'nvim-lua/popup.nvim'}
 paq {'nvim-telescope/telescope.nvim'}
 paq {'nvim-telescope/telescope-fzf-native.nvim', run='make' }
+-- paq {'LinArcX/telescope-command-palette.nvim'}
 --
 -- autopairs
 paq {'windwp/nvim-autopairs'}
@@ -72,6 +73,9 @@ paq {'blackCauldron7/surround.nvim'}
 
 -- file tree
 paq {'kyazdani42/nvim-tree.lua'}
+
+-- markdown
+paq {'ellisonleao/glow.nvim'}
 
 -- theme
 require('theme-cfg')
@@ -123,5 +127,8 @@ api.nvim_set_keymap('n', 's', '<cmd>HopChar2<CR>', {})
 
 vim.g.nvim_tree_quit_on_open = 1
 require'nvim-tree'.setup()
-api.nvim_set_keymap('n', '<F3>', '<cmd>NvimTreeToggle<CR>', {})
-api.nvim_set_keymap('n', '<F4>', '<cmd>NvimTreeFindFileToggle<CR>', {})
+-- api.nvim_set_keymap('n', '<F3>', '<cmd>NvimTreeToggle<CR>', {})
+api.nvim_set_keymap('n', '<F3>', '<cmd>NvimTreeFindFileToggle<CR>', {})
+
+-- Glow
+api.nvim_set_keymap('n', '<leader>p', '<cmd>Glow<CR>', {})

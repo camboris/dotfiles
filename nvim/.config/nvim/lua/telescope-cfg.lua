@@ -1,6 +1,7 @@
 --Add leader shortcuts
 vim.api.nvim_set_keymap('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>sf', [[<cmd>lua require('telescope.builtin').find_files()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>sc', [[<cmd>lua require('telescope.builtin').commands()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>sb', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>sh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>st', [[<cmd>lua require('telescope.builtin').tags()<CR>]], { noremap = true, silent = true })
@@ -8,6 +9,7 @@ vim.api.nvim_set_keymap('n', '<leader>sd', [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>sp', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>so', [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>?', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F4>', [[<cmd>lua require('telescope.builtin').file_browser()<CR>]], { noremap = true, silent = true })
 
 -- Telescope Globalremapping
 local action_state = require("telescope.actions.state")
@@ -55,3 +57,18 @@ require('telescope').setup {
 }
 
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('command_palette') 
+CpMenu = {
+  {"Help",
+    { "tips", ":help tips" },
+    { "cheatsheet", ":help index" },
+    { "tutorial", ":help tutor" },
+    { "summary", ":help summary" },
+    { "quick reference", ":help quickref" },
+    { "search help(F1)", ":lua require('telescope.builtin').help_tags()", 1 },
+    {"Vim",
+      { "current working directory", ":pwd" },
+      { "reload vimrc", ":source $MYVIMRC"},
+    }
+  }
+}
