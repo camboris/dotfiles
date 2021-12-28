@@ -77,6 +77,16 @@ paq {'kyazdani42/nvim-tree.lua'}
 -- markdown
 paq {'ellisonleao/glow.nvim'}
 
+-- dap
+paq {'mfussenegger/nvim-dap'}
+paq {'nvim-telescope/telescope-dap.nvim'}
+paq {'mfussenegger/nvim-dap-python'}
+paq {'theHamsta/nvim-dap-virtual-text'}
+paq {'rcarriga/nvim-dap-ui'}
+paq {'Pocco81/DAPInstall.nvim'}
+-- paq {'vim-test/vim-test'}
+paq {'David-Kunz/jester'}
+--
 -- theme
 require('theme-cfg')
 
@@ -132,3 +142,5 @@ api.nvim_set_keymap('n', '<F3>', '<cmd>NvimTreeFindFileToggle<CR>', {})
 
 -- Glow
 api.nvim_set_keymap('n', '<leader>p', '<cmd>Glow<CR>', {})
+
+require('dbg')
