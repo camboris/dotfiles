@@ -23,6 +23,7 @@ paq {'kyazdani42/nvim-web-devicons'} -- idcons
 paq {'neovim/nvim-lspconfig'} -- lsp
 paq {'onsails/lspkind-nvim'}
 paq {'ray-x/lsp_signature.nvim'}
+paq {'folke/trouble.nvim'}
 --
 -- completion
 paq {'hrsh7th/nvim-cmp'}
@@ -39,12 +40,14 @@ paq {'hoob3rt/lualine.nvim'} -- status line
 -- treesitter
 paq {'nvim-treesitter/nvim-treesitter', run=TSUpdate} -- tresistter
 paq {'nvim-treesitter/nvim-treesitter-textobjects'} -- treesiter text objects
+paq {'p00f/nvim-ts-rainbow'}
 --
 -- telescope
 paq {'nvim-lua/plenary.nvim'}
 paq {'nvim-lua/popup.nvim'}
 paq {'nvim-telescope/telescope.nvim'}
 paq {'nvim-telescope/telescope-fzf-native.nvim', run='make' }
+paq {'nvim-telescope/telescope-file-browser.nvim'}
 -- paq {'LinArcX/telescope-command-palette.nvim'}
 --
 -- autopairs
@@ -142,5 +145,6 @@ api.nvim_set_keymap('n', '<F3>', '<cmd>NvimTreeFindFileToggle<CR>', {})
 
 -- Glow
 api.nvim_set_keymap('n', '<leader>p', '<cmd>Glow<CR>', {})
+
 
 require('dbg')

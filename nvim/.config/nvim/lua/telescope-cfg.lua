@@ -9,7 +9,7 @@ vim.api.nvim_set_keymap('n', '<leader>sd', [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>sp', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>so', [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>?', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<F4>', [[<cmd>lua require('telescope.builtin').file_browser()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F4>', [[<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>]], { noremap = true, silent = true })
 
 -- Telescope Globalremapping
 local action_state = require("telescope.actions.state")
@@ -72,3 +72,5 @@ CpMenu = {
     }
   }
 }
+
+require("telescope").load_extension "file_browser"
