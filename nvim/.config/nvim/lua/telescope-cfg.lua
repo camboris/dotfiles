@@ -57,7 +57,7 @@ require('telescope').setup {
 }
 
 require('telescope').load_extension('fzf')
-require('telescope').load_extension('command_palette') 
+--"qrequire('telescope').load_extension('command_palette') 
 CpMenu = {
   {"Help",
     { "tips", ":help tips" },

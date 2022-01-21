@@ -11,84 +11,84 @@ end
 
 
 --- plugins
-cmd 'packadd paq-nvim'
-local paq = require('paq-nvim').paq
-paq {'savq/paq-nvim', opt = true} -- packages
+require "paq" {
+  {'savq/paq-nvim', opt = true}; -- packages
 --
 -- theme and visual
-paq {'catppuccin/nvim'}
-paq {'kyazdani42/nvim-web-devicons'} -- idcons
+  'catppuccin/nvim';
+  'kyazdani42/nvim-web-devicons'; -- idcons
 --
 -- lsp
-paq {'neovim/nvim-lspconfig'} -- lsp
-paq {'onsails/lspkind-nvim'}
-paq {'ray-x/lsp_signature.nvim'}
-paq {'folke/trouble.nvim'}
+  'neovim/nvim-lspconfig'; -- lsp
+  'onsails/lspkind-nvim';
+  'ray-x/lsp_signature.nvim';
+  'folke/trouble.nvim';
 --
 -- completion
-paq {'hrsh7th/nvim-cmp'}
-paq {'hrsh7th/cmp-buffer'}
-paq {'hrsh7th/cmp-path'}
-paq {'hrsh7th/cmp-nvim-lua'}
-paq {'hrsh7th/cmp-nvim-lsp'}
-paq {'saadparwaiz1/cmp_luasnip'}
-paq {'L3MON4D3/LuaSnip'} -- Snippets plugin
+  'hrsh7th/nvim-cmp';
+  'hrsh7th/cmp-buffer';
+  'hrsh7th/cmp-path';
+  'hrsh7th/cmp-nvim-lua';
+  'hrsh7th/cmp-nvim-lsp';
+  'saadparwaiz1/cmp_luasnip';
+  'L3MON4D3/LuaSnip'; -- Snippets plugin
 --
 -- status line
-paq {'hoob3rt/lualine.nvim'} -- status line
+  'hoob3rt/lualine.nvim'; -- status line
 --
 -- treesitter
-paq {'nvim-treesitter/nvim-treesitter', run=TSUpdate} -- tresistter
-paq {'nvim-treesitter/nvim-treesitter-textobjects'} -- treesiter text objects
-paq {'p00f/nvim-ts-rainbow'}
+  {'nvim-treesitter/nvim-treesitter', run=TSUpdate}; -- tresistter
+  'nvim-treesitter/nvim-treesitter-textobjects'; -- treesiter text objects
+  'p00f/nvim-ts-rainbow';
 --
 -- telescope
-paq {'nvim-lua/plenary.nvim'}
-paq {'nvim-lua/popup.nvim'}
-paq {'nvim-telescope/telescope.nvim'}
-paq {'nvim-telescope/telescope-fzf-native.nvim', run='make' }
-paq {'nvim-telescope/telescope-file-browser.nvim'}
--- paq {'LinArcX/telescope-command-palette.nvim'}
+  'nvim-lua/plenary.nvim';
+  'nvim-lua/popup.nvim';
+  'nvim-telescope/telescope.nvim';
+  {'nvim-telescope/telescope-fzf-native.nvim', run='make'} ;
+  'nvim-telescope/telescope-file-browser.nvim';
+-- 'LinArcX/telescope-command-palette.nvim';
 --
 -- autopairs
-paq {'windwp/nvim-autopairs'}
+  'windwp/nvim-autopairs';
 --
 -- comments
-paq {'numToStr/Comment.nvim'}
+  'numToStr/Comment.nvim';
 --
 -- start screens
-paq {'goolord/alpha-nvim'}
+  'goolord/alpha-nvim';
 --
 -- terminal management
-paq {'akinsho/nvim-toggleterm.lua'}
+  'akinsho/nvim-toggleterm.lua';
 --
 -- git signs
-paq {'lewis6991/gitsigns.nvim'}
+  'lewis6991/gitsigns.nvim';
 --
 -- key mapping help
-paq {'folke/which-key.nvim'}
+  'folke/which-key.nvim';
 -- quick fix toogle
-paq {'stevearc/qf_helper.nvim'}
+  'stevearc/qf_helper.nvim';
 -- easymotion movement
-paq {'phaazon/hop.nvim'}
+  'phaazon/hop.nvim';
 -- surround stuff
-paq {'blackCauldron7/surround.nvim'}
+  'blackCauldron7/surround.nvim';
 
 -- file tree
-paq {'kyazdani42/nvim-tree.lua'}
+  'kyazdani42/nvim-tree.lua';
 
 -- markdown
-paq {'ellisonleao/glow.nvim'}
+  'ellisonleao/glow.nvim';
 
 -- dap
-paq {'mfussenegger/nvim-dap'}
-paq {'nvim-telescope/telescope-dap.nvim'}
-paq {'mfussenegger/nvim-dap-python'}
-paq {'theHamsta/nvim-dap-virtual-text'}
-paq {'rcarriga/nvim-dap-ui'}
-paq {'Pocco81/DAPInstall.nvim'}
--- paq {'vim-test/vim-test'}
-paq {'David-Kunz/jester'}
+  'mfussenegger/nvim-dap';
+  'nvim-telescope/telescope-dap.nvim';
+  'mfussenegger/nvim-dap-python';
+  'theHamsta/nvim-dap-virtual-text';
+  'rcarriga/nvim-dap-ui';
+  'Pocco81/DAPInstall.nvim';
+-- 'vim-test/vim-test';
+  'David-Kunz/jester';
+}
 --
 -- theme
 require('theme-cfg')
