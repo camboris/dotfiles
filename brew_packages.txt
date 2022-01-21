@@ -1,0 +1,14 @@
+bat
+ctags
+fzf
+glow
+graphviz
+lazygit
+neovim
+ranger
+stow
+the_silver_searcher
+tig
+tree-sitter
+unrar
+vifm
