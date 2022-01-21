@@ -12,3 +12,4 @@ tig
 tree-sitter
 unrar
 vifm
+ripgrep
