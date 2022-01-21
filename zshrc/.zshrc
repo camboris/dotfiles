@@ -1,40 +1,150 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH="/Users/mpozzo/.oh-my-zsh"
 
-#ZSH_THEME="random"
-ZSH_THEME="agnoster"
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="spaceship"
+#ZSH_THEME="agnoster"
 
-#alias pcu="packer-color -Syu"
-#alias pcs="packer-color -Ss"
-#alias pci="packer-color -S"
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-#plugins=(git python django virtualenv virtualenvwrapper pip pyenv archlinux)
-plugins=(git python django virtualenvwrapper pip archlinux)
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+NVM_AUTOLOAD=1
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+    git
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    z
+    python
+    nvm
+    )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-export PATH="/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/opt/java/bin:/home/boris/.gem/ruby/2.3.0/bin:/home/boris/dev/android-sdk/tools:/home/boris/dev/android-sdk/platform-tools"
-export ANDROID_HOME=~/dev/android-sdk
 
-export WORKON_HOME=~/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
-source /etc/profile.d/android-ndk.sh
-source /etc/profile.d/android-sdk.sh
+# export MANPATH="/usr/local/man:$MANPATH"
 
-#export NVIM_TUI_ENABLE_TRUE_COLOR=1
-#export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
-#rutas flex
-#export PLAYERGLOBAL_HOME=/opt/apache-flex-sdk/player
-#export PATH="${PATH}":/opt/apache-flex-sdk/bin
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
-source ~/dev/k/k.sh
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent > ~/.ssh-agent-thing
-fi
-#if [[ "$SSH_AGENT_PID" == "" ]]; then
-    #eval "$(<~/.ssh-agent-thing)"
-#fi
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias fgtcp="fury get-token | grep -E '^[a-z0-9]{64}$' | tr -d '\n' | pbcopy"
+
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_DOCKER_SHOW=false
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/mpozzo/.sdkman"
+[[ -s "/Users/mpozzo/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/mpozzo/.sdkman/bin/sdkman-init.sh"
+
+#fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$PATH:/usr/local/mysql/bin/"
+
+# Go development
+export GOPATH="${HOME}/go"
+#GOVERSION=$(brew list go | head -n 1 | cut -d '/' -f 6)
+GOVERSION=1.13
+export GOROOT=$(brew --prefix)/Cellar/go/$GOVERSION/libexec
+export GOMELI="${HOME}/go/src/github.com/mercadolibre"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
+alias gomeli="cd $GOMELI"
+# Added by furycli:
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+
+export ANDROID_HOME=/Users/$USER/Library/Android/sdk
+export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+# nordic-doctor
+export NORDIC_DOCTOR_DIR="$HOME/.nordic-doctor"
+export PATH="$NORDIC_DOCTOR_DIR/bin:$PATH"
+
+alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+alias ntu="npm run test:unit"
+alias ntus="npm run test:unit -- -u"
+alias ntuq="npm run test:unit -- --silent"
+alias ntuqo="npm run test:unit -- --silent -o"
+alias ntuo="npm run test:unit -- -o"
