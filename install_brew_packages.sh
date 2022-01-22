@@ -34,4 +34,4 @@ brew install graphviz
 
 echo "fuentes"
 brew tap homebrew/cask-fonts
-brew install font-fira-code
+brew install font-Fira-Code-nerd-font
