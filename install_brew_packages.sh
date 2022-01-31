@@ -35,3 +35,6 @@ brew install graphviz
 echo "fuentes"
 brew tap homebrew/cask-fonts
 brew install font-Fira-Code-nerd-font
+
+echo "otros"
+brew install yacreader
