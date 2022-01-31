@@ -148,3 +148,5 @@ api.nvim_set_keymap('n', '<leader>p', '<cmd>Glow<CR>', {})
 
 
 require('dbg')
+
+require('trouble-cfg')
