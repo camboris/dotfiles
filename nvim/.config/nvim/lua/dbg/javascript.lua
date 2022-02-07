@@ -1,4 +1,5 @@
 local dap = require "dap"
+-- DIInstall jsnode
 
 dap.adapters.node2 = {
     type = 'executable',

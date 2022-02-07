@@ -15,7 +15,9 @@ require "paq" {
   {'savq/paq-nvim', opt = true}; -- packages
 --
 -- theme and visual
-  'catppuccin/nvim';
+  -- 'catppuccin/nvim';
+  -- For Packer
+  'EdenEast/nightfox.nvim';
   'kyazdani42/nvim-web-devicons'; -- idcons
 --
 -- lsp
