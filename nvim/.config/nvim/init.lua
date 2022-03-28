@@ -73,7 +73,7 @@ require "paq" {
 -- easymotion movement
   'phaazon/hop.nvim';
 -- surround stuff
-  'blackCauldron7/surround.nvim';
+  'ur4ltz/surround.nvim';
 
 -- file tree
   'kyazdani42/nvim-tree.lua';
@@ -140,9 +140,13 @@ require('surround').setup {
 require('hop').setup()
 api.nvim_set_keymap('n', 's', '<cmd>HopChar2<CR>', {})
 
-vim.g.nvim_tree_quit_on_open = 1
-require'nvim-tree'.setup()
--- api.nvim_set_keymap('n', '<F3>', '<cmd>NvimTreeToggle<CR>', {})
+require'nvim-tree'.setup({
+  actions = {
+    open_file = {
+      quit_on_open = true,
+    }
+  }
+})
 api.nvim_set_keymap('n', '<F3>', '<cmd>NvimTreeFindFileToggle<CR>', {})
 
 -- Glow
