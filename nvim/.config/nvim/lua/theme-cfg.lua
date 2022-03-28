@@ -30,11 +30,6 @@ local cmd = vim.cmd
 -- }
 -- )
 
-local nightfox = require('nightfox')
-nightfox.setup({
-  fox = 'duskfox',
-})
-
 -- cmd 'colorscheme catppuccin'
 cmd 'colorscheme duskfox'
 
