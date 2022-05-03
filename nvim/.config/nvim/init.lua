@@ -90,6 +90,9 @@ require "paq" {
   'Pocco81/DAPInstall.nvim';
 -- 'vim-test/vim-test';
   'David-Kunz/jester';
+
+  -- plantuml
+  'aklt/plantuml-syntax';
 }
 --
 -- theme
