@@ -28,6 +28,7 @@ local servers = {
 	"sumneko_lua",
 	"tsserver",
 	"jsonls",
+  "gopls",
 }
 
 local opts = { noremap=true, silent=true }
