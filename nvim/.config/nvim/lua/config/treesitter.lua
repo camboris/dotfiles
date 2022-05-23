@@ -1,17 +1,16 @@
+
 local ts = require("nvim-treesitter.configs")
 
 ts.setup({ 
-  ensure_installed = "maintained",
+  ensure_installed = "all",
+  ignore_install = { "phpdoc" },
   highlight = { 
     enable = true 
   },
   rainbow = {
     enable = true,
-    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-    max_file_lines = nil, -- Do not enable for files with more than n lines, int
-    -- colors = {}, -- table of hex strings
-    -- termcolors = {} -- table of colour name strings
+    max_file_lines = 2000, -- Do not enable for files with more than n lines, int
   },
   incremental_selection = {
     enable = true,
@@ -25,13 +24,17 @@ ts.setup({
   indent = {
     enable = true,
   },
+  autopairs = {{enable = true}},
   textobjects = {
     select = {
       enable = true,
       keymaps = {
-        ['aa'] = '@parameter.outer', ['ia'] = '@parameter.inner',
-        ['af'] = '@function.outer', ['if'] = '@function.inner',
-        ['ac'] = '@class.outer', ['ic'] = '@class.inner',
+        ['aa'] = '@parameter.outer',
+        ['ia'] = '@parameter.inner',
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['ac'] = '@class.outer',
+        ['ic'] = '@class.inner',
       },
     },
     swap = {
@@ -57,4 +60,3 @@ ts.setup({
     },
   },
 })
-
