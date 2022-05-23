@@ -44,12 +44,18 @@ packer.startup(function(use)
 
 	use({ "kyazdani42/nvim-tree.lua", config = get_config("nvim-tree") })
 
-	use({
-		"nvim-lualine/lualine.nvim",
-		config = get_config("lualine"),
-		event = "VimEnter",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
+	-- use({
+	-- 	"nvim-lualine/lualine.nvim",
+	-- 	config = get_config("lualine"),
+	-- 	event = "VimEnter",
+	-- 	requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	-- })
+
+  use({
+    'feline-nvim/feline.nvim',
+		config = get_config("feline"),
+    requires = { "kyazdani42/nvim-web-devicons", opt = true },
+  })
 
 	use({ "windwp/nvim-autopairs", config = get_config("autopairs") })
 
