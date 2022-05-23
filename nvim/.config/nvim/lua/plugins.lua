@@ -150,4 +150,10 @@ packer.startup(function(use)
 		requires = "kyazdani42/nvim-web-devicons",
 		config = get_config("trouble"),
 	})
+
+	use({
+		"nvim-neorg/neorg",
+		config = get_config("neorg"),
+		requires = "nvim-lua/plenary.nvim",
+	})
 end)
