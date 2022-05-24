@@ -51,11 +51,11 @@ packer.startup(function(use)
 	-- 	requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	-- })
 
-  use({
-    'feline-nvim/feline.nvim',
+	use({
+		"feline-nvim/feline.nvim",
 		config = get_config("feline"),
-    requires = { "kyazdani42/nvim-web-devicons", opt = true },
-  })
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
 
 	use({ "windwp/nvim-autopairs", config = get_config("autopairs") })
 
@@ -161,5 +161,13 @@ packer.startup(function(use)
 		"nvim-neorg/neorg",
 		config = get_config("neorg"),
 		requires = "nvim-lua/plenary.nvim",
+	})
+	-- Lua
+	use({
+		"SmiteshP/nvim-gps",
+		requires = "nvim-treesitter/nvim-treesitter",
+		config = function()
+			require("nvim-gps").setup()
+		end,
 	})
 end)
