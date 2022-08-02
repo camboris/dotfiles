@@ -180,7 +180,15 @@ packer.startup(function(use)
       })
     end,
   })
-
-  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+  use({
+    'j-hui/fidget.nvim',
+    config = function()
+      require("fidget").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end,
+  })
+  use({ "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 end)

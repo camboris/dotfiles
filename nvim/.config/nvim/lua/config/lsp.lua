@@ -30,7 +30,8 @@ local servers = {
   "tsserver",
   "jsonls",
   "gopls",
-  "marksman"
+  "marksman",
+  "rust_analyzer"
 }
 
 local opts = { noremap = true, silent = true }
