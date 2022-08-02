@@ -70,6 +70,7 @@ plugins=(
     z
     python
     nvm
+    poetry
     )
 
 source $ZSH/oh-my-zsh.sh
@@ -121,6 +122,8 @@ export SDKMAN_DIR="/Users/mpozzo/.sdkman"
 
 #fpath+=${ZDOTDIR:-~}/.zsh_functions
 
+export PATH="$PATH:$HOME/.local/bin"
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:/usr/local/mysql/bin/"
@@ -152,3 +155,8 @@ alias ntus="npm run test:unit -- -u"
 alias ntuq="npm run test:unit -- --silent"
 alias ntuqo="npm run test:unit -- --silent -o"
 alias ntuo="npm run test:unit -- -o"
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+## The following line is added by pre-commit
+export PATH="/Users/mpozzo/Library/Python/3.8/bin:$PATH"
