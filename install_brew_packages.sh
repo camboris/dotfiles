@@ -5,7 +5,7 @@ echo "Instalando Brew"
 
 
 echo "neovim"
-brew install neovim
+brew install --HEAD neovim
 # brew install ctags
 brew install tree-sitter
 
@@ -17,6 +17,7 @@ brew install unrar
 # brew install vifm
 brew install bat
 brew install glow
+brew install marksman
 
 
 echo "git utils"
@@ -31,6 +32,8 @@ brew install fzf
 
 echo "graficos"
 brew install graphviz
+brew install plantuml
+brew install mermaid-cli
 
 echo "fuentes"
 brew tap homebrew/cask-fonts
@@ -38,3 +41,8 @@ brew install font-Fira-Code-nerd-font
 
 echo "otros"
 brew install yacreader
+brew install tmux
+brew install rust-analyzer
+brew install calibre
+brew install go
+
