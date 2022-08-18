@@ -65,8 +65,8 @@ NVM_AUTOLOAD=1
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
-    zsh-autosuggestions
-    zsh-syntax-highlighting
+   zsh-autosuggestions
+   zsh-syntax-highlighting
     z
     python
     nvm
@@ -77,7 +77,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+#eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/usr/local/bin/brew shellenv)"
 export LC_ALL=en_US.UTF-8
 # export MANPATH="/usr/local/man:$MANPATH"
 
