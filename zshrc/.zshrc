@@ -141,7 +141,7 @@ export PATH=$PATH:$GOPATH/bin
 #
 # alias gomeli="cd $GOMELI"
 # Added by furycli:
-export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+# export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 
 # export ANDROID_HOME=/Users/$USER/Library/Android/sdk
 # export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
@@ -157,7 +157,13 @@ alias ntuq="npm run test:unit -- --silent"
 alias ntuqo="npm run test:unit -- --silent -o"
 alias ntuo="npm run test:unit -- -o"
 
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
 export PATH="$HOME/.poetry/bin:$PATH"
 
 ## The following line is added by pre-commit
-export PATH="/Users/mpozzo/Library/Python/3.8/bin:$PATH"
+# export PATH="/Users/mpozzo/Library/Python/3.8/bin:$PATH"
+
+

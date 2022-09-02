@@ -45,4 +45,4 @@ brew install tmux
 brew install rust-analyzer
 brew install calibre
 brew install go
-
+brew install pyenv
