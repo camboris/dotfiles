@@ -401,7 +401,7 @@ local active_right = {
   file_enc,
   position,
   line_perc,
-  scrollbar,
+  -- scrollbar,
 }
 
 local components = {
