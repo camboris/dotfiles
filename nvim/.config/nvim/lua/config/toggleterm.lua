@@ -31,10 +31,10 @@ require("toggleterm").setup({
 		-- width = <value>,
 		-- height = <value>,
 		winblend = 3,
-		highlights = {
-			border = "Normal",
-			background = "Normal",
-		},
+		-- highlights = {
+		-- 	border = "Normal",
+		-- 	background = "Normal",
+		-- },
 	},
 })
 local Terminal = require("toggleterm.terminal").Terminal
@@ -42,8 +42,8 @@ local lazygit = Terminal:new({ cmd = "lazygit", direction = "float", hidden = tr
 function _lazygit_toggle()
 	lazygit:toggle()
 end
-map("n", "<leader>gt", "<cmd>lua _lazygit_toggle()<CR>i", { noremap = true, silent = true }) -- start lazygit
-map("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>i", { noremap = true, silent = true }) -- start lazygit
+map("n", "<leader>gt", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true }) -- start lazygit
+map("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true }) -- start lazygit
 -- map("t", "<ESC>", "<C-\\><C-n>", { noremap = true, silent = true }) -- back to normal mode in Terminal
 
 -- Better navigation to and from terminal
