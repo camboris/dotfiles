@@ -13,11 +13,11 @@ brew install tree-sitter
 echo "file utils"
 brew install ranger
 brew install stow
-brew install unrar
+# brew install unrar # no existe?
 # brew install vifm
 brew install bat
 brew install glow
-brew install marksman
+# brew install marksman # no lo encuentra, falta un comando?
 
 
 echo "git utils"
@@ -45,4 +45,4 @@ brew install tmux
 brew install rust-analyzer
 brew install calibre
 brew install go
-
+brew install pyenv

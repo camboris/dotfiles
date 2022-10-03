@@ -14,4 +14,4 @@ require("nvim-window").setup({
     border = "single"
 })
 
-vim.keymap.set('n', '<leader>w', ":lua require('nvim-window').pick()<CR>", {})
+vim.keymap.set('n', '<leader>w', ":lua require('nvim-window').pick()<CR>", { silent = true})
