@@ -132,19 +132,9 @@ export PATH="$PATH:/usr/local/mysql/bin/"
 # # Go development
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-# export GOPATH="${HOME}/go"
-# #GOVERSION=$(brew list go | head -n 1 | cut -d '/' -f 6)
-# GOVERSION=1.13
-# export GOROOT=$(brew --prefix)/Cellar/go/$GOVERSION/libexec
-# export GOMELI="${HOME}/go/src/github.com/mercadolibre"
-# export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-#
-# alias gomeli="cd $GOMELI"
-# Added by furycli:
-# export PATH="$HOME/Library/Python/3.9/bin:$PATH"
-
-# export ANDROID_HOME=/Users/$USER/Library/Android/sdk
-# export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+export GOPROXY="https://proxy.golang.org,direct"
+export GONOPROXY="github.com/mercadolibre"
+export GOPRIVATE="github.com/mercadolibre"
 
 # nordic-doctor
 export NORDIC_DOCTOR_DIR="$HOME/.nordic-doctor"
