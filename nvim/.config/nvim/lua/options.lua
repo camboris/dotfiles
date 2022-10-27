@@ -27,7 +27,7 @@ o.scrolloff = 4 -- Lines of context
 o.shiftround = true -- Round indent
 o.shiftwidth = 2 -- Size of an indent
 o.showmode = false -- Don't display mode
-o.showtabline = 2 -- Always show tabs 
+o.showtabline = 2 -- Always show tabs
 o.sidescrolloff = 8 -- Columns of context
 o.signcolumn = 'yes' -- Show sign column
 o.smartcase = true -- Do not ignore case with capitals
@@ -40,4 +40,4 @@ o.termguicolors = true -- True color support
 o.updatetime = 300 -- Delay before swap file is saved
 o.wildmode = {'list', 'longest'}  -- Command-line completion mode
 o.wrap = true
-
+o.cmdheight = 0
