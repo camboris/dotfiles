@@ -57,7 +57,6 @@ ZSH_THEME="spaceship"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-NVM_AUTOLOAD=1
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -156,4 +155,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 ## The following line is added by pre-commit
 # export PATH="/Users/mpozzo/Library/Python/3.8/bin:$PATH"
 
+eval "$(direnv hook zsh)"
 
+## The following line is added by pre-commit
+export PATH="/Users/mpozzo/Library/Python/3.9/bin:$PATH"

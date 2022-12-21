@@ -6,3 +6,4 @@ nvim/.config/nvim/plugged/
 node_modules
 
 nvim/.config/nvim/plugin/packer_compiled.lua
+nvim/.config/nvim/spell
