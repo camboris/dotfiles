@@ -48,3 +48,4 @@ map('i', '<C-s>', '<ESC>:w<CR>')
 map("x", "K", ":move '<-2<CR>gv-gv", default_options)
 map("x", "J", ":move '>+1<CR>gv-gv", default_options)
 
+map('n', '<leader>tq', '<cmd>lua require("functions").toggle_qf()<CR>', default_options)

@@ -106,6 +106,7 @@ packer.startup(function(use)
 	use({ "folke/zen-mode.nvim", cmd = "ZenMode", config = get_config("zen-mode") })
 
 	use({ "ray-x/go.nvim", config = get_config("go"), ft = { "go" } })
+	use("ray-x/guihua.lua") -- recommanded if need floating window support
 
 	use({ "rcarriga/nvim-notify", config = get_config("notify") })
 
@@ -208,4 +209,19 @@ packer.startup(function(use)
 		"almo7aya/openingh.nvim",
 		config = get_config("openingh"),
 	})
+
+	-- dap
+
+	use({
+		"rcarriga/nvim-dap-ui",
+	})
+	use({
+		"mfussenegger/nvim-dap",
+		config = get_config("dap"),
+	})
+	use("leoluz/nvim-dap-go")
+	use({ "nvim-telescope/telescope-dap.nvim" })
+	use("theHamsta/nvim-dap-virtual-text")
+	use("mfussenegger/nvim-dap-python")
+  use("aklt/plantuml-syntax")
 end)
