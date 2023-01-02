@@ -70,3 +70,8 @@ fi
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/mpozzo/.sdkman"
 [[ -s "/Users/mpozzo/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/mpozzo/.sdkman/bin/sdkman-init.sh"
+
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+}
