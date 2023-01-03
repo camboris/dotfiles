@@ -9,7 +9,6 @@ plugins=(
     zsh-syntax-highlighting
     z
     python
-    nvm
     poetry
   )
 
@@ -31,7 +30,6 @@ alias ntuq="npm run test:unit -- --silent"
 alias ntuqo="npm run test:unit -- --silent -o"
 alias ntuo="npm run test:unit -- -o"
 
-
 # paths
 export PATH="$PATH:$HOME/.local/bin"
 
@@ -49,20 +47,14 @@ export PATH="$NORDIC_DOCTOR_DIR/bin:$PATH"
 export PATH="/Users/mpozzo/Library/Python/3.9/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
 
-
 #brew
 eval "$(/usr/local/bin/brew shellenv)"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-#nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# bash compeltion
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
+# fnm node manager en rust
+eval "$(fnm env --use-on-cd)"
 # pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"

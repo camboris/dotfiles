@@ -46,3 +46,4 @@ brew install rust-analyzer
 brew install calibre
 brew install go
 brew install pyenv
+brew install fnm
