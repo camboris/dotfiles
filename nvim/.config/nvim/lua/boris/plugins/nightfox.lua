@@ -1,7 +1,7 @@
 local M = {
   "EdenEast/nightfox.nvim",
   config = function()
-    vim.cmd("colorscheme nightfox")
+    vim.cmd([[colorscheme duskfox]])
   end
 }
 
