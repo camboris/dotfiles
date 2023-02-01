@@ -2,14 +2,16 @@ local M = {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-path" },
-    { "hrsh7th/cmp-cmdline" },
-    { "hrsh7th/cmp-nvim-lua" },
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-nvim-lua",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
+    "onsails/lspkind-nvim"
   },
   config = function ()
     local cmp = require("cmp")
+    local lspkind = require("lspkind")
     cmp.setup({
       experimental = { native_menu = false, ghost_text = true },
       mapping = {
@@ -37,11 +39,31 @@ local M = {
         end, { "i", "s" }),
       },
       sources = {
-      	{ name = "nvim_lsp" },
+        { name = "nvim_lsp" },
         { name = "buffer", keyword_length = 3 },
+        { name = 'nvim_lsp_signature_help' },
         --	{ name = "luasnip" },
+        { name = 'nvim_lua' },
         { name = "path" },
       },
+      formatting = {
+        format = lspkind.cmp_format({
+          with_text = true,
+          maxwidth = 50,
+          mode = "symbol_text",
+          ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+          menu = {
+            buffer = "BUF",
+            rg = "RG",
+            nvim_lsp = "LSP",
+            path = "PATH",
+            luasnip = "SNIP",
+            calc = "CALC",
+            spell = "SPELL",
+            emoji = "EMOJI",
+          },
+        })
+      }
     })
   end
 }
