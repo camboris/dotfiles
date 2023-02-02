@@ -80,7 +80,9 @@ local M = {
     -- Floating terminal
     keymap({"n", "t"}, "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
   end,
-  dependencies = { {"nvim-tree/nvim-web-devicons"} }
+  dependencies = {
+    "nvim-tree/nvim-web-devicons"
+  }
 }
 
 return M
