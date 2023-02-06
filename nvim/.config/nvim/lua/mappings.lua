@@ -32,6 +32,15 @@ map ('n', '<C-j>', '<C-w>j')
 map ('n', '<C-k>', '<C-w>k')
 map ('n', '<C-l>', '<C-w>l')
 
+
+-- windows
+map("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
+map("n", "<leader>wd", "<C-W>c", { desc = "Delete window" })
+map("n", "<leader>w-", "<C-W>s", { desc = "Split window below" })
+map("n", "<leader>w|", "<C-W>v", { desc = "Split window right" })
+map("n", "<leader>-", "<C-W>s", { desc = "Split window below" })
+map("n", "<leader>|", "<C-W>v", { desc = "Split window right" })
+
 -- terminal
 map('n', '<leader>tt', '<cmd>terminal<CR>')
 
@@ -40,7 +49,7 @@ map("n", "<Tab>", ":bnext<CR>")
 map("n", "<S-Tab>", ":bprevious<CR>")
 
 -- Easier file save
-map("n", "<Leader>w", "<cmd>:w<CR>")
+-- map("n", "<Leader>w", "<cd>:w<CR>")
 map('n', '<C-s>', ':w<CR>')
 map('i', '<C-s>', '<ESC>:w<CR>')
 
@@ -49,3 +58,12 @@ map("x", "K", ":move '<-2<CR>gv-gv", default_options)
 map("x", "J", ":move '>+1<CR>gv-gv", default_options)
 
 map('n', '<leader>tq', '<cmd>lua require("functions").toggle_qf()<CR>', default_options)
+
+
+-- tabs
+map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
+map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
+map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
+map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
+map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })

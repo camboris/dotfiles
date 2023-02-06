@@ -9,16 +9,18 @@ local M = {
   },
   event = "BufRead",
   config = function()
-    require("neodev").setup({
-      -- add any options here, or leave empty to use the default settings
-    })
+    -- injects neovim definicions on config files
+    require("neodev").setup({})
+    -- shows lsp loading status
     require('fidget').setup()
+
+    -- servers config for mason and lsp
     local servers = {
       -- clangd = {},
       -- gopls = {},
       -- pyright = {},
       -- rust_analyzer = {},
-      -- tsserver = {},
+      tsserver = {},
 
       sumneko_lua = {
         Lua = {
@@ -30,10 +32,13 @@ local M = {
     -- LSP settings.
     --  This function gets run when an LSP connects to a particular buffer.
     local on_attach = function(_, bufnr)
+      local opts = { noremap = true, silent = true }
+      vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>fm', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>', opts)
     end
     -- nvim cmp capabilities
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities()
+
     require("mason").setup()
     -- Ensure the servers above are installed
     local mason_lspconfig = require 'mason-lspconfig'

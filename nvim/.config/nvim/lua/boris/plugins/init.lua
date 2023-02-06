@@ -1,4 +1,5 @@
 local M = {
+  { "lukas-reineke/indent-blankline.nvim" },
   {
     "almo7aya/openingh.nvim",
     cmd = {

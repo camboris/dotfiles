@@ -6,12 +6,12 @@ local M = {
     "nvim-treesitter/nvim-treesitter-textobjects",
     "mrjones2014/nvim-ts-rainbow"
   },
-  config = function ()
+  config = function()
 
     local ts = require("nvim-treesitter.configs")
 
     ts.setup({
-      ensure_installed = {"lua", "vim", "help", "markdown"},
+      ensure_installed = { "lua", "vim", "help", "markdown", "html", "javascript", "json", "python", "regex", "tsx", "typescript" },
       highlight = {
         enable = true
       },
@@ -32,7 +32,7 @@ local M = {
       indent = {
         enable = true,
       },
-      autopairs = {{enable = true}},
+      autopairs = { { enable = true } },
       textobjects = {
         select = {
           enable = true,
@@ -47,16 +47,16 @@ local M = {
         },
         swap = {
           enable = true,
-          swap_next = {['<leader>a'] = '@parameter.inner'},
-          swap_previous = {['<leader>A'] = '@parameter.inner'},
+          swap_next = { ['<leader>a'] = '@parameter.inner' },
+          swap_previous = { ['<leader>A'] = '@parameter.inner' },
         },
         move = {
           enable = true,
           set_jumps = true,
-          goto_next_start = {[']a'] = '@parameter.outer', [']f'] = '@function.outer', [']c'] = '@class.outer'},
-          goto_next_end = {[']A'] = '@parameter.outer', [']F'] = '@function.outer', [']C'] = '@class.outer'},
-          goto_previous_start = {['[a'] = '@parameter.outer', ['[f'] = '@function.outer', ['[c'] = '@class.outer'},
-          goto_previous_end = {['[A'] = '@parameter.outer', ['[F'] = '@function.outer', ['[C'] = '@class.outer'},
+          goto_next_start = { [']a'] = '@parameter.outer', [']f'] = '@function.outer', [']c'] = '@class.outer' },
+          goto_next_end = { [']A'] = '@parameter.outer', [']F'] = '@function.outer', [']C'] = '@class.outer' },
+          goto_previous_start = { ['[a'] = '@parameter.outer', ['[f'] = '@function.outer', ['[c'] = '@class.outer' },
+          goto_previous_end = { ['[A'] = '@parameter.outer', ['[F'] = '@function.outer', ['[C'] = '@class.outer' },
         },
         lsp_interop = {
           enable = true,
