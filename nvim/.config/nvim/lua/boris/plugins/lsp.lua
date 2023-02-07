@@ -17,9 +17,10 @@ local M = {
     -- servers config for mason and lsp
     local servers = {
       -- clangd = {},
-      -- gopls = {},
-      -- pyright = {},
+      gopls = {},
+      pyright = {},
       -- rust_analyzer = {},
+      eslint = {},
       tsserver = {},
 
       sumneko_lua = {
