@@ -1,3 +1,14 @@
+local lualine = {
+  'nvim-lualine/lualine.nvim',
+  dependencies = {
+    "nvim-tree/nvim-web-devicons"
+  },
+  config = function()
+    require('lualine').setup({
+    })
+  end
+}
+
 local bufferline = {
   "akinsho/bufferline.nvim",
   event = "VeryLazy",
@@ -19,4 +30,5 @@ local bufferline = {
 
 return {
   bufferline,
+  lualine,
 }
