@@ -11,7 +11,10 @@ local M = {
     local ts = require("nvim-treesitter.configs")
 
     ts.setup({
-      ensure_installed = { "lua", "vim", "help", "markdown", "html", "javascript", "json", "python", "regex", "tsx", "typescript" },
+      ensure_installed = {
+        "lua", "vim", "help", "markdown", "html", "javascript", "json", "python", "regex", "tsx",
+        "typescript", "css", "diff", "dockerfile", "dot", "go"
+      },
       highlight = {
         enable = true
       },
