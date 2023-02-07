@@ -47,14 +47,14 @@ export PATH="$NORDIC_DOCTOR_DIR/bin:$PATH"
 export PATH="/Users/mpozzo/Library/Python/3.9/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
 
-#brew
-eval "$(/usr/local/bin/brew shellenv)"
+export PYENV_ROOT="$HOME/.pyenv"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # fnm node manager en rust
 eval "$(fnm env --use-on-cd)"
+
 # pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
