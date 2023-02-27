@@ -13,7 +13,7 @@ local M = {
     ts.setup({
       ensure_installed = {
         "lua", "vim", "help", "markdown", "html", "javascript", "json", "python", "regex", "tsx",
-        "typescript", "css", "diff", "dockerfile", "dot", "go"
+        "typescript", "css", "diff", "dockerfile", "dot", "go", "http", "bash", "markdown_inline"
       },
       highlight = {
         enable = true

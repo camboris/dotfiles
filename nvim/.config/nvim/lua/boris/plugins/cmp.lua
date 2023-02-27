@@ -32,7 +32,7 @@ local cmp = {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-nvim-lua",
-    "hrsh7th/cmp-nvim-lsp-signature-help",
+    -- "hrsh7th/cmp-nvim-lsp-signature-help",
     "onsails/lspkind-nvim",
     "saadparwaiz1/cmp_luasnip",
   },
@@ -54,7 +54,7 @@ local cmp = {
         ['<C-n>'] = cmp.mapping.select_next_item(),
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-u>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-Space>"] = cmp.mapping.complete({}),
         ["<C-e>"] = cmp.mapping.close(),
         ["<CR>"] = cmp.mapping.confirm({
           behavior = cmp.ConfirmBehavior.Replace,
@@ -76,7 +76,7 @@ local cmp = {
       sources = {
         { name = "nvim_lsp" },
         { name = "buffer", keyword_length = 3 },
-        { name = 'nvim_lsp_signature_help' },
+        -- { name = 'nvim_lsp_signature_help' },
         { name = "luasnip" },
         { name = 'nvim_lua' },
         { name = "path" },

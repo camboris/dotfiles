@@ -3,8 +3,9 @@ local M = {
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
+    "jay-babu/mason-nvim-dap.nvim",
     "folke/neodev.nvim",
-    "j-hui/fidget.nvim",
+    -- "j-hui/fidget.nvim",
 
   },
   event = "BufRead",
@@ -12,7 +13,7 @@ local M = {
     -- injects neovim definicions on config files
     require("neodev").setup({})
     -- shows lsp loading status
-    require('fidget').setup()
+    -- require('fidget').setup()
 
     -- servers config for mason and lsp
     local servers = {
@@ -22,7 +23,6 @@ local M = {
       -- rust_analyzer = {},
       eslint = {},
       tsserver = {},
-
       lua_ls = {
         Lua = {
           workspace = { checkThirdParty = false },
@@ -44,6 +44,7 @@ local M = {
     -- Ensure the servers above are installed
     local mason_lspconfig = require 'mason-lspconfig'
 
+    -- mason lsp config stuff
     mason_lspconfig.setup {
       ensure_installed = vim.tbl_keys(servers),
     }
@@ -57,6 +58,18 @@ local M = {
         }
       end,
     }
+
+    -- mason dap stuff
+    local dap_sources = {
+      debugpy = {},
+      delve = {},
+    }
+    local mason_dap = require("mason-nvim-dap")
+    mason_dap.setup({
+      ensure_installed = vim.tbl_keys(dap_sources),
+      automatic_setup = true,
+    })
+    mason_dap.setup_handlers()
   end
 }
 return M

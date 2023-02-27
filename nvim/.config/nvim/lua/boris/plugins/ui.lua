@@ -1,3 +1,17 @@
+local noice = {
+  "folke/noice.nvim",
+  event = "VeryLazy",
+  config = function()
+    require("noice").setup({
+        -- add any options here
+    })
+  end,
+  dependencies = {
+    "MunifTanjim/nui.nvim",
+    "rcarriga/nvim-notify",
+    }
+}
+
 local lualine = {
   'nvim-lualine/lualine.nvim',
   dependencies = {
@@ -31,4 +45,5 @@ local bufferline = {
 return {
   bufferline,
   lualine,
+  noice,
 }
