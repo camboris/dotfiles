@@ -4,6 +4,7 @@ local M = {
     dependencies = {
       "nvim-lua/popup.nvim",
       "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-ui-select.nvim",
       "nvim-telescope/telescope-dap.nvim",
     },
     config = function()
@@ -25,6 +26,7 @@ local M = {
       })
       require("telescope").load_extension("file_browser")
       require('telescope').load_extension('fzf')
+      require("telescope").load_extension("ui-select")
       require('telescope').load_extension("dap")
     end,
     keys = {
