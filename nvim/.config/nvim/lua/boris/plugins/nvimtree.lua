@@ -1,7 +1,7 @@
 local M = {
 	"kyazdani42/nvim-tree.lua",
   keys = {
-    {'<F3>', '<cmd>NvimTreeFindFileToggle<CR>', "Opens Nvim Tree"}
+    {'<F3>', '<cmd>NvimTreeFindFileToggle<CR>', desc = "Opens Nvim Tree"}
   },
   config = function()
     require'nvim-tree'.setup({

@@ -10,6 +10,7 @@
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "18095520391186d634a0045dacaa346291096566" },
   "friendly-snippets": { "branch": "main", "commit": "02ed98a1d4bc8baac405480935f3353d3bd60359" },
+  "gitsigns.nvim": { "branch": "main", "commit": "f965e3bad0be96898dec97dc15bdfe226a176e3a" },
   "go.nvim": { "branch": "master", "commit": "7d7b081bf3d3113d1d487d83a5436bd1e7215ff5" },
   "guihua.lua": { "branch": "master", "commit": "a19ac4447021f21383fadd7a9e1fc150d0b67e1f" },
   "indent-blankline.nvim": { "branch": "master", "commit": "018bd04d80c9a73d399c1061fa0c3b14a7614399" },
