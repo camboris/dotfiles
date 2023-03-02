@@ -1,9 +1,24 @@
 local colorscheme = {
-  "EdenEast/nightfox.nvim",
+  "loctvl842/monokai-pro.nvim",
   config = function()
-    vim.cmd([[colorscheme duskfox]])
+    require("monokai-pro").setup({
+      filter = "pro",
+      background_clear = {
+        "toggleterm",
+        "telescope",
+        "which-key",
+        "nvim-tree"
+      }
+    })
+    vim.cmd([[colorscheme monokai-pro]])
   end
 }
+-- local colorscheme = {
+--   "EdenEast/nightfox.nvim",
+--   config = function()
+--     vim.cmd([[colorscheme duskfox]])
+--   end
+-- }
 
 local leap = {
   "ggandor/leap.nvim",

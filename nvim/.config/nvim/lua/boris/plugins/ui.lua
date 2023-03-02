@@ -3,13 +3,13 @@ local noice = {
   event = "VeryLazy",
   config = function()
     require("noice").setup({
-        -- add any options here
+      -- add any options here
     })
   end,
   dependencies = {
     "MunifTanjim/nui.nvim",
     "rcarriga/nvim-notify",
-    }
+  }
 }
 
 local lualine = {
@@ -18,8 +18,7 @@ local lualine = {
     "nvim-tree/nvim-web-devicons"
   },
   config = function()
-    require('lualine').setup({
-    })
+    require('lualine').setup({})
   end
 }
 
