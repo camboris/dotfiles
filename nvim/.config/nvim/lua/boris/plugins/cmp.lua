@@ -19,8 +19,8 @@ local luasnip = {
       end,
       expr = true, silent = true, mode = "i",
     },
-    { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
-    { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+    { "<tab>",   function() require("luasnip").jump(1) end,   mode = "s" },
+    { "<s-tab>", function() require("luasnip").jump( -1) end, mode = { "i", "s" } },
   },
 }
 
@@ -36,6 +36,7 @@ local cmp = {
     -- "hrsh7th/cmp-nvim-lsp-signature-help",
     "onsails/lspkind-nvim",
     "saadparwaiz1/cmp_luasnip",
+    "f3fora/cmp-spell",
   },
   config = function()
     local cmp = require("cmp")
@@ -53,7 +54,7 @@ local cmp = {
       mapping = {
         ['<C-p>'] = cmp.mapping.select_prev_item(),
         ['<C-n>'] = cmp.mapping.select_next_item(),
-        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-d>"] = cmp.mapping.scroll_docs( -4),
         ["<C-u>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete({}),
         ["<C-e>"] = cmp.mapping.close(),
@@ -76,13 +77,23 @@ local cmp = {
       },
       sources = {
         { name = "nvim_lsp" },
-        { name = "buffer", keyword_length = 3 },
+        { name = "buffer",
+          keyword_length = 3 },
         -- { name = 'nvim_lsp_signature_help' },
         { name = "luasnip" },
         { name = 'nvim_lua' },
         { name = "path" },
         { name = "emoji" },
         { name = "neorg" },
+        { name = 'spell',
+          keyword_length = 3,
+          option = {
+            keep_all_entries = false,
+            enable_in_context = function()
+              return true
+            end,
+          },
+        },
       },
       formatting = {
         format = lspkind.cmp_format({

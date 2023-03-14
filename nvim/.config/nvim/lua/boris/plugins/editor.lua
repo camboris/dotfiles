@@ -1,3 +1,11 @@
+local textobjs = {
+  "chrisgrieser/nvim-various-textobjs",
+  event = "BufRead",
+  config = function()
+    require("various-textobjs").setup({ useDefaultKeymaps = true })
+  end,
+}
+
 local colorscheme = {
   "loctvl842/monokai-pro.nvim",
   config = function()
@@ -76,6 +84,7 @@ return {
   indent,
   leap,
   surround,
+  textobjs,
   tint,
   zenmode,
 }

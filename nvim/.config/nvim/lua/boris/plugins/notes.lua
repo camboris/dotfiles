@@ -12,13 +12,13 @@ local neorg = {
             engine = "nvim-cmp"
           }
         },
-        -- ["core.norg.dirman"] = { -- Manages Neorg workspaces
-        --   config = {
-        --     workspaces = {
-        --       notes = "~/notes",
-        --     },
-        --   },
-        -- },
+        ["core.norg.dirman"] = { -- Manages Neorg workspaces
+          config = {
+            workspaces = {
+              prueba = "~/desarrollo/pruebas/norg/",
+            },
+          },
+        },
       },
     },
     dependencies = { { "nvim-lua/plenary.nvim" } },

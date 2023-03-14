@@ -1,5 +1,6 @@
 local gitsigns = {
   'lewis6991/gitsigns.nvim',
+  event = "BufRead",
   config = function()
     require('gitsigns').setup {
       on_attach = function(bufnr)
@@ -57,6 +58,7 @@ local local_highlight = {
 
 local dap = {
   "mfussenegger/nvim-dap",
+  event = "BufRead",
   dependencies = {
     "rcarriga/nvim-dap-ui",
     "theHamsta/nvim-dap-virtual-text",
