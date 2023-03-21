@@ -2,6 +2,7 @@ local neorg = {
   {
     "nvim-neorg/neorg",
     build = ":Neorg sync-parsers",
+    cmd = { "Neorg" },
     ft = "norg",
     opts = {
       load = {
@@ -16,6 +17,7 @@ local neorg = {
           config = {
             workspaces = {
               prueba = "~/desarrollo/pruebas/norg/",
+              swat = "~/desarrollo/swat/",
             },
           },
         },
@@ -56,6 +58,6 @@ local mind = {
 }
 
 return {
-  mind,
+  -- mind,
   neorg
 }
