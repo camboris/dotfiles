@@ -47,3 +47,4 @@ brew install calibre
 brew install go
 brew install pyenv
 brew install fnm
+brew install jq

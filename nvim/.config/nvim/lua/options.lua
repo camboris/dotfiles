@@ -41,3 +41,4 @@ o.updatetime = 300 -- Delay before swap file is saved
 o.wildmode = {'list', 'longest'}  -- Command-line completion mode
 o.wrap = true
 o.cmdheight = 0
+o.spelllang = "es"

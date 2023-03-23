@@ -1,3 +1,33 @@
+local textobjs = {
+  "chrisgrieser/nvim-various-textobjs",
+  event = "BufRead",
+  config = function()
+    require("various-textobjs").setup({ useDefaultKeymaps = true })
+  end,
+}
+
+local colorscheme = {
+  "loctvl842/monokai-pro.nvim",
+  config = function()
+    require("monokai-pro").setup({
+      filter = "pro",
+      background_clear = {
+        "toggleterm",
+        "telescope",
+        "which-key",
+        "nvim-tree"
+      }
+    })
+    vim.cmd([[colorscheme monokai-pro]])
+  end
+}
+-- local colorscheme = {
+--   "EdenEast/nightfox.nvim",
+--   config = function()
+--     vim.cmd([[colorscheme duskfox]])
+--   end
+-- }
+
 local leap = {
   "ggandor/leap.nvim",
   event = "VeryLazy",
@@ -7,7 +37,10 @@ local leap = {
   end
 }
 
-local indent = { "lukas-reineke/indent-blankline.nvim" }
+local indent = {
+  "lukas-reineke/indent-blankline.nvim",
+  event = "BufReadPre",
+}
 
 local zenmode = {
   "folke/zen-mode.nvim",
@@ -21,9 +54,8 @@ local colorizer = {
   'NvChad/nvim-colorizer.lua',
   event = "BufReadPre",
   config = function()
-    require 'colorizer'.setup()
+    require 'colorizer'.setup({})
   end
-
 }
 
 local surround = {
@@ -48,9 +80,11 @@ local tint = {
 
 return {
   colorizer,
+  colorscheme,
   indent,
   leap,
   surround,
+  textobjs,
   tint,
-  zenmode
+  zenmode,
 }
