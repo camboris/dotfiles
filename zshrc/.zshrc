@@ -44,7 +44,7 @@ export GOPRIVATE="github.com/mercadolibre"
 export NORDIC_DOCTOR_DIR="$HOME/.nordic-doctor"
 export PATH="$NORDIC_DOCTOR_DIR/bin:$PATH"
 
-export PATH="/Users/mpozzo/Library/Python/3.9/bin:$PATH"
+# export PATH="/Users/mpozzo/Library/Python/3.9/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
 
 export PYENV_ROOT="$HOME/.pyenv"
@@ -56,6 +56,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(fnm env --use-on-cd)"
 
 # pyenv
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
