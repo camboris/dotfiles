@@ -37,14 +37,25 @@ brew install mermaid-cli
 
 echo "fuentes"
 brew tap homebrew/cask-fonts
+# brew install font-symbols-only-nerd-font
+brew install font-fira-code
+brew install font-jetbrains-mono
 brew install font-Fira-Code-nerd-font
+# brew install font-jetbrains-mono-nerd-font
 
-echo "otros"
-brew install yacreader
+echo "terminales"
+brew install kitty
+brew install wezterm
 brew install tmux
-brew install rust-analyzer
-brew install calibre
+
+echo "desarrollo"
 brew install go
 brew install pyenv
 brew install fnm
 brew install jq
+brew install httpie
+
+echo "otros"
+brew install yacreader
+brew install calibre
+
