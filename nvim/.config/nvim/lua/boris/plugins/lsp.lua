@@ -69,7 +69,7 @@ local M = {
       ensure_installed = vim.tbl_keys(dap_sources),
       automatic_setup = true,
     })
-    mason_dap.setup_handlers()
+    -- mason_dap.setup_handlers()
   end
 }
 return M

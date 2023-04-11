@@ -1,3 +1,15 @@
+local markdown_preview = {
+  "iamcco/markdown-preview.nvim",
+  cmd = {
+    "MarkdownPreview",
+    "MarkdownPreviewStop",
+    "MarkdownPreviewToggle"
+  },
+  ft = "markdown",
+  build = "cd app && npm install",
+}
+
+
 local textobjs = {
   "chrisgrieser/nvim-various-textobjs",
   event = "BufRead",
@@ -83,6 +95,7 @@ return {
   colorscheme,
   indent,
   leap,
+  markdown_preview,
   surround,
   textobjs,
   tint,
