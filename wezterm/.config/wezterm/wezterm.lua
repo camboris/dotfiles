@@ -28,7 +28,11 @@ config.keys = {
   { key = 'DownArrow', mods = 'LEADER', action = wezterm.action.ActivatePaneDirection("Down") },
   { key = 'LeftArrow', mods = 'CTRL', action = wezterm.action.ActivateTabRelative( -1) },
   { key = 'RightArrow', mods = 'CTRL', action = wezterm.action.ActivateTabRelative(1) },
-
 }
+
+-- config.window_background_image = '~/dotfiles/i3extra/fondo-ballena.jpg'
+-- config.text_background_opacity = 0.3
+config.send_composed_key_when_left_alt_is_pressed = true
+config.audible_bell = "Disabled"
 
 return config
