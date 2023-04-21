@@ -30,7 +30,23 @@ local colorscheme = {
         "nvim-tree"
       }
     })
-    vim.cmd([[colorscheme monokai-pro]])
+    -- vim.cmd([[colorscheme monokai-pro]])
+  end
+}
+
+local colorscheme2 = {
+  -- 'tiagovla/tokyodark.nvim',
+  -- 'marko-cerovac/material.nvim',
+  'sainnhe/sonokai',
+  config = function()
+    vim.g.sonokai_style = 'default'
+    -- vim.g.sonokai_style = 'atlantis'
+    -- vim.g.sonokai_style = 'andromeda'
+    -- vim.g.sonokai_style = 'shusia'
+    -- vim.g.sonokai_style = 'maia'
+    -- vim.g.sonokai_style = 'espresso'
+    vim.g.sonokai_better_performance = 1
+    vim.cmd([[colorscheme sonokai]])
   end
 }
 -- local colorscheme = {
@@ -100,4 +116,5 @@ return {
   textobjs,
   tint,
   zenmode,
+  colorscheme2
 }

@@ -52,7 +52,13 @@ api.nvim_create_autocmd(
 -- Enable spell checking for certain file types
 api.nvim_create_autocmd(
   { "BufRead", "BufNewFile" },
-  { pattern = { "*.txt", "*.md", "*.tex", "*.norg" }, command = "setlocal spell" }
+  { pattern = { "*.txt", "*.md", "*.tex",}, command = "setlocal spell" }
+)
+
+-- Enable spell checking for certain file types
+api.nvim_create_autocmd(
+  { "BufRead", "BufNewFile" },
+  { pattern = { "*.norg",}, command = "setlocal conceallevel=2" }
 )
 
 -- set terminal mappings
