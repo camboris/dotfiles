@@ -1,3 +1,24 @@
+local harpoon = {
+  'ThePrimeagen/harpoon',
+  event = 'BufEnter',
+  dependencies = { 'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim' },
+  keys = {
+    { "<leader>ja", function() require("harpoon.mark").add_file() end,            desc = "Harpoon Add File" },
+    { "<leader>jm", function() require("harpoon.ui").toggle_quick_menu() end,     desc = "Harpoon File Menu" },
+    { "<leader>jc", function() require("harpoon.cmd-ui").toggle_quick_menu() end, desc = "Harpoon Command Menu" },
+    { "<leader>jh", function() require("harpoon.ui").nav_file(1) end,             desc = "Harpoon File 1" },
+    { "<leader>jj", function() require("harpoon.ui").nav_file(2) end,             desc = "Harpoon File 2" },
+    { "<leader>jk", function() require("harpoon.ui").nav_file(3) end,             desc = "Harpoon File 3" },
+    { "<leader>jl", function() require("harpoon.ui").nav_file(4) end,             desc = "Harpoon Fil 4" },
+  },
+  opts = {
+    global_settings = {
+      save_on_toggle = true,
+      enter_on_sendcmd = true,
+    },
+  },
+}
+
 local gitsigns = {
   'lewis6991/gitsigns.nvim',
   event = "BufRead",
@@ -125,9 +146,12 @@ local dap = {
 local golang = {
   "ray-x/go.nvim",
   dependencies = {
-    "ray-x/guihua.lua" -- recommended if need floating window support
+    "ray-x/guihua.lua",
+    "neovim/nvim-lspconfig",
+    "nvim-treesitter/nvim-treesitter",
   },
-  ft = { "go", },
+  event = { "CmdlineEnter" },
+  ft = { "go", 'gomod' },
   config = function()
     require('go').setup()
   end
@@ -137,5 +161,6 @@ return {
   dap,
   gitsigns,
   golang,
+  harpoon,
   local_highlight,
 }
