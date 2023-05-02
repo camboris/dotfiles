@@ -7,3 +7,4 @@ node_modules
 
 nvim/.config/nvim/plugin/packer_compiled.lua
 nvim/.config/nvim/spell
+nvim/.config/nvim/lua/.luarc.json
