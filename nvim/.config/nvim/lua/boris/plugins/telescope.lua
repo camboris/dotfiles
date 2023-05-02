@@ -28,6 +28,7 @@ local M = {
       require('telescope').load_extension('fzf')
       require("telescope").load_extension("ui-select")
       require('telescope').load_extension("dap")
+      require("telescope").load_extension('harpoon')
     end,
     keys = {
       { "<leader>ff",       "<cmd>Telescope find_files<cr>",                                     desc = "Telescope find files" },
@@ -45,6 +46,7 @@ local M = {
       { "<leader>dlb",      '<cmd>lua require"telescope".extensions.dap.list_breakpoints{}<CR>', desc = "Telescope Debug List Breakpoins" },
       { "<leader>dv",       '<cmd>lua require"telescope".extensions.dap.variables{}<CR>',        desc = "Telescope Debug Variables" },
       { "<leader>df",       '<cmd>lua require"telescope".extensions.dap.frames{}<CR>',           desc = "Telescope Debug frames" },
+      { "<leader>fj",       '<cmd>Telescope harpoon marks<CR>',                                  desc = "Telescope Harpoon marks" },
     },
     cmd = "Telescope",
   },
