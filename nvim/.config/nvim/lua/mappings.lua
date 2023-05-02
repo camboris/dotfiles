@@ -1,6 +1,5 @@
 local map = vim.keymap.set
-default_options = { silent = true }
-expr_options = { expr = true, silent = true }
+local default_options = { silent = true }
 
 map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
@@ -27,10 +26,10 @@ map('n', '<S-Right>', '<C-w>2>')
 map('n', '<S-Up>', '<C-w>2+')
 --
 -- Better window navigation
-map ('n', '<C-h>', '<C-w>h')
-map ('n', '<C-j>', '<C-w>j')
-map ('n', '<C-k>', '<C-w>k')
-map ('n', '<C-l>', '<C-w>l')
+map('n', '<C-h>', '<C-w>h')
+map('n', '<C-j>', '<C-w>j')
+map('n', '<C-k>', '<C-w>k')
+map('n', '<C-l>', '<C-w>l')
 
 
 -- windows
@@ -50,8 +49,8 @@ map("n", "<S-Tab>", ":bprevious<CR>")
 
 -- Easier file save
 -- map("n", "<Leader>w", "<cd>:w<CR>")
-map('n', '<C-s>', ':w<CR>')
-map('i', '<C-s>', '<ESC>:w<CR>')
+map('n', '<C-s>', '<cmd>silent w<CR>', { silent = true })
+map('i', '<C-s>', '<ESC>:silent w<CR>')
 
 -- Move selected line / block of text in visual mode
 map("x", "K", ":move '<-2<CR>gv-gv", default_options)
@@ -67,3 +66,9 @@ map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
 map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+map("n", "<leader><tab>n", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+map("n", "<leader><tab>p", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+
+
+-- clear highlight search
+map("n", "<leader>cs", "<cmd>noh<cr>", { silent = true, desc = "Clear Search highlight" })
