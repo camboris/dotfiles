@@ -68,3 +68,12 @@ timezsh() {
   shell=${1-$SHELL}
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }
+
+## The following line is added by pre-commit
+# export PATH="/Users/mpozzo/Library/Python/3.9/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+pokemon-colorscripts -r
+
