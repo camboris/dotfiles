@@ -1,3 +1,26 @@
+local openingh = {
+  {
+    "almo7aya/openingh.nvim",
+    cmd = {
+      "OpenInGHRepo",
+      "OpenInGHFile"
+    },
+    keys = {
+      {"<leader>gf", "<cmd>OpenInGHFile<CR>", desc = "Open file in Github repo"}
+    }
+  },
+}
+
+local comment = {
+  {
+    'numToStr/Comment.nvim',
+    event = "BufRead",
+    config = function()
+      require('Comment').setup()
+    end
+  }
+}
+
 local harpoon = {
   'ThePrimeagen/harpoon',
   event = 'BufRead',
@@ -193,10 +216,12 @@ local copilot = {
 }
 
 return {
+  comment,
   copilot,
   dap,
   gitsigns,
   golang,
   harpoon,
   local_highlight,
+  openingh,
 }
