@@ -3,6 +3,7 @@ local default_options = { silent = true }
 
 map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
+vim.g.maplocalleader = "/"
 
 -- paste over currently selected text without yanking it
 map("v", "p", '"_dP', default_options)
