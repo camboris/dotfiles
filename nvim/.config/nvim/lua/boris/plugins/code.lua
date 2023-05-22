@@ -1,6 +1,6 @@
 local harpoon = {
   'ThePrimeagen/harpoon',
-  event = 'BufEnter',
+  event = 'BufRead',
   dependencies = { 'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim' },
   keys = {
     { "<leader>ja", function() require("harpoon.mark").add_file() end,            desc = "Harpoon Add File" },
@@ -150,14 +150,50 @@ local golang = {
     "neovim/nvim-lspconfig",
     "nvim-treesitter/nvim-treesitter",
   },
-  event = { "CmdlineEnter" },
+  -- event = { "CmdlineEnter" },
   ft = { "go", 'gomod' },
   config = function()
     require('go').setup()
   end
 }
 
+-- local copilot = {
+--   "github/copilot.vim",
+--   ft = { "go", "gomod" },
+--   config = function()
+--     vim.keymap.set("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+--     vim.g.copilot_no_tab_map = true
+--   end
+-- }
+
+local copilot = {
+  "zbirenbaum/copilot.lua",
+  cmd = "Copilot",
+  ft = { "go", "gomod", "lua" },
+  -- event = "InsertEnter",
+  config = function()
+    require("copilot").setup({
+      suggestion = {
+        enabled = true,
+        auto_trigger = true,
+        keymap = {
+          accept = "<C-j>",
+          accept_word = false,
+          accept_line = false,
+          next = "<C-n>",
+          prev = "<C-p>",
+          dismiss = "<C-/>",
+        },
+      },
+      -- panel = {
+      --   enabled = false
+      -- },
+    })
+  end,
+}
+
 return {
+  copilot,
   dap,
   gitsigns,
   golang,
