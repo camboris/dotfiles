@@ -38,7 +38,7 @@ local M = {
     -- keymap("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>")
 
     -- Go to type definition
-    keymap("n", "gt", "<cmd>Lspsaga goto_type_definition<CR>", { desc = "LSP Go To Type definition" })
+    -- keymap("n", "gt", "<cmd>Lspsaga goto_type_definition<CR>", { desc = "LSP Go To Type definition" })
 
     -- Show line diagnostics
     -- You can pass argument ++unfocus to
