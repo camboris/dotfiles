@@ -11,18 +11,22 @@ local neorg = {
         ["core.integrations.nvim-cmp"] = {},
         ["core.concealer"] = { config = { icon_preset = "varied" } },
         ["core.export"] = {},
-        -- ["core.keybinds"] = {
-        --   -- https://github.com/nvim-neorg/neorg/blob/main/lua/neorg/modules/core/keybinds/keybinds.lua
-        --   config = {
-        --     default_keybinds = true,
-        --     neorg_leader = "<Leader><Leader>",
-        --   },
-        -- },
+        ["core.keybinds"] = {
+          --   -- https://github.com/nvim-neorg/neorg/blob/main/lua/neorg/modules/core/keybinds/keybinds.lua
+          config = {
+            --     default_keybinds = true,
+            --     neorg_leader = "<Leader><Leader>",
+            hook = function(keybinds)
+              keybinds.remap_event("norg", "i", "<S-CR>", "core.itero.next-iteration")
+            end,
+          },
+        },
+        ["core.summary"] = {},
         ["core.dirman"] = { -- Manages Neorg workspaces
           config = {
             workspaces = {
               prueba = "~/desarrollo/pruebas/norg/",
-              swat = "~/desarrollo/swat/",
+              swat = "~/desarrollo/swat",
             },
           },
         },
