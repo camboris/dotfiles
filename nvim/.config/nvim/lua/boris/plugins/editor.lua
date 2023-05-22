@@ -1,3 +1,10 @@
+local oil = {
+  'stevearc/oil.nvim',
+  opts = {},
+  cmd = {"Oil"},
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+}
+
 local markdown_preview = {
   "iamcco/markdown-preview.nvim",
   cmd = {
@@ -18,23 +25,23 @@ local textobjs = {
   end,
 }
 
-local colorscheme = {
-  "loctvl842/monokai-pro.nvim",
-  config = function()
-    require("monokai-pro").setup({
-      filter = "pro",
-      background_clear = {
-        "toggleterm",
-        "telescope",
-        "which-key",
-        "nvim-tree"
-      }
-    })
-    -- vim.cmd([[colorscheme monokai-pro]])
-  end
-}
+-- local monokaipro = {
+--   "loctvl842/monokai-pro.nvim",
+--   config = function()
+--     require("monokai-pro").setup({
+--       filter = "pro",
+--       background_clear = {
+--         "toggleterm",
+--         "telescope",
+--         "which-key",
+--         "nvim-tree"
+--       }
+--     })
+--     -- vim.cmd([[colorscheme monokai-pro]])
+--   end
+-- }
 
-local colorscheme2 = {
+local colorscheme = {
   -- 'tiagovla/tokyodark.nvim',
   -- 'marko-cerovac/material.nvim',
   'sainnhe/sonokai',
@@ -112,9 +119,9 @@ return {
   indent,
   leap,
   markdown_preview,
+  oil,
   surround,
   textobjs,
   tint,
   zenmode,
-  colorscheme2
 }
