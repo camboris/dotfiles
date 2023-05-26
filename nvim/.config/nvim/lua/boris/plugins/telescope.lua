@@ -7,6 +7,7 @@ local M = {
       "nvim-telescope/telescope-ui-select.nvim",
       "nvim-telescope/telescope-dap.nvim",
     },
+    event = "VeryLazy",
     config = function()
       local telescope = require("telescope")
 
