@@ -192,7 +192,7 @@ local golang = {
 local copilot = {
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
-  ft = { "go", "gomod", "lua" },
+  ft = { "go", "gomod", "lua", "python" },
   -- event = "InsertEnter",
   config = function()
     require("copilot").setup({
