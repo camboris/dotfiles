@@ -40,6 +40,7 @@ local M = {
       { "<leader>fd",       "<cmd>Telescope grep_string<cr>",                                    desc = "Telescope Grep String" },
       { "<leader>fp",       "<cmd>Telescope live_grep<cr>",                                      desc = "Telescope Live Grep" },
       { "<leader>fo",       "<cmd>Telescope oldfiles<cr>",                                       desc = "Telescope Oldfiles" },
+      { "<leader>fs",       "<cmd>Telescope spell_suggest<cr>",                                  desc = "Telescope Spell suggest" },
       { "<leader>ft",       "<cmd>Telescope file_browser<cr>",                                   desc = "Telescope File Browser" },
       { "<leader>f<space>", "<cmd>Telescope buffers<cr>",                                        desc = "Telescope Buffers" },
       { "<leader>dcc",      '<cmd>lua require"telescope".extensions.dap.commands{}<CR>',         desc = "Telescop Debug Commands" },
