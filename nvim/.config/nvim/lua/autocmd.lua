@@ -8,7 +8,14 @@ api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- don't auto comment new line
-api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
+-- api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
+api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    vim.opt.formatoptions:remove { "c", "r", "o" }
+  end,
+  -- group = general,
+  desc = "Disable New Line Comment",
+})
 
 -- Close nvim if NvimTree is only running buffer
 api.nvim_create_autocmd(
