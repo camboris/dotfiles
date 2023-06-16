@@ -6,7 +6,7 @@ local openingh = {
       "OpenInGHFile"
     },
     keys = {
-      {"<leader>gf", "<cmd>OpenInGHFile<CR>", desc = "Open file in Github repo"}
+      { "<leader>gf", "<cmd>OpenInGHFile<CR>", desc = "Open file in Github repo" }
     }
   },
 }
@@ -23,7 +23,7 @@ local comment = {
 
 local harpoon = {
   'ThePrimeagen/harpoon',
-  event = 'BufRead',
+  -- event = 'BufRead',
   dependencies = { 'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim' },
   keys = {
     { "<leader>ja", function() require("harpoon.mark").add_file() end,            desc = "Harpoon Add File" },
@@ -40,6 +40,9 @@ local harpoon = {
       enter_on_sendcmd = true,
     },
   },
+  config = function()
+    require("telescope").load_extension('harpoon')
+  end
 }
 
 local gitsigns = {
@@ -102,7 +105,8 @@ local local_highlight = {
 
 local dap = {
   "mfussenegger/nvim-dap",
-  event = "BufRead",
+  -- event = "BufRead",
+  ft = { "go", "lua", "js", "python" },
   dependencies = {
     "rcarriga/nvim-dap-ui",
     "theHamsta/nvim-dap-virtual-text",
@@ -135,6 +139,7 @@ local dap = {
 
     -- go
     dapgo.setup()
+    require('telescope').load_extension("dap")
   end,
   keys = {
     { "<leader>dct", '<cmd>lua require"dap".continue()<CR>',                  desc = "Debug Continue" },
