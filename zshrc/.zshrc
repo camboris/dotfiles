@@ -10,6 +10,7 @@ plugins=(
     z
     python
     poetry
+    dotenv
   )
 
 source $ZSH/oh-my-zsh.sh
