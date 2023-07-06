@@ -73,3 +73,6 @@ map("n", "<leader><tab>p", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- clear highlight search
 map("n", "<leader>cs", "<cmd>noh<cr>", { silent = true, desc = "Clear Search highlight" })
+
+-- format json files with jq
+map("n", "<leader>jf", "<cmd>%!jq '.' <cr>", { silent = true, desc = "Format JSON" })
