@@ -4,6 +4,20 @@ local luasnip = {
     "rafamadriz/friendly-snippets",
     config = function()
       require("luasnip.loaders.from_vscode").lazy_load()
+      local ls = require("luasnip")
+      local s = ls.snippet
+      local t = ls.text_node
+      local i = ls.insert_node
+      ls.add_snippets("markdown", {
+        s({
+          trig = "ing",
+          name = "RecipeMD Ingredient"
+        },
+          {
+            t("- *"), i(1, "qty unit"), t("* "), i(2, "Ingredient")
+          }
+        )
+      })
     end,
   },
   opts = {

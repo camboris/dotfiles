@@ -8,7 +8,14 @@ api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- don't auto comment new line
-api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
+-- api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
+api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    vim.opt.formatoptions:remove { "c", "r", "o" }
+  end,
+  -- group = general,
+  desc = "Disable New Line Comment",
+})
 
 -- Close nvim if NvimTree is only running buffer
 api.nvim_create_autocmd(
@@ -52,7 +59,13 @@ api.nvim_create_autocmd(
 -- Enable spell checking for certain file types
 api.nvim_create_autocmd(
   { "BufRead", "BufNewFile" },
-  { pattern = { "*.txt", "*.md", "*.tex", "*.norg" }, command = "setlocal spell" }
+  { pattern = { "*.txt", "*.md", "*.tex",}, command = "setlocal spell" }
+)
+
+-- Enable spell checking for certain file types
+api.nvim_create_autocmd(
+  { "BufRead", "BufNewFile" },
+  { pattern = { "*.norg",}, command = "setlocal conceallevel=2" }
 )
 
 -- set terminal mappings
@@ -72,4 +85,14 @@ api.nvim_create_autocmd("TermOpen", {
     set_terminal_keymaps()
   end,
   desc = "Mappings for navigation with a terminal",
+})
+
+-- Run gofmt on save
+local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+   require('go.format').gofmt()
+  end,
+  group = format_sync_grp,
 })

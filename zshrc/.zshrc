@@ -10,6 +10,7 @@ plugins=(
     z
     python
     poetry
+    dotenv
   )
 
 source $ZSH/oh-my-zsh.sh
@@ -44,7 +45,7 @@ export GOPRIVATE="github.com/mercadolibre"
 export NORDIC_DOCTOR_DIR="$HOME/.nordic-doctor"
 export PATH="$NORDIC_DOCTOR_DIR/bin:$PATH"
 
-export PATH="/Users/mpozzo/Library/Python/3.9/bin:$PATH"
+# export PATH="/Users/mpozzo/Library/Python/3.9/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
 
 export PYENV_ROOT="$HOME/.pyenv"
@@ -56,6 +57,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(fnm env --use-on-cd)"
 
 # pyenv
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
@@ -67,3 +69,14 @@ timezsh() {
   shell=${1-$SHELL}
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }
+
+## The following line is added by pre-commit
+# export PATH="/Users/mpozzo/Library/Python/3.9/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+source "$HOME/.cargo/env"
+pokemon-colorscripts -r
+

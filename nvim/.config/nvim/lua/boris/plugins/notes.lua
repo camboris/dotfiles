@@ -6,18 +6,27 @@ local neorg = {
     ft = "norg",
     opts = {
       load = {
-        ["core.defaults"] = {}, -- Loads default behaviour
-        ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
-        ["core.norg.completion"] = {
+        ["core.defaults"] = {},
+        ["core.completion"] = { config = { engine = "nvim-cmp", name = "[Norg]" } },
+        ["core.integrations.nvim-cmp"] = {},
+        ["core.concealer"] = { config = { icon_preset = "varied" } },
+        ["core.export"] = {},
+        ["core.keybinds"] = {
+          --   -- https://github.com/nvim-neorg/neorg/blob/main/lua/neorg/modules/core/keybinds/keybinds.lua
           config = {
-            engine = "nvim-cmp"
-          }
+            --     default_keybinds = true,
+            --     neorg_leader = "<Leader><Leader>",
+            hook = function(keybinds)
+              keybinds.remap_event("norg", "i", "<S-CR>", "core.itero.next-iteration")
+            end,
+          },
         },
-        ["core.norg.dirman"] = { -- Manages Neorg workspaces
+        ["core.summary"] = {},
+        ["core.dirman"] = { -- Manages Neorg workspaces
           config = {
             workspaces = {
               prueba = "~/desarrollo/pruebas/norg/",
-              swat = "~/desarrollo/swat/",
+              swat = "~/desarrollo/swat",
             },
           },
         },

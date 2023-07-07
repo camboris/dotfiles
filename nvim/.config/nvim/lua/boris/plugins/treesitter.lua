@@ -15,7 +15,8 @@ local M = {
         "typescript", "css", "diff", "dockerfile", "dot", "go", "http", "bash", "markdown_inline"
       },
       highlight = {
-        enable = true
+        enable = true,
+        additional_vim_regex_highlighting = false,
       },
       rainbow = {
         enable = true,

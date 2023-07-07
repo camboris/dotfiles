@@ -1,3 +1,50 @@
+local openingh = {
+  {
+    "almo7aya/openingh.nvim",
+    cmd = {
+      "OpenInGHRepo",
+      "OpenInGHFile"
+    },
+    keys = {
+      { "<leader>gf", "<cmd>OpenInGHFile<CR>", desc = "Open file in Github repo" }
+    }
+  },
+}
+
+local comment = {
+  {
+    'numToStr/Comment.nvim',
+    event = "BufRead",
+    config = function()
+      require('Comment').setup()
+    end
+  }
+}
+
+local harpoon = {
+  'ThePrimeagen/harpoon',
+  -- event = 'BufRead',
+  dependencies = { 'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim' },
+  keys = {
+    { "<leader>ja", function() require("harpoon.mark").add_file() end,            desc = "Harpoon Add File" },
+    { "<leader>jm", function() require("harpoon.ui").toggle_quick_menu() end,     desc = "Harpoon File Menu" },
+    { "<leader>jc", function() require("harpoon.cmd-ui").toggle_quick_menu() end, desc = "Harpoon Command Menu" },
+    { "<leader>jh", function() require("harpoon.ui").nav_file(1) end,             desc = "Harpoon File 1" },
+    { "<leader>jj", function() require("harpoon.ui").nav_file(2) end,             desc = "Harpoon File 2" },
+    { "<leader>jk", function() require("harpoon.ui").nav_file(3) end,             desc = "Harpoon File 3" },
+    { "<leader>jl", function() require("harpoon.ui").nav_file(4) end,             desc = "Harpoon Fil 4" },
+  },
+  opts = {
+    global_settings = {
+      save_on_toggle = true,
+      enter_on_sendcmd = true,
+    },
+  },
+  config = function()
+    require("telescope").load_extension('harpoon')
+  end
+}
+
 local gitsigns = {
   'lewis6991/gitsigns.nvim',
   event = "BufRead",
@@ -58,7 +105,8 @@ local local_highlight = {
 
 local dap = {
   "mfussenegger/nvim-dap",
-  event = "BufRead",
+  -- event = "BufRead",
+  ft = { "go", "lua", "js", "python" },
   dependencies = {
     "rcarriga/nvim-dap-ui",
     "theHamsta/nvim-dap-virtual-text",
@@ -91,6 +139,7 @@ local dap = {
 
     -- go
     dapgo.setup()
+    require('telescope').load_extension("dap")
   end,
   keys = {
     { "<leader>dct", '<cmd>lua require"dap".continue()<CR>',                  desc = "Debug Continue" },
@@ -125,17 +174,59 @@ local dap = {
 local golang = {
   "ray-x/go.nvim",
   dependencies = {
-    "ray-x/guihua.lua" -- recommended if need floating window support
+    "ray-x/guihua.lua",
+    "neovim/nvim-lspconfig",
+    "nvim-treesitter/nvim-treesitter",
   },
-  ft = { "go", },
+  -- event = { "CmdlineEnter" },
+  ft = { "go", 'gomod' },
   config = function()
     require('go').setup()
   end
 }
 
+-- local copilot = {
+--   "github/copilot.vim",
+--   ft = { "go", "gomod" },
+--   config = function()
+--     vim.keymap.set("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+--     vim.g.copilot_no_tab_map = true
+--   end
+-- }
+
+local copilot = {
+  "zbirenbaum/copilot.lua",
+  cmd = "Copilot",
+  ft = { "go", "gomod", "lua", "python" },
+  -- event = "InsertEnter",
+  config = function()
+    require("copilot").setup({
+      suggestion = {
+        enabled = true,
+        auto_trigger = true,
+        keymap = {
+          accept = "<C-j>",
+          accept_word = false,
+          accept_line = false,
+          next = "<C-n>",
+          prev = "<C-p>",
+          dismiss = "<C-/>",
+        },
+      },
+      -- panel = {
+      --   enabled = false
+      -- },
+    })
+  end,
+}
+
 return {
+  comment,
+  copilot,
   dap,
   gitsigns,
   golang,
+  harpoon,
   local_highlight,
+  openingh,
 }
