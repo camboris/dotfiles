@@ -11,6 +11,7 @@ local neorg = {
         ["core.integrations.nvim-cmp"] = {},
         ["core.concealer"] = { config = { icon_preset = "varied" } },
         ["core.export"] = {},
+        -- ["core.presenter"] = { config = { zen_mode = "zen-mode" } },
         ["core.keybinds"] = {
           --   -- https://github.com/nvim-neorg/neorg/blob/main/lua/neorg/modules/core/keybinds/keybinds.lua
           config = {
@@ -36,37 +37,31 @@ local neorg = {
   }
 }
 
-local mind = {
-  'phaazon/mind.nvim',
-  branch = 'v2.2',
-  cmd = {
-    "MindOpenMain",
-    "MindOpenProject",
-    "MindOpenSmartProject",
+local obsidian = {
+  "epwalsh/obsidian.nvim",
+  lazy = true,
+  event = { "BufReadPre " .. vim.fn.expand "~" .. "/desarrollo/swat/obsidian/Swat/**.md" },
+  dependencies = {
+    "nvim-lua/plenary.nvim",
   },
-  keys = {
-    { '<leader>mm', '<cmd>MindOpenMain<CR>',         desc = "Opens Mind Main Project" },
-    { '<leader>mp', '<cmd>MindOpenProject<CR>',      desc = "Opens Mind Local Project" },
-    { '<leader>ms', '<cmd>MindOpenSmartProject<CR>', desc = "Opens Mind Smart Project" },
-    { '<leader>mc', '<cmd>MindClose<CR>',            desc = "Closes Mind Project" }
-  },
-  dependencies = { 'nvim-lua/plenary.nvim' },
   config = function()
-    require 'mind'.setup({
-      edit = {
-        data_extension = ".norg",
-        data_header = "* %s",
-      },
-      keymaps = {
-        normal = {
-          ["<leader>mf"] = "open_data_index"
-        }
+    require("obsidian").setup({
+      dir = "~/desarrollo/swat/obsidian/Swat/", -- no need to call 'vim.fn.expand' here
+      mappings = {
+        -- ["gf"] = require("obsidian.mapping").gf_passthrough(),
       },
     })
+    vim.keymap.set("n", "gf", function()
+      if require("obsidian").util.cursor_on_markdown_link() then
+        return "<cmd>ObsidianFollowLink<CR>"
+      else
+        return "gf"
+      end
+    end, { noremap = false, expr = true })
   end
 }
 
 return {
-  -- mind,
-  neorg
+  neorg,
+  obsidian
 }
