@@ -1,15 +1,22 @@
 local M = {
-  "glepnir/lspsaga.nvim",
+  "nvimdev/lspsaga.nvim",
   event = "BufRead",
   config = function()
-    require("lspsaga").setup({})
+    require('lspsaga').setup({
+      finder = {
+        max_height = 0.6,
+        keys = {
+          vsplit = 'v'
+        }
+      }
+    })
     local keymap = vim.keymap.set
 
     -- LSP finder - Find the symbol's definition
     -- If there is no definition, it will instead be hidden
     -- When you use an action in finder like "open vsplit",
     -- you can use <C-t> to jump back
-    keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { desc = "LSP Finder" })
+    keymap("n", "gh", "<cmd>Lspsaga finder<CR>", { desc = "LSP Finder" })
 
     -- Code action
     keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "LSP Code Actions" })
@@ -40,6 +47,7 @@ local M = {
     -- Go to type definition
     -- keymap("n", "gt", "<cmd>Lspsaga goto_type_definition<CR>", { desc = "LSP Go To Type definition" })
 
+    keymap("n", "<leader>so", "<cmd>Lspsaga outline<CR>", { desc = "LSP Show Outline" })
     -- Show line diagnostics
     -- You can pass argument ++unfocus to
     -- unfocus the show_line_diagnostics floating window
@@ -68,9 +76,6 @@ local M = {
       require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
     end)
 
-    -- Toggle outline
-    keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>", { desc = "LSP Outline" })
-
     -- Hover Doc
     -- If there is no hover doc,
     -- there will be a notification stating that
@@ -87,8 +92,8 @@ local M = {
     -- keymap("n", "K", "<cmd>Lspsaga hover_doc ++keep<CR>")
 
     -- Call hierarchy
-    keymap("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>", {desc="LSP Incoming Calls"})
-    keymap("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>", {desc="LSP Outgoing Calls"})
+    keymap("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>", { desc = "LSP Incoming Calls" })
+    keymap("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>", { desc = "LSP Outgoing Calls" })
 
     -- Floating terminal
     keymap({ "n", "t" }, "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
