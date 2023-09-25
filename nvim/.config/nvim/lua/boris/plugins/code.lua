@@ -1,3 +1,10 @@
+local gitconflict = {
+  'akinsho/git-conflict.nvim',
+  event = "BufRead",
+  version = "*",
+  config = true
+}
+
 local openingh = {
   {
     "almo7aya/openingh.nvim",
@@ -142,18 +149,26 @@ local dap = {
     require('telescope').load_extension("dap")
   end,
   keys = {
-    { "<leader>dct", '<cmd>lua require"dap".continue()<CR>',                  desc = "Debug Continue" },
-    { "<leader>dsv", '<cmd>lua require"dap".step_over()<CR>',                 desc = "Debug Step Over" },
-    { "<leader>dsi", '<cmd>lua require"dap".step_into()<CR>',                 desc = "Debug Step Into" },
-    { "<leader>dso", '<cmd>lua require"dap".step_out()<CR>',                  desc = "Debug Step Out" },
-    { "<leader>dtb", '<cmd>lua require"dap".toggle_breakpoint()<CR>',         desc = "Debug Toggle Breakpoint" },
-    { "<leader>dsc", '<cmd>lua require"dap.ui.variables".scopes()<CR>',       desc = "Debug UI variables Scopes" },
-    { "<leader>dhh", '<cmd>lua require"dap.ui.variables".hover()<CR>',        desc = "Debug UI variables Hover" },
-    { "<leader>dhv", '<cmd>lua require"dap.ui.variables".visual_hover()<CR>', desc = "Debug UI Visual Hover",    mode = "v" },
-    { "<leader>duh", '<cmd>lua require"dap.ui.widgets".hover()<CR>',          desc = "Debug UI widgets Hover" },
+    { "<leader>dct", '<cmd>lua require"dap".continue()<CR>',            desc = "Debug Continue" },
+    { "<leader>dsv", '<cmd>lua require"dap".step_over()<CR>',           desc = "Debug Step Over" },
+    { "<leader>dsi", '<cmd>lua require"dap".step_into()<CR>',           desc = "Debug Step Into" },
+    { "<leader>dso", '<cmd>lua require"dap".step_out()<CR>',            desc = "Debug Step Out" },
+    { "<leader>dtb", '<cmd>lua require"dap".toggle_breakpoint()<CR>',   desc = "Debug Toggle Breakpoint" },
+    { "<leader>dsc", '<cmd>lua require"dap.ui.variables".scopes()<CR>', desc = "Debug UI variables Scopes" },
+    { "<leader>dhh", '<cmd>lua require"dap.ui.variables".hover()<CR>',  desc = "Debug UI variables Hover" },
     {
-      "<leader>duf", "<cmd>lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>",
-      desc = "Debug UI Widgets Float" },
+      "<leader>dhv",
+      '<cmd>lua require"dap.ui.variables".visual_hover()<CR>',
+      desc = "Debug UI Visual Hover",
+      mode =
+      "v"
+    },
+    { "<leader>duh", '<cmd>lua require"dap.ui.widgets".hover()<CR>', desc = "Debug UI widgets Hover" },
+    {
+      "<leader>duf",
+      "<cmd>lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>",
+      desc = "Debug UI Widgets Float"
+    },
     {
       "<leader>dsbr",
       '<cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>',
@@ -164,9 +179,9 @@ local dap = {
       '<cmd>lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>',
       desc = "Debug Set Breakpoint Message"
     },
-    { "<leader>dro", '<cmd>lua require"dap".repl.open()<CR>',     desc = "Debug REPL Open" },
-    { "<leader>drl", '<cmd>lua require"dap".repl.run_last()<CR>', desc = "Debug REPL Run" },
-    { '<leader>dui', '<cmd>lua require"dapui".toggle()<CR>',      desc = "Toggle Debug UI" },
+    { "<leader>dro", '<cmd>lua require"dap".repl.open()<CR>',        desc = "Debug REPL Open" },
+    { "<leader>drl", '<cmd>lua require"dap".repl.run_last()<CR>',    desc = "Debug REPL Run" },
+    { '<leader>dui', '<cmd>lua require"dapui".toggle()<CR>',         desc = "Toggle Debug UI" },
   }
 }
 
@@ -224,6 +239,7 @@ return {
   comment,
   copilot,
   dap,
+  gitconflict,
   gitsigns,
   golang,
   harpoon,
