@@ -134,6 +134,15 @@ local indent = {
   event = "BufReadPre",
 }
 
+local hardtime = {
+  "m4xshen/hardtime.nvim",
+  dependencies = {
+    "MunifTanjim/nui.nvim",
+    "nvim-lua/plenary.nvim"
+  },
+  opts = {}
+}
+
 local zenmode = {
   "folke/zen-mode.nvim",
   cmd = "ZenMode",
@@ -146,12 +155,12 @@ local zenmode = {
         -- * a percentage of the width / height of the editor when <= 1
         -- * a function that returns the width or the height
         width = 120, -- width of the Zen window
-        height = 1, -- height of the Zen window
+        height = 1,  -- height of the Zen window
         -- by default, no options are changed for the Zen window
         -- uncomment any of the options below, or add other vim.wo options you want to apply
         options = {
-          signcolumn = "no", -- disable signcolumn
-          number = false, -- disable number column
+          signcolumn = "no",      -- disable signcolumn
+          number = false,         -- disable number column
           relativenumber = false, -- disable relative numbers
           -- cursorline = false, -- disable cursorline
           -- cursorcolumn = false, -- disable cursor column
@@ -164,10 +173,10 @@ local zenmode = {
         -- comment the lines to not apply the options
         options = {
           enabled = true,
-          ruler = false,            -- disables the ruler text in the cmd line area
-          showcmd = false,          -- disables the command in the last line of the screen
+          ruler = false,                -- disables the ruler text in the cmd line area
+          showcmd = false,              -- disables the command in the last line of the screen
         },
-        twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+        twilight = { enabled = true },  -- enable to start Twilight when zen mode opens
         gitsigns = { enabled = false }, -- disables git signs
         -- this will change the font size on wezterm when in zen mode
         -- See alse also the Plugins/Wezterm section in this projects README
@@ -191,11 +200,10 @@ local colorizer = {
 
 local surround = {
   "kylechui/nvim-surround",
-  event = "BufReadPre",
+  version = "*",   -- Use for stability; omit to use `main` branch for the latest features
+  event = "VeryLazy",
   config = function()
-    require("nvim-surround").setup({
-      -- Configuration here, or leave empty to use defaults
-    })
+    require("nvim-surround").setup()
   end
 }
 
@@ -211,7 +219,9 @@ local tint = {
 
 return {
   colorizer,
+  -- hardtime,
   indent,
+  kanagawa,
   leap,
   markdown_preview,
   oil,
@@ -219,5 +229,4 @@ return {
   textobjs,
   tint,
   zenmode,
-  kanagawa,
 }
