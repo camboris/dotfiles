@@ -16,7 +16,13 @@ local luasnip = {
           {
             t("- *"), i(1, "qty unit"), t("* "), i(2, "Ingredient")
           }
-        )
+        ),
+        s({
+      trig = "5xrow",
+      name = "Markdown table row 5 columns"
+      }, {
+        t("| "), i(1, "col1"), t(" | "), i(2, "col2"), t(" | "), i(3, "col3"), t(" | "), i(4, "col4"), t(" | "), i(5, "col5"), t(" |")
+      }),
       })
     end,
   },
