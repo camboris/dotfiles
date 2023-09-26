@@ -3,6 +3,15 @@ local mini = {
   version = false,
   event = 'VeryLazy',
   config = function()
+    require('mini.align').setup({
+      modifiers = {
+        ['T'] = function(steps, opts)
+          opts.split_pattern = '|'
+          table.insert(steps.pre_justify, MiniAlign.gen_step.trim())
+          opts.merge_delimiter = ' '
+        end
+      }
+    })
     require('mini.animate').setup({
       scroll = {
         enable = false,
