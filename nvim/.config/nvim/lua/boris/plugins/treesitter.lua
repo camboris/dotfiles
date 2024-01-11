@@ -4,7 +4,7 @@ local M = {
   build = ":TSUpdate",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    "HiPhish/nvim-ts-rainbow2"
+    -- "HiPhish/nvim-ts-rainbow2"
   },
   config = function()
     local ts = require("nvim-treesitter.configs")
@@ -18,10 +18,10 @@ local M = {
         enable = true,
         additional_vim_regex_highlighting = { "markdown" },
       },
-      rainbow = {
-        enable = true,
-        query = 'rainbow-parens',
-      },
+      -- rainbow = {
+      --   enable = true,
+      --   query = 'rainbow-parens',
+      -- },
       incremental_selection = {
         enable = true,
         keymaps = {
@@ -55,10 +55,10 @@ local M = {
         move = {
           enable = true,
           set_jumps = true,
-          goto_next_start = { [']a'] = '@parameter.outer',[']f'] = '@function.outer',[']c'] = '@class.outer' },
-          goto_next_end = { [']A'] = '@parameter.outer',[']F'] = '@function.outer',[']C'] = '@class.outer' },
-          goto_previous_start = { ['[a'] = '@parameter.outer',['[f'] = '@function.outer',['[c'] = '@class.outer' },
-          goto_previous_end = { ['[A'] = '@parameter.outer',['[F'] = '@function.outer',['[C'] = '@class.outer' },
+          goto_next_start = { [']a'] = '@parameter.outer', [']f'] = '@function.outer', [']c'] = '@class.outer' },
+          goto_next_end = { [']A'] = '@parameter.outer', [']F'] = '@function.outer', [']C'] = '@class.outer' },
+          goto_previous_start = { ['[a'] = '@parameter.outer', ['[f'] = '@function.outer', ['[c'] = '@class.outer' },
+          goto_previous_end = { ['[A'] = '@parameter.outer', ['[F'] = '@function.outer', ['[C'] = '@class.outer' },
         },
         lsp_interop = {
           enable = true,

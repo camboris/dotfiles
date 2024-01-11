@@ -118,7 +118,16 @@ local dap = {
     "rcarriga/nvim-dap-ui",
     "theHamsta/nvim-dap-virtual-text",
     "leoluz/nvim-dap-go",
-    "mfussenegger/nvim-dap-python"
+    "mfussenegger/nvim-dap-python",
+    -- Install the vscode-js-debug adapter
+    {
+      "microsoft/vscode-js-debug",
+      -- After install, build it and rename the dist directory to out
+      build = "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && rm -rf out && mv dist out",
+      version = "1.*",
+    },
+    "mxsdev/nvim-dap-vscode-js",
+
   },
   config = function()
     local dap = require("dap")
@@ -126,6 +135,7 @@ local dap = {
     local dapgo = require("dap-go")
     local dapvt = require("nvim-dap-virtual-text")
     local dappy = require('dap-python')
+    local dapvscodejs = require('dap-vscode-js')
 
     -- Dap Python
     dappy.setup()
@@ -134,19 +144,46 @@ local dap = {
 
     dapui.setup()
 
-    dap.listeners.after.event_initialized["dapui_config"] = function()
+    dap.listeners.before.attach.dapui_config = function()
       dapui.open()
     end
-    dap.listeners.before.event_terminated["dapui_config"] = function()
+    dap.listeners.before.launch.dapui_config = function()
+      dapui.open()
+    end
+    dap.listeners.before.event_terminated.dapui_config = function()
       dapui.close()
     end
-    dap.listeners.before.event_exited["dapui_config"] = function()
+    dap.listeners.before.event_exited.dapui_config = function()
       dapui.close()
     end
-
     -- go
     dapgo.setup()
     require('telescope').load_extension("dap")
+
+    -- js
+    dapvscodejs.setup({
+      -- Path to vscode-js-debug installation.
+      debugger_path = vim.fn.resolve(vim.fn.stdpath("data") .. "/lazy/vscode-js-debug"),
+      adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }, -- which adapters to register in nvim-dap
+    })
+
+    for _, language in ipairs({ "typescript", "javascript" }) do
+      dap.configurations[language] = {
+        {
+          type = "pwa-node",
+          request = "launch",
+          name = "Launch file",
+          program = "${file}",
+          cwd = "${workspaceFolder}",
+        },
+        {
+          type = "pwa-node",
+          request = "attach",
+          name = "Attach",
+          processId = require 'dap.utils'.pick_process,
+          cwd = "${workspaceFolder}",
+        } }
+    end
   end,
   keys = {
     { "<leader>dct", '<cmd>lua require"dap".continue()<CR>',            desc = "Debug Continue" },

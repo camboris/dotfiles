@@ -14,7 +14,17 @@ local M = {
     -- servers config for mason and lsp
     local servers = {
       -- clangd = {},
-      gopls = {},
+      gopls = {
+        gopls = {
+          ["ui.inlayhint.hints"] = {
+            compositeLiteralFields = true,
+            constantValues = true,
+            parameterNames = true,
+            functionTypeParameters = true,
+          },
+        },
+
+      },
       pyright = {},
       -- rust_analyzer = {},
       eslint = {},

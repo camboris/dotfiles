@@ -58,6 +58,10 @@ local obsidian = {
         return "gf"
       end
     end, { noremap = false, expr = true })
+    vim.keymap.set("n", "<leader>oo", "<Cmd>ObsidianQuickSwitch<CR>", { desc = "[Obsidian] Quick Search" })
+    vim.keymap.set("n", "<leader>oa", "<Cmd>ObsidianOpen<CR>", { desc = "[Obsidian] Open in app" })
+    vim.keymap.set("n", "<leader>os", "<Cmd>ObsidianSearch<CR>", { desc = "[Obsidian] Search" })
+    vim.keymap.set("n", "<leader>ob", "<Cmd>ObsidianBacklinks<CR>", { desc = "[Obsidian] Backlinks" })
   end
 }
 
