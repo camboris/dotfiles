@@ -28,6 +28,7 @@ local M = {
       require("telescope").load_extension("file_browser")
       require('telescope').load_extension('fzf')
       require("telescope").load_extension("ui-select")
+      require("telescope").load_extension("noice")
       -- require('telescope').load_extension("dap")
       -- require("telescope").load_extension('harpoon')
     end,

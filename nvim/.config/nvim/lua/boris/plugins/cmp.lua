@@ -10,19 +10,20 @@ local luasnip = {
       local i = ls.insert_node
       ls.add_snippets("markdown", {
         s({
-          trig = "ing",
-          name = "RecipeMD Ingredient"
-        },
+            trig = "ing",
+            name = "RecipeMD Ingredient"
+          },
           {
             t("- *"), i(1, "qty unit"), t("* "), i(2, "Ingredient")
           }
         ),
         s({
-      trig = "5xrow",
-      name = "Markdown table row 5 columns"
-      }, {
-        t("| "), i(1, "col1"), t(" | "), i(2, "col2"), t(" | "), i(3, "col3"), t(" | "), i(4, "col4"), t(" | "), i(5, "col5"), t(" |")
-      }),
+          trig = "5xrow",
+          name = "Markdown table row 5 columns"
+        }, {
+          t("| "), i(1, "col1"), t(" | "), i(2, "col2"), t(" | "), i(3, "col3"), t(" | "), i(4, "col4"), t(" | "),
+          i(5, "col5"), t(" |")
+        }),
       })
     end,
   },
@@ -37,10 +38,12 @@ local luasnip = {
       function()
         return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
       end,
-      expr = true, silent = true, mode = "i",
+      expr = true,
+      silent = true,
+      mode = "i",
     },
-    { "<tab>",   function() require("luasnip").jump(1) end,   mode = "s" },
-    { "<s-tab>", function() require("luasnip").jump( -1) end, mode = { "i", "s" } },
+    { "<tab>",   function() require("luasnip").jump(1) end,  mode = "s" },
+    { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
   },
 }
 
@@ -53,6 +56,7 @@ local cmp = {
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-nvim-lua",
     "hrsh7th/cmp-emoji",
+    "hrsh7th/cmp-cmdline",
     -- "hrsh7th/cmp-nvim-lsp-signature-help",
     "onsails/lspkind-nvim",
     "saadparwaiz1/cmp_luasnip",
@@ -74,7 +78,7 @@ local cmp = {
       mapping = {
         ['<C-p>'] = cmp.mapping.select_prev_item(),
         ['<C-n>'] = cmp.mapping.select_next_item(),
-        ["<C-d>"] = cmp.mapping.scroll_docs( -4),
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-u>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete({}),
         ["<C-e>"] = cmp.mapping.close(),
@@ -97,15 +101,18 @@ local cmp = {
       },
       sources = {
         { name = "nvim_lsp" },
-        { name = "buffer",
-          keyword_length = 3 },
+        {
+          name = "buffer",
+          keyword_length = 3
+        },
         -- { name = 'nvim_lsp_signature_help' },
         { name = "luasnip" },
         { name = 'nvim_lua' },
         { name = "path" },
         { name = "emoji" },
         { name = "neorg" },
-        { name = 'spell',
+        {
+          name = 'spell',
           keyword_length = 3,
           option = {
             keep_all_entries = false,
@@ -133,6 +140,27 @@ local cmp = {
           },
         })
       }
+    })
+    -- `/` cmdline setup.
+    cmp.setup.cmdline('/', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer' }
+      }
+    })
+    -- `:` cmdline setup.
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = 'path' }
+      }, {
+        {
+          name = 'cmdline',
+          option = {
+            ignore_cmds = { 'Man', '!' }
+          }
+        }
+      })
     })
   end
 }
