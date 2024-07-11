@@ -66,6 +66,6 @@ local obsidian = {
 }
 
 return {
-  neorg,
-  obsidian
+  -- neorg,
+  -- obsidian
 }
