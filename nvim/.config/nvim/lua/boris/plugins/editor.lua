@@ -1,3 +1,18 @@
+local neoclip = {
+  "AckslD/nvim-neoclip.lua",
+  dependencies = {
+    { 'nvim-telescope/telescope.nvim' },
+  },
+  config = function()
+    require('neoclip').setup()
+  end,
+  event = "BufRead",
+  keys = {
+    { "<leader>fy", "<cmd>Telescope neoclip plus<CR>", desc = "Telescope Yank history" },
+  }
+}
+
+
 local oil = {
   'stevearc/oil.nvim',
   opts = {},
@@ -16,6 +31,19 @@ local markdown_preview = {
   build = "cd app && npm install",
 }
 
+local decisive = {
+  "emmanueltouzery/decisive.nvim",
+  ft = "csv",
+  config = function()
+    require('decisive').setup {}
+  end,
+  keys = {
+    { "<leader>cca", ":lua require('decisive').align_csv({})<cr>",        desc = "align CSV" },
+    { "<leader>ccA", ":lua require('decisive').align_csv_clear({})<cr>",  desc = "align CSV clear" },
+    { "[c",          ":lua require('decisive').align_csv_prev_col()<cr>", desc = "align CSV prev col" },
+    { "]c",          ":lua require('decisive').align_csv_next_col()<cr>", desc = "align CSV next col" },
+  }
+}
 
 local textobjs = {
   "chrisgrieser/nvim-various-textobjs",
@@ -200,7 +228,7 @@ local colorizer = {
 
 local surround = {
   "kylechui/nvim-surround",
-  version = "*",   -- Use for stability; omit to use `main` branch for the latest features
+  version = "*", -- Use for stability; omit to use `main` branch for the latest features
   event = "VeryLazy",
   config = function()
     require("nvim-surround").setup()
@@ -218,15 +246,17 @@ local tint = {
 }
 
 return {
-  colorizer,
   -- hardtime,
+  colorizer,
   indent,
   kanagawa,
   leap,
   markdown_preview,
+  neoclip,
   oil,
   surround,
-  textobjs,
+  -- textobjs,
   tint,
   zenmode,
+  decisive,
 }
