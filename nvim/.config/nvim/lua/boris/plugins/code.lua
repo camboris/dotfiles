@@ -1,3 +1,7 @@
+local plantuml = {
+  "aklt/plantuml-syntax"
+}
+
 local neotest = {
   "nvim-neotest/neotest",
   ft = { "go", "lua", "js", "python" },
@@ -345,4 +349,5 @@ return {
   local_highlight,
   neotest,
   openingh,
+  plantuml,
 }

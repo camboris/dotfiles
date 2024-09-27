@@ -97,16 +97,16 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = format_sync_grp,
 })
 
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-  pattern = { "*.md", "*.json" },
-  callback = function()
-    vim.cmd("set conceallevel=1")
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "BufLeave", "BufWinLeave" }, {
-  pattern = { "*.md", "*.json" },
-  callback = function()
-    vim.cmd("set conceallevel=0")
-  end,
-})
+-- vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+--   pattern = { "*.md", "*.json" },
+--   callback = function()
+--     vim.cmd("set conceallevel=1")
+--   end,
+-- })
+--
+-- vim.api.nvim_create_autocmd({ "BufLeave", "BufWinLeave" }, {
+--   pattern = { "*.md", "*.json" },
+--   callback = function()
+--     vim.cmd("set conceallevel=0")
+--   end,
+-- })

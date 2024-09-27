@@ -18,10 +18,10 @@ local M = {
         enable = true,
         additional_vim_regex_highlighting = { "markdown" },
       },
-      -- rainbow = {
-      --   enable = true,
-      --   query = 'rainbow-parens',
-      -- },
+      rainbow = {
+        enable = true,
+        query = 'rainbow-parens',
+      },
       incremental_selection = {
         enable = true,
         keymaps = {
