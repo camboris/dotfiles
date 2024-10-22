@@ -56,11 +56,11 @@ api.nvim_create_autocmd(
   { pattern = "*", command = "set nocursorline", group = cursorGrp }
 )
 
--- Enable spell checking for certain file types
-api.nvim_create_autocmd(
-  { "BufRead", "BufNewFile" },
-  { pattern = { "*.txt", "*.md", "*.tex",}, command = "setlocal spell" }
-)
+-- -- Enable spell checking for certain file types
+-- api.nvim_create_autocmd(
+--   { "BufRead", "BufNewFile" },
+--   { pattern = { "*.txt", "*.md", "*.tex",}, command = "setlocal spell" }
+-- )
 
 -- Enable spell checking for certain file types
 api.nvim_create_autocmd(
@@ -96,3 +96,17 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
   group = format_sync_grp,
 })
+
+-- vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+--   pattern = { "*.md", "*.json" },
+--   callback = function()
+--     vim.cmd("set conceallevel=1")
+--   end,
+-- })
+--
+-- vim.api.nvim_create_autocmd({ "BufLeave", "BufWinLeave" }, {
+--   pattern = { "*.md", "*.json" },
+--   callback = function()
+--     vim.cmd("set conceallevel=0")
+--   end,
+-- })

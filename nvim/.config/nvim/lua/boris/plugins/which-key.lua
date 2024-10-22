@@ -10,7 +10,7 @@ local M = {
           suggestions = 20, -- how many suggestions should be shown in the list?
         },
       },
-      window = {
+      win = {
         border = "single", -- none, single, double, shadow
       },
     })

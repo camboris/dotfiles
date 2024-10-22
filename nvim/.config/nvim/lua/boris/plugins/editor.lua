@@ -1,3 +1,18 @@
+local neoclip = {
+  "AckslD/nvim-neoclip.lua",
+  dependencies = {
+    { 'nvim-telescope/telescope.nvim' },
+  },
+  config = function()
+    require('neoclip').setup()
+  end,
+  event = "BufRead",
+  keys = {
+    { "<leader>fy", "<cmd>Telescope neoclip plus<CR>", desc = "Telescope Yank history" },
+  }
+}
+
+
 local oil = {
   'stevearc/oil.nvim',
   opts = {},
@@ -16,6 +31,26 @@ local markdown_preview = {
   build = "cd app && npm install",
 }
 
+local headlines = {
+  "lukas-reineke/headlines.nvim",
+  ft = "markdown",
+  dependencies = "nvim-treesitter/nvim-treesitter",
+  config = true, -- or `opts = {}`
+}
+
+local decisive = {
+  "emmanueltouzery/decisive.nvim",
+  ft = "csv",
+  config = function()
+    require('decisive').setup {}
+  end,
+  keys = {
+    { "<leader>cca", ":lua require('decisive').align_csv({})<cr>",        desc = "align CSV" },
+    { "<leader>ccA", ":lua require('decisive').align_csv_clear({})<cr>",  desc = "align CSV clear" },
+    { "[c",          ":lua require('decisive').align_csv_prev_col()<cr>", desc = "align CSV prev col" },
+    { "]c",          ":lua require('decisive').align_csv_next_col()<cr>", desc = "align CSV next col" },
+  }
+}
 
 local textobjs = {
   "chrisgrieser/nvim-various-textobjs",
@@ -134,11 +169,59 @@ local indent = {
   event = "BufReadPre",
 }
 
+local hardtime = {
+  "m4xshen/hardtime.nvim",
+  dependencies = {
+    "MunifTanjim/nui.nvim",
+    "nvim-lua/plenary.nvim"
+  },
+  opts = {}
+}
+
 local zenmode = {
   "folke/zen-mode.nvim",
   cmd = "ZenMode",
   config = function()
-    require("zen-mode").setup()
+    require("zen-mode").setup({
+      window = {
+        backdrop = 0.95, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+        -- height and width can be:
+        -- * an absolute number of cells when > 1
+        -- * a percentage of the width / height of the editor when <= 1
+        -- * a function that returns the width or the height
+        width = 120, -- width of the Zen window
+        height = 1,  -- height of the Zen window
+        -- by default, no options are changed for the Zen window
+        -- uncomment any of the options below, or add other vim.wo options you want to apply
+        options = {
+          signcolumn = "no",      -- disable signcolumn
+          number = false,         -- disable number column
+          relativenumber = false, -- disable relative numbers
+          -- cursorline = false, -- disable cursorline
+          -- cursorcolumn = false, -- disable cursor column
+          -- foldcolumn = "0", -- disable fold column
+          -- list = false, -- disable whitespace characters
+        },
+      },
+      plugins = {
+        -- disable some global vim options (vim.o...)
+        -- comment the lines to not apply the options
+        options = {
+          enabled = true,
+          ruler = false,                -- disables the ruler text in the cmd line area
+          showcmd = false,              -- disables the command in the last line of the screen
+        },
+        twilight = { enabled = true },  -- enable to start Twilight when zen mode opens
+        gitsigns = { enabled = false }, -- disables git signs
+        -- this will change the font size on wezterm when in zen mode
+        -- See alse also the Plugins/Wezterm section in this projects README
+        wezterm = {
+          enabled = TelescopeResultsBorder,
+          -- can be either an absolute font size or the number of incremental steps
+          font = "+4", -- (10% increase per step)
+        },
+      },
+    })
   end
 }
 
@@ -152,11 +235,10 @@ local colorizer = {
 
 local surround = {
   "kylechui/nvim-surround",
-  event = "BufReadPre",
+  version = "*", -- Use for stability; omit to use `main` branch for the latest features
+  event = "VeryLazy",
   config = function()
-    require("nvim-surround").setup({
-      -- Configuration here, or leave empty to use defaults
-    })
+    require("nvim-surround").setup()
   end
 }
 
@@ -170,15 +252,29 @@ local tint = {
   end,
 }
 
+local markdown = {
+  'MeanderingProgrammer/render-markdown.nvim',
+  -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' },   -- if you use the mini.nvim suite
+  -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+  dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+  opts = {},
+  ft = "markdown",
+}
+
 return {
+  -- hardtime,
+  -- headlines,
+  -- textobjs,
   colorizer,
+  decisive,
   indent,
+  kanagawa,
   leap,
+  markdown,
   markdown_preview,
+  neoclip,
   oil,
   surround,
-  textobjs,
   tint,
   zenmode,
-  kanagawa,
 }

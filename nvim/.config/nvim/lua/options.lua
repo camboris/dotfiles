@@ -24,6 +24,7 @@ o.pumheight = 12 -- Max height of popup menu
 o.relativenumber = true -- Relative line numbers
 o.ruler = true -- Show the cursor position all the time
 o.scrolloff = 4 -- Lines of context
+o.shortmess:append "c"
 o.shiftround = true -- Round indent
 o.shiftwidth = 2 -- Size of an indent
 o.showmode = false -- Don't display mode
@@ -42,5 +43,5 @@ o.wildmode = {'longest:full', 'full'}  -- Command-line completion mode
 o.wrap = true
 o.cmdheight = 0
 o.spelllang = "es"
-o.completeopt = "menuone,noselect"
+o.completeopt = "menu,menuone,noselect"
 -- o.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"

@@ -5,28 +5,35 @@ local M = {
     "williamboman/mason-lspconfig.nvim",
     "jay-babu/mason-nvim-dap.nvim",
     "folke/neodev.nvim",
-    -- "j-hui/fidget.nvim",
-
   },
   event = "BufRead",
   config = function()
     -- injects neovim definicions on config files
     require("neodev").setup({})
-    -- shows lsp loading status
-    -- require('fidget').setup()
 
     -- servers config for mason and lsp
     local servers = {
       -- clangd = {},
-      gopls = {},
+      gopls = {
+        gopls = {
+          ["ui.inlayhint.hints"] = {
+            compositeLiteralFields = true,
+            constantValues = true,
+            parameterNames = true,
+            functionTypeParameters = true,
+          },
+        },
+
+      },
       pyright = {},
       -- rust_analyzer = {},
       eslint = {},
-      tsserver = {},
+      -- tsserver = {},
       lua_ls = {
         Lua = {
           workspace = { checkThirdParty = false },
           telemetry = { enable = false },
+          hint = { enable = true },
         },
       },
     }
@@ -70,6 +77,17 @@ local M = {
       automatic_setup = true,
     })
     -- mason_dap.setup_handlers()
+
+    if vim.lsp.inlay_hint then
+      vim.keymap.set(
+        "n",
+        "<leader>uh",
+        function()
+          vim.lsp.inlay_hint(0, nil)
+        end,
+        { desc = "Toggle inlay hints" }
+      )
+    end
   end
 }
 return M

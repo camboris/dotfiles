@@ -10,31 +10,63 @@ local luasnip = {
       local i = ls.insert_node
       ls.add_snippets("markdown", {
         s({
-          trig = "ing",
-          name = "RecipeMD Ingredient"
-        },
+            trig = "ing",
+            name = "RecipeMD Ingredient"
+          },
           {
             t("- *"), i(1, "qty unit"), t("* "), i(2, "Ingredient")
           }
-        )
+        ),
+        s({
+          trig = "5xrow",
+          name = "Markdown table row 5 columns"
+        }, {
+          t("| "), i(1, "col1"), t(" | "), i(2, "col2"), t(" | "), i(3, "col3"), t(" | "), i(4, "col4"), t(" | "),
+          i(5, "col5"), t(" |")
+        }),
       })
     end,
   },
   opts = {
     history = true,
-    delete_check_events = "TextChanged",
+    -- delete_check_events = "TextChanged",
+    updateevents = "TextChanged,TextChangedI",
   },
   -- stylua: ignore
   keys = {
+    --   {
+    --     "<tab>",
+    --     function()
+    --       return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
+    --     end,
+    --     expr = true,
+    --     silent = true,
+    --     mode = "i",
+    --   },
+    --   { "<tab>",   function() require("luasnip").jump(1) end,  mode = "s" },
+    --   { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
     {
-      "<tab>",
+      "<c-k>",
       function()
-        return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
+        local ls = require("luasnip")
+        if ls.expand_or_jumpable() then
+          ls.expand_or_jump()
+        end
       end,
-      expr = true, silent = true, mode = "i",
+      silent = true,
+      mode = { "i", "s" }
     },
-    { "<tab>",   function() require("luasnip").jump(1) end,   mode = "s" },
-    { "<s-tab>", function() require("luasnip").jump( -1) end, mode = { "i", "s" } },
+    {
+      "<c-h>",
+      function()
+        local ls = require("luasnip")
+        if ls.jumpable(-1) then
+          ls.jump(-1)
+        end
+      end,
+      silent = true,
+      mode = { "i", "s" }
+    },
   },
 }
 
@@ -47,6 +79,7 @@ local cmp = {
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-nvim-lua",
     "hrsh7th/cmp-emoji",
+    "hrsh7th/cmp-cmdline",
     -- "hrsh7th/cmp-nvim-lsp-signature-help",
     "onsails/lspkind-nvim",
     "saadparwaiz1/cmp_luasnip",
@@ -66,40 +99,50 @@ local cmp = {
       },
       experimental = { native_menu = false, ghost_text = true },
       mapping = {
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-n>'] = cmp.mapping.select_next_item(),
-        ["<C-d>"] = cmp.mapping.scroll_docs( -4),
-        ["<C-u>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete({}),
-        ["<C-e>"] = cmp.mapping.close(),
-        ["<CR>"] = cmp.mapping.confirm({
-          behavior = cmp.ConfirmBehavior.Replace,
-          select = false,
-        }),
-        ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function()
-          if cmp.visible() then
-            cmp.select_prev_item()
-          end
-        end, { "i", "s" }),
+        ['<C-p>'] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+        ['<C-n>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+        ['<C-y>'] = cmp.mapping(
+          cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Insert,
+            select = true,
+          }),
+          { "i", "c" }
+        )
+        -- ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        -- ["<C-u>"] = cmp.mapping.scroll_docs(4),
+        -- ["<C-Space>"] = cmp.mapping.complete({}),
+        -- ["<C-e>"] = cmp.mapping.close(),
+        -- ["<CR>"] = cmp.mapping.confirm({
+        -- behavior = cmp.ConfirmBehavior.Replace,
+        -- select = false,
+        -- }),
+        -- ["<Tab>"] = cmp.mapping(function(fallback)
+        --   if cmp.visible() then
+        --     cmp.select_next_item()
+        --   else
+        --     fallback()
+        --   end
+        -- end, { "i", "s" }),
+        -- ["<S-Tab>"] = cmp.mapping(function()
+        --   if cmp.visible() then
+        --     cmp.select_prev_item()
+        --   end
+        -- end, { "i", "s" }),
       },
       sources = {
         { name = "nvim_lsp" },
-        { name = "buffer",
-          keyword_length = 3 },
+        {
+          name = "buffer",
+          keyword_length = 3
+        },
         -- { name = 'nvim_lsp_signature_help' },
         { name = "luasnip" },
         { name = 'nvim_lua' },
         { name = "path" },
         { name = "emoji" },
         { name = "neorg" },
-        { name = 'spell',
+        {
+          name = 'spell',
           keyword_length = 3,
           option = {
             keep_all_entries = false,
@@ -127,6 +170,27 @@ local cmp = {
           },
         })
       }
+    })
+    -- `/` cmdline setup.
+    cmp.setup.cmdline('/', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer' }
+      }
+    })
+    -- `:` cmdline setup.
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = 'path' }
+      }, {
+        {
+          name = 'cmdline',
+          option = {
+            ignore_cmds = { 'Man', '!' }
+          }
+        }
+      })
     })
   end
 }
