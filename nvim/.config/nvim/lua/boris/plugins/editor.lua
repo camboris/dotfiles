@@ -31,6 +31,13 @@ local markdown_preview = {
   build = "cd app && npm install",
 }
 
+local headlines = {
+  "lukas-reineke/headlines.nvim",
+  ft = "markdown",
+  dependencies = "nvim-treesitter/nvim-treesitter",
+  config = true, -- or `opts = {}`
+}
+
 local decisive = {
   "emmanueltouzery/decisive.nvim",
   ft = "csv",
@@ -245,18 +252,29 @@ local tint = {
   end,
 }
 
+local markdown = {
+  'MeanderingProgrammer/render-markdown.nvim',
+  -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' },   -- if you use the mini.nvim suite
+  -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+  dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+  opts = {},
+  ft = "markdown",
+}
+
 return {
   -- hardtime,
+  -- headlines,
+  -- textobjs,
   colorizer,
+  decisive,
   indent,
   kanagawa,
   leap,
+  markdown,
   markdown_preview,
   neoclip,
   oil,
   surround,
-  -- textobjs,
   tint,
   zenmode,
-  decisive,
 }
