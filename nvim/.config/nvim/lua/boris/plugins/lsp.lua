@@ -28,7 +28,7 @@ local M = {
       pyright = {},
       -- rust_analyzer = {},
       eslint = {},
-      tsserver = {},
+      -- tsserver = {},
       lua_ls = {
         Lua = {
           workspace = { checkThirdParty = false },
