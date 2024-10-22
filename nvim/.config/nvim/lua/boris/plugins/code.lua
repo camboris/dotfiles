@@ -340,7 +340,7 @@ local copilot = {
 
 return {
   -- comment,
-  copilot,
+  -- copilot,
   dap,
   gitconflict,
   gitsigns,
