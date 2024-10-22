@@ -50,8 +50,29 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 export PYENV_ROOT="$HOME/.pyenv"
 
+alias fzp="fzf --preview 'bat --color=always {}' --preview-window '~3'"
+
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+bindkey "©" fzf-cd-widget
+export FZF_CTRL_T_OPTS="--height 40% \
+--border sharp \
+--layout reverse \
+--prompt '∷ ' \
+--pointer ▶ \
+--marker ⇒"
+export FZF_CTRL_T_OPTS="--height 40% \
+--border sharp \
+--layout reverse \
+--prompt '∷ ' \
+--pointer ▶ \
+--marker ⇒"
+export FZF_CTRL_T_OPTS="--height 40% \
+--border sharp \
+--layout reverse \
+--prompt '∷ ' \
+--pointer ▶ \
+--marker ⇒"
 
 # fnm node manager en rust
 eval "$(fnm env --use-on-cd)"
