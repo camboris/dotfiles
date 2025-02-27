@@ -4,7 +4,6 @@ local M = {
   build = ":TSUpdate",
   dependencies = {
     -- "nvim-treesitter/nvim-treesitter-textobjects",
-    -- "HiPhish/nvim-ts-rainbow2"
   },
   config = function()
     local ts = require("nvim-treesitter.configs")

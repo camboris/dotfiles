@@ -338,9 +338,16 @@ local copilot = {
   end,
 }
 
+
+local rainbow = {
+  "HiPhish/rainbow-delimiters.nvim",
+  event = "BufRead",
+
+}
+
 return {
   -- comment,
-  -- copilot,
+  copilot,
   dap,
   gitconflict,
   gitsigns,
@@ -350,4 +357,5 @@ return {
   neotest,
   openingh,
   plantuml,
+  rainbow,
 }
