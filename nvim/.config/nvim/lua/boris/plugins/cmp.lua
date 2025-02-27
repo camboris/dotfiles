@@ -25,6 +25,8 @@ local luasnip = {
           i(5, "col5"), t(" |")
         }),
       })
+      ls.add_snippets("plantuml", require("boris/snippets/plantuml").plantuml)
+
     end,
   },
   opts = {
@@ -128,6 +130,27 @@ local cmp = {
         --     cmp.select_prev_item()
         --   end
         -- end, { "i", "s" }),
+      },
+      window = {
+        completion = cmp.config.window.bordered({
+          border = 'single',
+          col_offset = -1,
+          scrollbar = false,
+          scrolloff = 3,
+          -- Default for bordered() is 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None'
+          -- Default for non-bordered, which we'll use here, is:
+          winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
+        }),
+        documentation = cmp.config.window.bordered({
+          border = 'solid',
+          scrollbar = false,
+          -- Default for bordered() is 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None'
+          -- Default for non-bordered is 'FloatBorder:NormalFloat'
+          -- Suggestion from: https://github.com/hrsh7th/nvim-cmp/issues/2042
+          -- is to use 'NormalFloat:NormalFloat,FloatBorder:FloatBorder,CursorLine:Visual,Search:None'
+          -- but this also seems to suffice:
+          winhighlight = 'CursorLine:Visual,Search:None',
+        }),
       },
       sources = {
         { name = "nvim_lsp" },
