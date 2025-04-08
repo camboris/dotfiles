@@ -172,6 +172,9 @@ local local_highlight = {
     require('local-highlight').setup({
       file_types = { 'python', 'js', 'go', "lua" },
       hlgroup = 'IlluminatedWordText',
+      animate = {
+        enabled = false,
+      }
     })
   end
 }

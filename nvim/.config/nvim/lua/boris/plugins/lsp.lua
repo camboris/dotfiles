@@ -111,7 +111,7 @@ local M = {
         "n",
         "<leader>uh",
         function()
-          vim.lsp.inlay_hint(0, nil)
+          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
         end,
         { desc = "Toggle inlay hints" }
       )
