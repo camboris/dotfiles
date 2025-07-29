@@ -52,6 +52,7 @@ map("n", "<S-Tab>", ":bprevious<CR>")
 -- map("n", "<Leader>w", "<cd>:w<CR>")
 map('n', '<C-s>', '<cmd>silent w<CR>', { silent = true })
 map('i', '<C-s>', '<ESC>:silent w<CR>')
+map("n", "<leader>wq", ":wq<CR>", { desc = "Save and quit" })
 
 -- Move selected line / block of text in visual mode
 map("x", "K", ":move '<-2<CR>gv-gv", default_options)
