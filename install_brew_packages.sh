@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Instalando Brew"
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 
 echo "neovim"
@@ -29,6 +29,8 @@ echo "greppers"
 brew install the_silver_searcher
 brew install ripgrep
 brew install fzf
+brew install fd
+brew install zoxide
 
 echo "graficos"
 brew install graphviz
@@ -44,9 +46,9 @@ brew install font-Fira-Code-nerd-font
 # brew install font-jetbrains-mono-nerd-font
 
 echo "terminales"
-brew install kitty
+# brew install kitty
 brew install wezterm
-brew install tmux
+# brew install tmux
 
 echo "desarrollo"
 brew install go
@@ -58,4 +60,5 @@ brew install httpie
 echo "otros"
 brew install yacreader
 brew install calibre
+brew install rectangle
 

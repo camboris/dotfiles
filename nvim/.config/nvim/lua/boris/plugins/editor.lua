@@ -292,7 +292,7 @@ return {
   decisive,
   indent,
   kanagawa,
-  leap,
+  -- leap,
   markdown,
   markdown_preview,
   neoclip,

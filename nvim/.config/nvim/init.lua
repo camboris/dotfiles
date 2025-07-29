@@ -15,4 +15,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("boris.plugins")
+require("lazy").setup({
+	{ import = "boris.plugins", cond = (function() return not vim.g.vscode end) },
+	-- { import = "user.plugins_always",    cond = true },
+	-- { import = "user.plugins_vscode",    cond = (function() return vim.g.vscode end) },
+})

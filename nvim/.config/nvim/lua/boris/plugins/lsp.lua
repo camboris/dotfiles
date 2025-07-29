@@ -25,9 +25,9 @@ local M = {
         },
 
       },
-      pyright = {},
+      -- pyright = {},
       -- rust_analyzer = {},
-      eslint = {},
+      -- eslint = {},
       -- tsserver = {},
       lua_ls = {
         Lua = {
