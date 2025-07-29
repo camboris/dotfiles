@@ -39,7 +39,18 @@ local blink = {
   opts_extend = { "sources.default" }
 }
 
+local treesitter = {
+  'nvim-treesitter/nvim-treesitter',
+  lazy = false,
+  branch = 'main',
+  build = ':TSUpdate',
+  config = function()
+    require 'nvim-treesitter'.install { "lua", "vim", "help", "markdown", "html", "javascript", "json", "python", "regex", "tsx",
+      "typescript", "css", "diff", "dockerfile", "dot", "go", "http", "bash", "markdown_inline" }
+  end
+}
 
 return {
-  blink
+  blink,
+  treesitter,
 }
