@@ -65,8 +65,31 @@ local which = {
   },
 }
 
+local lualine = {
+  'nvim-lualine/lualine.nvim',
+  dependencies = {
+    "nvim-tree/nvim-web-devicons"
+  },
+  config = function()
+    require('lualine').setup({})
+  end
+}
+
+local bufferline = {
+  'akinsho/bufferline.nvim',
+  version = "*",
+  dependencies = 'nvim-tree/nvim-web-devicons',
+  opts = {
+    options = {
+      diagnostics = "nvim_lsp",
+    }
+  }
+}
+
 return {
+  bufferline,
   kanagawa,
+  lualine,
   oil,
   which,
 }
