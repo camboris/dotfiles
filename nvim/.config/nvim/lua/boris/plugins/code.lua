@@ -50,7 +50,18 @@ local treesitter = {
   end
 }
 
+local autopairs = {
+  "windwp/nvim-autopairs",
+  event = "InsertEnter",
+  config = function()
+    require("nvim-autopairs").setup {
+      check_ts = true,
+      fast_wrap = {},
+    }
+  end
+}
 return {
+  autopairs,
   blink,
   treesitter,
 }
