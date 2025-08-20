@@ -1,5 +1,11 @@
+local plantuml = {
+  "aklt/plantuml-syntax",
+  ft="plantuml"
+}
+
 local blink = {
   'saghen/blink.cmp',
+  event = { "BufReadPre", "BufNewFile" },
   dependencies = { 'rafamadriz/friendly-snippets' },
 
   version = '1.*',
@@ -63,6 +69,7 @@ local autopairs = {
 local dropbar = {
     'Bekaboo/dropbar.nvim',
     -- optional, but required for fuzzy finder support
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make'
@@ -75,8 +82,9 @@ local dropbar = {
     end
   }
 return {
-  dropbar,
   autopairs,
   blink,
+  dropbar,
+  plantuml,
   treesitter,
 }
