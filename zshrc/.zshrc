@@ -119,3 +119,8 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # Added by Windsurf
 export PATH="/Users/mpozzo/.codeium/windsurf/bin:$PATH"
+
+# Added by Python Dev Environment Installer
+export HOMEBREW_BIN_LOCATION="/opt/homebrew/bin"
+export PATH="$HOMEBREW_BIN_LOCATION:$PATH"
+# Added by Python Dev Environment Installer

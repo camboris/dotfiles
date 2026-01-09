@@ -1,3 +1,17 @@
+local decisive = {
+  "emmanueltouzery/decisive.nvim",
+  ft = "csv",
+  config = function()
+    require('decisive').setup {}
+  end,
+  keys = {
+    { "<leader>cca", ":lua require('decisive').align_csv({})<cr>",        desc = "align CSV" },
+    { "<leader>ccA", ":lua require('decisive').align_csv_clear({})<cr>",  desc = "align CSV clear" },
+    { "[c",          ":lua require('decisive').align_csv_prev_col()<cr>", desc = "align CSV prev col" },
+    { "]c",          ":lua require('decisive').align_csv_next_col()<cr>", desc = "align CSV next col" },
+  }
+}
+
 local kanagawa = {
   "rebelot/kanagawa.nvim",
   config = function()
@@ -88,6 +102,7 @@ local bufferline = {
 
 return {
   bufferline,
+  decisive,
   kanagawa,
   lualine,
   oil,
