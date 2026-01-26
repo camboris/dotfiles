@@ -38,7 +38,7 @@ local blink = {
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
       per_filetype = {
-        org = { 'orgmode' }
+        org = { 'orgmode', 'buffer', 'snippets' }
       },
       providers = {
         orgmode = {

@@ -97,6 +97,14 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = format_sync_grp,
 })
 
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+  pattern = { "*.org"},
+  callback = function()
+    vim.opt.conceallevel=2
+    vim.opt.concealcursor='nc'
+  end,
+})
 -- vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 --   pattern = { "*.md", "*.json" },
 --   callback = function()
