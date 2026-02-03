@@ -158,37 +158,16 @@ local roam = {
 ]==],
           target = "notes/people/interactions/%<%Y-%m-%d>-${slug}.org"
         },
-        --       templates = {
-        --         m = {
-        --           description = 'Group Meeting',
-        --           template = [==[
-        -- * Group Meeting %u                                      :meetings:
-        -- - time :: <%<%Y-%m-%d %a >>
-        -- - tags :: [[id:<redacted>][Group Meetings]]]==],
-        --           target = 'meetings/%<%Y%m%d%H%M%S>-%[slug].org',
-        --           properties = { empty_lines = { before = 1 } },
-        --         },
-        --
-        --       },
       },
       extensions = {
         dailies = {
+          bindings = {
+            capture_today = "<leader>ndc",
+          },
           templates = {
-            w = {
-              description = "work-todo",
+            t = {
+              description = "todo",
               template = "TODO %?\nCreated %T",
-              target = "~/org/roam/daily/work-inbox.org",
-              datetree = {
-                tree_type = "week",
-              },
-            },
-            s = {
-              description = "study",
-              template = "#+title: %f\n#+filetags:%^{topics}",
-            },
-            p = {
-              description = "People",
-              template = "%? \n * Algo",
               target = "%<%Y-%m-%d>.org",
             },
             n = {
@@ -200,10 +179,13 @@ local roam = {
             m = {
               description = 'Meeting',
               template = [==[
-        * Meeting %? %u                                      :meetings:
-        - time :: <%<%Y-%m-%d %a >>
-
-        - tags :: [[id:C19D5019-22F2-4447-866A-20015DAD7C25][#meetings]]
+* %? %u                                      :meetings:
+:PROPERTIES:
+:ID: %(return require'orgmode.org.id'.new())
+:DATE: %<%Y-%m-%d>
+:START: %^{Start time|%<%Y-%m-%d %a %H:%M>}
+:END:
+- tags :: [[id:C19D5019-22F2-4447-866A-20015DAD7C25][#meetings]]
         ]==],
               target = "%<%Y-%m-%d>.org",
               properties = { empty_lines = { before = 1 } },
