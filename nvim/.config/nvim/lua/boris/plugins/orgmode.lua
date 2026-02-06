@@ -69,8 +69,11 @@ local orgmode = {
   },
   config = function()
     require('orgmode').setup({
-      org_agenda_files = '~/orgfiles/**/*',
-      org_default_notes_file = '~/orgfiles/refile.org',
+      -- org_agenda_files = '~/orgfiles/**/*',
+      org_agenda_files =
+      '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/**/*',
+      org_default_notes_file =
+      '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/refile.org',
       mappings = {
         org_return_uses_meta_return = true
       },
@@ -93,7 +96,8 @@ local roam = {
   config = function()
     require("org-roam").setup({
       -- directory = "~/org_roam_files",
-      directory = "~/orgfiles",
+      directory =
+      "~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles",
       -- optional
       -- org_files = {
       --   "~/another_org_dir",
@@ -137,27 +141,6 @@ local roam = {
 ]==],
           target = "people/%[slug].org"
         },
-
-        i = {
-          name = "interaction",
-          description = "Interaction log (linked to a person)",
-          template = [==[
-* Interaction: %^{Short title}   :interaction:
-:PROPERTIES:
-:ID: %(return require'orgmode.org.id'.new())
-:DATE: %U
-:CONTACT: [[id:%^{Contact org-id (paste org-id here)}][%^{Contact name}]]
-:CHANNEL: %^{Channel|slack}
-:END:
-
-** Notes
-- %?
-
-** Actions
-- TODO %^{Action (optional)|} SCHEDULED: %^{Due|%<%Y-%m-%d>}
-]==],
-          target = "notes/people/interactions/%<%Y-%m-%d>-${slug}.org"
-        },
       },
       extensions = {
         dailies = {
@@ -165,7 +148,7 @@ local roam = {
             capture_today = "<leader>ndc",
           },
           templates = {
-            t = {
+            o = {
               description = "todo",
               template = "TODO %?\nCreated %T",
               target = "%<%Y-%m-%d>.org",
@@ -190,6 +173,45 @@ local roam = {
               target = "%<%Y-%m-%d>.org",
               properties = { empty_lines = { before = 1 } },
             },
+            t = {
+              description = 'Tactical',
+              subtemplates = {
+                g = {
+                  description = 'Gera',
+                  template = [==[
+* Tactical Gera %t                                :tactical:
+:PROPERTIES:
+:ID: %(return require'orgmode.org.id'.new())
+:DATE: %<%Y-%m-%d>
+:START: %^{Start time|%<%Y-%m-%d %a %H:%M>}
+:END:
+  - tags :: [[id:5262609C-3917-41B6-A334-DD25B5F91AF8][#tactical]] [[id:FD763F2D-02D0-4876-B099-F54EE88A2C8D][Gerardo Daniel Zachary]]
+
+** %?
+]==],
+                  target = "daily/%<%Y-%m-%d>.org",
+                  properties = { empty_lines = { before = 1 } },
+
+                },
+                j = {
+                  description = 'Joaco',
+                  template = [==[
+* Tactical Joaco %t                                :tactical:
+:PROPERTIES:
+:ID: %(return require'orgmode.org.id'.new())
+:DATE: %<%Y-%m-%d>
+:START: %^{Start time|%<%Y-%m-%d %a %H:%M>}
+:END:
+  - tags :: [[id:5262609C-3917-41B6-A334-DD25B5F91AF8][#tactical]] [[id:5A9AAA4B-3888-48D9-A936-BDA13C4E965B][Joaquin Miguel Molina Waldrop]]
+
+** %?
+]==],
+                  target = "daily/%<%Y-%m-%d>.org",
+                  properties = { empty_lines = { before = 1 } },
+
+                }
+              }
+            }
           },
         },
       },
@@ -197,6 +219,7 @@ local roam = {
   end
 }
 
+-- * [[id:5262609C-3917-41B6-A334-DD25B5F91AF8][#tactical]]
 return {
   orgmode,
   roam,
@@ -204,5 +227,5 @@ return {
   orgbullets,
   telescopeorgmode,
   telescopeorgroam,
-  superagenda,
+  -- superagenda,
 }
