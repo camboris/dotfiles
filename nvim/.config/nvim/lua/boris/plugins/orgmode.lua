@@ -152,11 +152,13 @@ local roam = {
               description = "todo",
               template = "TODO %?\nCreated %T",
               target = "%<%Y-%m-%d>.org",
+              properties = { empty_lines = { before = 1 } },
             },
             n = {
               description = "Nota",
               template = "* %T - %?",
               target = "%<%Y-%m-%d>.org",
+              properties = { empty_lines = { before = 1 } },
             },
 
             m = {
