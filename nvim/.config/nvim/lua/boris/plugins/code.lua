@@ -1,6 +1,6 @@
 local plantuml = {
   "aklt/plantuml-syntax",
-  ft="plantuml"
+  ft = "plantuml"
 }
 
 local blink = {
@@ -37,6 +37,16 @@ local blink = {
 
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
+      per_filetype = {
+        org = { 'orgmode', 'buffer', 'snippets' }
+      },
+      providers = {
+        orgmode = {
+          name = 'Orgmode',
+          module = 'orgmode.org.autocompletion.blink',
+          fallbacks = { 'buffer' },
+        },
+      },
     },
 
     -- See the fuzzy documentation for more information
@@ -51,7 +61,7 @@ local treesitter = {
   branch = 'main',
   build = ':TSUpdate',
   config = function()
-    require 'nvim-treesitter'.install { "lua", "vim", "help", "markdown", "html", "javascript", "json", "python", "regex", "tsx",
+    require 'nvim-treesitter'.install { "lua", "vim", "markdown", "html", "javascript", "json", "python", "regex", "tsx",
       "typescript", "css", "diff", "dockerfile", "dot", "go", "http", "bash", "markdown_inline" }
   end
 }
@@ -67,20 +77,20 @@ local autopairs = {
   end
 }
 local dropbar = {
-    'Bekaboo/dropbar.nvim',
-    -- optional, but required for fuzzy finder support
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      'nvim-telescope/telescope-fzf-native.nvim',
-      build = 'make'
-    },
-    config = function()
-      local dropbar_api = require('dropbar.api')
-      vim.keymap.set('n', '<Leader>;', dropbar_api.pick, { desc = 'Pick symbols in winbar' })
-      vim.keymap.set('n', '[;', dropbar_api.goto_context_start, { desc = 'Go to start of current context' })
-      vim.keymap.set('n', '];', dropbar_api.select_next_context, { desc = 'Select next context' })
-    end
-  }
+  'Bekaboo/dropbar.nvim',
+  -- optional, but required for fuzzy finder support
+  event = { "BufReadPre", "BufNewFile" },
+  dependencies = {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make'
+  },
+  config = function()
+    local dropbar_api = require('dropbar.api')
+    vim.keymap.set('n', '<Leader>;', dropbar_api.pick, { desc = 'Pick symbols in winbar' })
+    vim.keymap.set('n', '[;', dropbar_api.goto_context_start, { desc = 'Go to start of current context' })
+    vim.keymap.set('n', '];', dropbar_api.select_next_context, { desc = 'Select next context' })
+  end
+}
 return {
   autopairs,
   blink,

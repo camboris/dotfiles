@@ -39,7 +39,7 @@ local snacks = {
   keys = {
     { "<leader>gg", function() Snacks.lazygit() end,                                    desc = "Lazygit" },
     { "<leader>un", function() Snacks.notifier.hide() end,                              desc = "Dismiss All Notifications" },
-    { "<leader>n",  function() Snacks.notifier.show_history() end,                      desc = "Notification History" },
+    -- { "<leader>n",  function() Snacks.notifier.show_history() end,                      desc = "Notification History" },
     { "<c-/>",      function() Snacks.terminal() end,                                   desc = "Toggle Terminal" },
     { "<F1>",       function() Snacks.terminal(nil, { win = { position = "float" } }) end, desc = "Toggle Terminal" },
     { "<c-_>",      function() Snacks.terminal() end,                                   desc = "which_key_ignore" },

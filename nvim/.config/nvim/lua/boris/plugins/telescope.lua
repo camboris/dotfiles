@@ -35,7 +35,7 @@ local telescope = {
       { "<leader>fh",       "<cmd>Telescope help_tags<cr>",                                      desc = "Telescope Help Tags" },
       { "<leader>fd",       "<cmd>Telescope grep_string<cr>",                                    desc = "Telescope Grep String" },
       { "<leader>fp",       "<cmd>Telescope live_grep<cr>",                                      desc = "Telescope Live Grep" },
-      { "<leader>fo",       "<cmd>Telescope oldfiles<cr>",                                       desc = "Telescope Oldfiles" },
+      -- { "<leader>fo",       "<cmd>Telescope oldfiles<cr>",                                       desc = "Telescope Oldfiles" },
       { "<leader>fs",       "<cmd>Telescope spell_suggest<cr>",                                  desc = "Telescope Spell suggest" },
       { "<leader>f<space>", "<cmd>Telescope buffers<cr>",                                        desc = "Telescope Buffers" },
     },

@@ -1,9 +1,3 @@
-local headlines = {
-  "lukas-reineke/headlines.nvim",
-  ft = "markdown",
-  dependencies = "nvim-treesitter/nvim-treesitter",
-  config = true, -- or `opts = {}`
-}
 
 local render_markdow = {
   'MeanderingProgrammer/render-markdown.nvim',
@@ -48,6 +42,5 @@ return {
   render_markdow,
   markdown,
   -- markview,
-  -- headlines,
   markdown_preview,
 }
