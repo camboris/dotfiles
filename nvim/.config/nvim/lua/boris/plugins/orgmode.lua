@@ -4,14 +4,9 @@ local superagenda = {
   dependencies = {
     'nvim-orgmode/orgmode',
   },
-  keys = {
-    { "<leader>os", "cmd>OrgSuperAgenda<cr>",  desc = "OrgMode Super Agenda" },
-    { "<leader>oS", "cmd>OrgSuperAgenda!<cr>", desc = "OrgMode Super Agenda Full Screen" },
-  },
   config = function()
     require('org-super-agenda').setup({
-      org_directories = { "~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/" },
-      org_files       = { '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/**/*' },
+      org_directories = { "~/orgfiles/" }
     })
   end
 }
@@ -74,10 +69,11 @@ local orgmode = {
   },
   config = function()
     require('orgmode').setup({
+      -- org_agenda_files = '~/orgfiles/**/*',
       org_agenda_files =
-      '~/orgfiles/**/*',
+      '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/**/*',
       org_default_notes_file =
-      '~/orgfiles/refile.org',
+      '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/refile.org',
       mappings = {
         org_return_uses_meta_return = true
       },
@@ -101,7 +97,7 @@ local roam = {
     require("org-roam").setup({
       -- directory = "~/org_roam_files",
       directory =
-      "~/orgfiles",
+      "~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles",
       -- optional
       -- org_files = {
       --   "~/another_org_dir",
@@ -120,23 +116,104 @@ local roam = {
           target = "%<%Y%m%d%H%M%S>-%[slug].org",
         },
 
-        extensions = {
-          dailies = {
-            bindings = {
-              capture_today = "<leader>ndc",
+        p = {
+          name = "person",
+          description = "Person / Contact note",
+          template = [==[
+* %[title]                          :person:contact:
+:PROPERTIES:
+:NAME: %[title]
+:ALIAS: %^{Aliases|}             ; comma-separated
+:ROLE: %^{Role|}
+:TEAM: %^{Team|}
+:EMAIL: %^{Email|}
+:SLACK_PROFILE: %^{Slack profile URL|}  ; paste full URL if available
+:LOCATION: %^{Location|}
+:CREATED: %U
+:END:
+
+** Summary
+- One-line summary
+
+** Notes
+- %?
+
+]==],
+          target = "people/%[slug].org"
+        },
+      },
+      extensions = {
+        dailies = {
+          bindings = {
+            capture_today = "<leader>ndc",
+          },
+          templates = {
+            o = {
+              description = "todo",
+              template = "TODO %?\nCreated %T",
+              target = "%<%Y-%m-%d>.org",
+              properties = { empty_lines = { before = 1 } },
             },
-            templates = {
-              o = {
-                description = "todo",
-                template = "TODO %?\nCreated %T",
-                target = "%<%Y-%m-%d>.org",
-              },
-              n = {
-                description = "Nota",
-                template = "* %T - %?",
-                target = "%<%Y-%m-%d>.org",
-              },
+            n = {
+              description = "Nota",
+              template = "* %T - %?",
+              target = "%<%Y-%m-%d>.org",
+              properties = { empty_lines = { before = 1 } },
             },
+
+            m = {
+              description = 'Meeting',
+              template = [==[
+* %? %u                                      :meetings:
+:PROPERTIES:
+:ID: %(return require'orgmode.org.id'.new())
+:DATE: %<%Y-%m-%d>
+:START: %^{Start time|%<%Y-%m-%d %a %H:%M>}
+:END:
+- tags :: [[id:C19D5019-22F2-4447-866A-20015DAD7C25][#meetings]]
+        ]==],
+              target = "%<%Y-%m-%d>.org",
+              properties = { empty_lines = { before = 1 } },
+            },
+            t = {
+              description = 'Tactical',
+              subtemplates = {
+                g = {
+                  description = 'Gera',
+                  template = [==[
+* Tactical Gera %t                                :tactical:
+:PROPERTIES:
+:ID: %(return require'orgmode.org.id'.new())
+:DATE: %<%Y-%m-%d>
+:START: %^{Start time|%<%Y-%m-%d %a %H:%M>}
+:END:
+  - tags :: [[id:5262609C-3917-41B6-A334-DD25B5F91AF8][#tactical]] [[id:FD763F2D-02D0-4876-B099-F54EE88A2C8D][Gerardo Daniel Zachary]]
+
+** %?
+]==],
+                  target = "daily/%<%Y-%m-%d>.org",
+                  properties = { empty_lines = { before = 1 } },
+
+                },
+                j = {
+                  description = 'Joaco',
+                  template = [==[
+* Tactical Joaco %t                                :tactical:
+:PROPERTIES:
+:ID: %(return require'orgmode.org.id'.new())
+:DATE: %<%Y-%m-%d>
+:START: %^{Start time|%<%Y-%m-%d %a %H:%M>}
+:END:
+  - tags :: [[id:5262609C-3917-41B6-A334-DD25B5F91AF8][#tactical]] [[id:5A9AAA4B-3888-48D9-A936-BDA13C4E965B][Joaquin Miguel Molina Waldrop]]
+
+** %?
+]==],
+                  target = "daily/%<%Y-%m-%d>.org",
+                  properties = { empty_lines = { before = 1 } },
+
+                }
+              }
+            }
           },
         },
       },
@@ -144,7 +221,6 @@ local roam = {
   end
 }
 
--- * [[id:5262609C-3917-41B6-A334-DD25B5F91AF8][#tactical]]
 return {
   orgmode,
   roam,
@@ -152,5 +228,5 @@ return {
   orgbullets,
   telescopeorgmode,
   telescopeorgroam,
-  superagenda,
+  -- superagenda,
 }
