@@ -82,14 +82,7 @@ export PATH=$PATH:$GOPATH/bin
 export GOPROXY="https://proxy.golang.org,direct"
 # export GONOPROXY="github.com/mercadolibre,github.com/melisource"
 export GOPROXY='https://proxy.golang.org,direct'
-export GOPRIVATE="github.com/mercadolibre,github.com/melisource"
 
-# nordic-doctor
-export NORDIC_DOCTOR_DIR="$HOME/.nordic-doctor"
-export PATH="$NORDIC_DOCTOR_DIR/bin:$PATH"
-
-# export PATH="/Users/mpozzo/Library/Python/3.9/bin:$PATH"
-export PATH="$HOME/.poetry/bin:$PATH"
 
 export PYENV_ROOT="$HOME/.pyenv"
 
@@ -107,18 +100,6 @@ pokemon-colorscripts -r
 
 export RANGER_FURY_LOCATION=/Users/mpozzo/.fury #Added by Fury CLI
 export RANGER_FURY_VENV_LOCATION=/Users/mpozzo/.fury/fury_venv #Added by Fury CLI
-
-# Added by Fury CLI installation process
-declare FURY_BIN_LOCATION="/Users/mpozzo/.fury/fury_venv/bin" # Added by Fury CLI installation process
-export PATH="$PATH:$FURY_BIN_LOCATION" # Added by Fury CLI installation process
-# Added by Fury CLI installation process
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# Added by Windsurf
-export PATH="/Users/mpozzo/.codeium/windsurf/bin:$PATH"
 
 # Added by Python Dev Environment Installer
 export HOMEBREW_BIN_LOCATION="/opt/homebrew/bin"
