@@ -4,9 +4,14 @@ local superagenda = {
   dependencies = {
     'nvim-orgmode/orgmode',
   },
+  keys = {
+    { "<leader>os", "cmd>OrgSuperAgenda<cr>",  desc = "OrgMode Super Agenda" },
+    { "<leader>oS", "cmd>OrgSuperAgenda!<cr>", desc = "OrgMode Super Agenda Full Screen" },
+  },
   config = function()
     require('org-super-agenda').setup({
-      org_directories = { "~/orgfiles/" }
+      org_directories = { "~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/" },
+      org_files       = { '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/**/*' },
     })
   end
 }
@@ -147,5 +152,5 @@ return {
   orgbullets,
   telescopeorgmode,
   telescopeorgroam,
-  -- superagenda,
+  superagenda,
 }

@@ -1,10 +1,16 @@
-
 local render_markdow = {
   'MeanderingProgrammer/render-markdown.nvim',
   dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
   ---@module 'render-markdown'
   ---@type render.md.UserConfig
-  opts = { completions = { lsp = { enabled = true } }, },
+  opts = {
+    file_types = { "markdown", "md", "AgenticChat" },
+    completions = {
+      lsp = {
+        enabled = true
+      }
+    },
+  },
   ft = "markdown",
 }
 
