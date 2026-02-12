@@ -4,9 +4,14 @@ local superagenda = {
   dependencies = {
     'nvim-orgmode/orgmode',
   },
+  keys = {
+    { "<leader>os", "cmd>OrgSuperAgenda<cr>",  desc = "OrgMode Super Agenda" },
+    { "<leader>oS", "cmd>OrgSuperAgenda!<cr>", desc = "OrgMode Super Agenda Full Screen" },
+  },
   config = function()
     require('org-super-agenda').setup({
-      org_directories = { "~/orgfiles/" }
+      org_directories = { "~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/" },
+      org_files       = { '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/**/*' },
     })
   end
 }
@@ -164,7 +169,7 @@ local roam = {
             m = {
               description = 'Meeting',
               template = [==[
-* %? %u                                      :meetings:
+* %? %t                                      :meetings:
 :PROPERTIES:
 :ID: %(return require'orgmode.org.id'.new())
 :DATE: %<%Y-%m-%d>
@@ -178,6 +183,40 @@ local roam = {
             t = {
               description = 'Tactical',
               subtemplates = {
+                i = {
+                  description = 'Ivan',
+                  template = [==[
+* Tactical Ivan %t                                :tactical:
+:PROPERTIES:
+:ID: %(return require'orgmode.org.id'.new())
+:DATE: %<%Y-%m-%d>
+:START: %^{Start time|%<%Y-%m-%d %a %H:%M>}
+:END:
+  - tags :: [[id:5262609C-3917-41B6-A334-DD25B5F91AF8][#tactical]] [[id:A0478756-8632-4441-A5A7-6DB36ACE7F02][Ivan Federico Ascierto]]
+
+** %?
+]==],
+                  target = "daily/%<%Y-%m-%d>.org",
+                  properties = { empty_lines = { before = 1 } },
+
+                },
+                c = {
+                  description = 'Jorge',
+                  template = [==[
+* Tactical Jorge %t                                :tactical:
+:PROPERTIES:
+:ID: %(return require'orgmode.org.id'.new())
+:DATE: %<%Y-%m-%d>
+:START: %^{Start time|%<%Y-%m-%d %a %H:%M>}
+:END:
+  - tags :: [[id:5262609C-3917-41B6-A334-DD25B5F91AF8][#tactical]] [[id:C6B4DE16-4744-4342-8DB6-E7FB62B5F9AF][Jorge Luis Castro]]
+
+** %?
+]==],
+                  target = "daily/%<%Y-%m-%d>.org",
+                  properties = { empty_lines = { before = 1 } },
+
+                },
                 g = {
                   description = 'Gera',
                   template = [==[
@@ -229,5 +268,5 @@ return {
   orgbullets,
   telescopeorgmode,
   telescopeorgroam,
-  -- superagenda,
+  superagenda,
 }
