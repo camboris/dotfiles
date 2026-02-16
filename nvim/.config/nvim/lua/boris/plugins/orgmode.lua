@@ -77,7 +77,13 @@ local orgmode = {
       mappings = {
         org_return_uses_meta_return = true
       },
+      win_split_mode = 'float',
+      win_border = 'rounded',
+      org_hide_emphasis_markers = true,
+
     })
+
+    vim.lsp.enable('org')
   end,
 }
 
@@ -99,11 +105,13 @@ local roam = {
       directory =
       "~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles",
       -- optional
-      -- org_files = {
-      --   "~/another_org_dir",
-      --   "~/some/folder/*.org",
-      --   "~/a/single/org_file.org"
-      --
+      org_files = {
+        '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/**/*',
+        '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/*.org',
+        --   "~/another_org_dir",
+        --   "~/some/folder/*.org",
+        --   "~/a/single/org_file.org"
+      },
       ui = {
         node_buffer = {
           show_keybindings = true,
@@ -150,7 +158,7 @@ local roam = {
           templates = {
             o = {
               description = "todo",
-              template = "TODO %?\nCreated %T",
+              template = '* TODO %?\n %u',
               target = "%<%Y-%m-%d>.org",
               properties = { empty_lines = { before = 1 } },
             },
@@ -164,13 +172,17 @@ local roam = {
             m = {
               description = 'Meeting',
               template = [==[
-* %? %u                                      :meetings:
+* %? %t                                      :meetings:
 :PROPERTIES:
 :ID: %(return require'orgmode.org.id'.new())
 :DATE: %<%Y-%m-%d>
 :START: %^{Start time|%<%Y-%m-%d %a %H:%M>}
 :END:
 - tags :: [[id:C19D5019-22F2-4447-866A-20015DAD7C25][#meetings]]
+** Notas
+-
+
+** Next Steps
         ]==],
               target = "%<%Y-%m-%d>.org",
               properties = { empty_lines = { before = 1 } },
