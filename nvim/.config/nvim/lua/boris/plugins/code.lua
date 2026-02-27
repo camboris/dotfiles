@@ -1,7 +1,20 @@
+local openingh = {
+  "almo7aya/openingh.nvim",
+  cmd = { "OpenInGHRepo", "OpenInGHFile", "OpenInGHFileLines"}
+}
 local plantuml = {
   "aklt/plantuml-syntax",
   ft = "plantuml"
 }
+
+local coverage = {
+  "mr-u0b0dy/crazy-coverage.nvim",
+  cmd = { "CoverageToggle" },
+  config = function()
+    require("crazy-coverage").setup()
+  end,
+}
+
 local agentic = {
   "carlos-algms/agentic.nvim",
 
@@ -13,31 +26,73 @@ local agentic = {
   -- these are just suggested keymaps; customize as desired
   keys = {
     {
-      "<C-\\>",
+      "<leader>ao",
+      function() require("agentic").open() end,
+      mode = { "n", "v" },
+      desc = "Open Agentic Chat"
+    },
+    {
+      "<leader>ax",
+      function() require("agentic").close() end,
+      mode = { "n", "v" },
+      desc = "Close Agentic Chat"
+    },
+    {
+      "<leader>ai",
       function() require("agentic").toggle() end,
-      mode = { "n", "v", "i" },
+      mode = { "n", "v" },
       desc = "Toggle Agentic Chat"
     },
     {
-      "<C-'>",
+      "<leader>ad",
+      function() require("agentic").add_selection() end,
+      mode = { "n", "v" },
+      desc = "Add selection to Agentic to Context"
+    },
+    {
+      "<leader>af",
+      function() require("agentic").add_file() end,
+      mode = { "n" },
+      desc = "Add file to Agentic to Context"
+    },
+    {
+      "<leader>ac",
       function() require("agentic").add_selection_or_file_to_context() end,
       mode = { "n", "v" },
       desc = "Add file or selection to Agentic to Context"
     },
     {
-      "<C-,>",
+      "<leader>an",
       function() require("agentic").new_session() end,
-      mode = { "n", "v", "i" },
+      mode = { "n", "v" },
       desc = "New Agentic Session"
     },
     {
-      "<A-i>r", -- ai Restore
+      "<leader>ar", -- ai Restore
       function()
         require("agentic").restore_session()
       end,
       desc = "Agentic Restore session",
       silent = true,
-      mode = { "n", "v", "i" },
+      mode = { "n", "v" },
+    },
+    {
+      "<C-\\>",
+      function() require("agentic").toggle() end,
+      mode = { "n", "v" },
+      desc = "Toggle Agentic Chat"
+    },
+    {
+      "<leader>as",
+      function() require("agentic").stop_generation() end,
+      mode = { "n", "v" },
+      desc = "Stop Generation"
+    },
+    {
+      "<leader>al",
+      function() require("agentic").rotate_layout() end,
+      mode = { "n" },
+      desc = "Rotate Layout"
     },
   },
 }
@@ -136,4 +191,6 @@ return {
   plantuml,
   treesitter,
   agentic,
+  coverage,
+  openingh,
 }

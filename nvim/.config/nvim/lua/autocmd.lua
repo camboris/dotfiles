@@ -111,6 +111,13 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  pattern = { "org-roam-select"},
+  callback = function()
+    vim.b.completion = false
+  end,
+})
+
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   pattern = { "*.org"},
   callback = function()
