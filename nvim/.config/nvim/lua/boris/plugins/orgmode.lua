@@ -80,7 +80,15 @@ local orgmode = {
       win_split_mode = 'float',
       win_border = 'rounded',
       org_hide_emphasis_markers = true,
-      org_todo_keywords = { 'TODO(t)', 'PING(p)', 'WAITING(w)', 'NEXT(n)', '|', 'DONE(d)', 'PINGED(s)', 'DELEGATED' },
+      -- TODO para tareas
+      -- PING para contactar a alguien por un tema
+      -- Waiting, esperando feedback o respuesta
+      -- Next para encadenar tareas
+      -- FOLLOW para recordar hacer un seguimiento de un tema
+      -- DONE general
+      -- PINGED para indicar que se hablo
+      -- Delegated, para indicar que una tarea se la deje a alguien, indicar a quien
+      org_todo_keywords = { 'TODO(t)', 'PING(p)', 'WAITING(w)', 'NEXT(n)', 'FOLLOW(f)', '|', 'DONE(d)', 'PINGED(s)', 'DELEGATED' },
       org_agenda_custom_commands = {
         x = {
           description = "Tacticals",
@@ -250,6 +258,15 @@ local roam = {
 - %?
 
 ** Next Steps
+        ]==],
+              target = "%<%Y-%m-%d>.org",
+              properties = { empty_lines = { before = 1 } },
+            },
+            s = {
+              description = 'Meeting Lite',
+              template = [==[
+* %^{meet} %t                                      :meetings:
+- %?
         ]==],
               target = "%<%Y-%m-%d>.org",
               properties = { empty_lines = { before = 1 } },
