@@ -76,10 +76,10 @@ api.nvim_create_autocmd(
 -- )
 
 -- Enable spell checking for certain file types
-api.nvim_create_autocmd(
-  { "BufRead", "BufNewFile" },
-  { pattern = { "*.norg",}, command = "setlocal conceallevel=2" }
-)
+-- api.nvim_create_autocmd(
+--   { "BufRead", "BufNewFile" },
+--   { pattern = { "*.norg",}, command = "setlocal conceallevel=2" }
+-- )
 
 -- set terminal mappings
 local set_terminal_keymaps = function()
@@ -100,16 +100,24 @@ api.nvim_create_autocmd("TermOpen", {
   desc = "Mappings for navigation with a terminal",
 })
 
--- Run gofmt on save
-local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.go",
-  callback = function()
-   require('go.format').gofmt()
-  end,
-  group = format_sync_grp,
-})
+-- -- Run gofmt on save
+-- depende de https://github.com/ray-x/go.nvim
+-- local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   pattern = "*.go",
+--   callback = function()
+--    require('go.format').gofmt()
+--   end,
+--   group = format_sync_grp,
+-- })
 
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  pattern = { "org-roam-select"},
+  callback = function()
+    vim.b.completion = false
+  end,
+})
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   pattern = { "*.org"},

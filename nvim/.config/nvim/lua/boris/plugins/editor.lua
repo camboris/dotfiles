@@ -1,6 +1,6 @@
 local surround = {
   "kylechui/nvim-surround",
-  version = "^3.0.0",   -- Use for stability; omit to use `main` branch for the latest features
+  version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
   event = "VeryLazy",
   config = function()
     require("nvim-surround").setup({
@@ -94,7 +94,14 @@ local lualine = {
     "nvim-tree/nvim-web-devicons"
   },
   config = function()
-    require('lualine').setup({})
+    require('lualine').setup({
+      options = {
+        disabled_filetypes = {
+          statusline = { 'AgenticChat', 'AgenticInput', 'AgenticCode', 'AgenticFiles' },
+          winbar = { 'AgenticChat', 'AgenticInput', 'AgenticCode', 'AgenticFiles' },
+        }
+      }
+    })
   end
 }
 

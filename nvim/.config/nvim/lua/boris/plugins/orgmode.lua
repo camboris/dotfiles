@@ -69,14 +69,95 @@ local orgmode = {
   },
   config = function()
     require('orgmode').setup({
+      -- org_agenda_files = '~/orgfiles/**/*',
       org_agenda_files =
-      '~/orgfiles/**/*',
+      '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/**/*',
       org_default_notes_file =
-      '~/orgfiles/refile.org',
+      '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/refile.org',
       mappings = {
         org_return_uses_meta_return = true
       },
+      win_split_mode = 'float',
+      win_border = 'rounded',
+      org_hide_emphasis_markers = true,
+      -- TODO para tareas
+      -- PING para contactar a alguien por un tema
+      -- Waiting, esperando feedback o respuesta
+      -- Next para encadenar tareas
+      -- FOLLOW para recordar hacer un seguimiento de un tema
+      -- DONE general
+      -- PINGED para indicar que se hablo
+      -- Delegated, para indicar que una tarea se la deje a alguien, indicar a quien
+      org_todo_keywords = { 'TODO(t)', 'PING(p)', 'WAITING(w)', 'NEXT(n)', 'FOLLOW(f)', '|', 'DONE(d)', 'PINGED(s)', 'DELEGATED' },
+      org_agenda_custom_commands = {
+        x = {
+          description = "Tacticals",
+          types = {
+            {
+              type = 'tags_todo',
+              org_agenda_overriding_header = 'Ivan',
+              match = 'Ivan+TODO="PING"',
+              -- match = 'Ivan',
+            },
+            {
+              type = 'tags',
+              match = 'Eze+TODO="PING"', --Same as providing a "Match:" for tags view <leader>oa + m, See: https://orgmode.org/manual/Matching-tags-and-properties.html
+              org_agenda_overriding_header = 'Eze',
+            },
+            {
+              type = 'tags',
+              match = 'Joaco+TODO="PING"', --Same as providing a "Match:" for tags view <leader>oa + m, See: https://orgmode.org/manual/Matching-tags-and-properties.html
+              org_agenda_overriding_header = 'Joaco',
+            },
+            {
+              type = 'tags',
+              match = 'Jona+TODO="PING"', --Same as providing a "Match:" for tags view <leader>oa + m, See: https://orgmode.org/manual/Matching-tags-and-properties.html
+              org_agenda_overriding_header = 'Jona',
+            },
+            {
+              type = 'tags',
+              match = 'Jorge+TODO="PING"', --Same as providing a "Match:" for tags view <leader>oa + m, See: https://orgmode.org/manual/Matching-tags-and-properties.html
+              org_agenda_overriding_header = 'Jorge',
+            },
+            {
+              type = 'tags',
+              match = 'Gera+TODO="PING"', --Same as providing a "Match:" for tags view <leader>oa + m, See: https://orgmode.org/manual/Matching-tags-and-properties.html
+              org_agenda_overriding_header = 'Gera',
+            },
+            {
+              type = 'tags',
+              match = 'Emi+TODO="PING"', --Same as providing a "Match:" for tags view <leader>oa + m, See: https://orgmode.org/manual/Matching-tags-and-properties.html
+              org_agenda_overriding_header = 'Emi',
+            },
+          },
+        },
+        c = {
+          description = 'Vista Combinada', -- Description shown in the prompt for the shortcut
+          types = {
+            {
+              type = 'tags_todo',                   -- Type can be agenda | tags | tags_todo
+              match = '+PRIORITY="A"',              --Same as providing a "Match:" for tags view <leader>oa + m, See: https://orgmode.org/manual/Matching-tags-and-properties.html
+              org_agenda_overriding_header = 'High priority todos',
+              org_agenda_todo_ignore_deadlines = 'far', -- Ignore all deadlines that are too far in future (over org_deadline_warning_days). Possible values: all | near | far | past | future
+            },
+            {
+              type = 'agenda',
+              org_agenda_overriding_header = 'My daily agenda',
+              org_agenda_span = 'day' -- can be any value as org_agenda_span
+            },
+           {
+              type = 'agenda',
+              org_agenda_overriding_header = 'Whole week overview',
+              org_agenda_span = 'week',    -- 'week' is default, so it's not necessary here, just an example
+              org_agenda_start_on_weekday = 1, -- Start on Monday
+              org_agenda_remove_tags = true -- Do not show tags only for this view
+            },
+          }
+        }
+      }
     })
+
+    vim.lsp.enable('org')
   end,
 }
 
@@ -96,13 +177,15 @@ local roam = {
     require("org-roam").setup({
       -- directory = "~/org_roam_files",
       directory =
-      "~/orgfiles",
+      "~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles",
       -- optional
-      -- org_files = {
-      --   "~/another_org_dir",
-      --   "~/some/folder/*.org",
-      --   "~/a/single/org_file.org"
-      --
+      org_files = {
+        '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/**/*',
+        '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/*.org',
+        --   "~/another_org_dir",
+        --   "~/some/folder/*.org",
+        --   "~/a/single/org_file.org"
+      },
       ui = {
         node_buffer = {
           show_keybindings = true,
@@ -115,23 +198,135 @@ local roam = {
           target = "%<%Y%m%d%H%M%S>-%[slug].org",
         },
 
-        extensions = {
-          dailies = {
-            bindings = {
-              capture_today = "<leader>ndc",
+        p = {
+          name = "person",
+          description = "Person / Contact note",
+          template = [==[
+* %[title]                          :person:contact:
+:PROPERTIES:
+:NAME: %[title]
+:ALIAS: %^{Aliases|}             ; comma-separated
+:ROLE: %^{Role|}
+:TEAM: %^{Team|}
+:EMAIL: %^{Email|}
+:SLACK_PROFILE: %^{Slack profile URL|}  ; paste full URL if available
+:LOCATION: %^{Location|}
+:CREATED: %U
+:END:
+
+** Summary
+- One-line summary
+
+** Notes
+- %?
+
+]==],
+          target = "people/%[slug].org"
+        },
+      },
+      extensions = {
+        dailies = {
+          bindings = {
+            capture_today = "<leader>ndc",
+          },
+          templates = {
+            o = {
+              description = "todo",
+              template = '* TODO %?\n %u',
+              target = "%<%Y-%m-%d>.org",
+              properties = { empty_lines = { before = 1 } },
             },
-            templates = {
-              o = {
-                description = "todo",
-                template = "TODO %?\nCreated %T",
-                target = "%<%Y-%m-%d>.org",
-              },
-              n = {
-                description = "Nota",
-                template = "* %T - %?",
-                target = "%<%Y-%m-%d>.org",
-              },
+            n = {
+              description = "Nota",
+              template = "* %T - %?",
+              target = "%<%Y-%m-%d>.org",
+              properties = { empty_lines = { before = 1 } },
             },
+
+            m = {
+              description = 'Meeting',
+              template = [==[
+* %^{meet} %t                                      :meetings:
+:PROPERTIES:
+:ID: %(return require'orgmode.org.id'.new())
+:DATE: %<%Y-%m-%d>
+:START: %^{Start time|%<%Y-%m-%d %a %H:%M>}
+:END:
+- tags :: [[id:C19D5019-22F2-4447-866A-20015DAD7C25][#meetings]]
+- participantes ::
+** Notas
+- %?
+
+** Next Steps
+        ]==],
+              target = "%<%Y-%m-%d>.org",
+              properties = { empty_lines = { before = 1 } },
+            },
+            s = {
+              description = 'Meeting Lite',
+              template = [==[
+* %^{meet} %t                                      :meetings:
+- %?
+        ]==],
+              target = "%<%Y-%m-%d>.org",
+              properties = { empty_lines = { before = 1 } },
+            },
+            t = {
+              description = 'Tactical',
+              subtemplates = {
+                i = {
+                  description = 'Ivan',
+                  template = [==[
+* Tactical Ivan %t                                :tactical:Ivan:
+:PROPERTIES:
+:ID: %(return require'orgmode.org.id'.new())
+:DATE: %<%Y-%m-%d>
+:START: %^{Start time|%<%Y-%m-%d %a %H:%M>}
+:END:
+  - tags :: [[id:5262609C-3917-41B6-A334-DD25B5F91AF8][#tactical]] [[id:A0478756-8632-4441-A5A7-6DB36ACE7F02][Ivan Federico Ascierto]]
+
+** %?
+]==],
+                  target = "daily/%<%Y-%m-%d>.org",
+                  properties = { empty_lines = { before = 1 } },
+
+                },
+                g = {
+                  description = 'Gera',
+                  template = [==[
+* Tactical Gera %t                                :tactical:Gera:
+:PROPERTIES:
+:ID: %(return require'orgmode.org.id'.new())
+:DATE: %<%Y-%m-%d>
+:START: %^{Start time|%<%Y-%m-%d %a %H:%M>}
+:END:
+  - tags :: [[id:5262609C-3917-41B6-A334-DD25B5F91AF8][#tactical]] [[id:FD763F2D-02D0-4876-B099-F54EE88A2C8D][Gerardo Daniel Zachary]]
+
+** %?
+]==],
+                  target = "daily/%<%Y-%m-%d>.org",
+                  properties = { empty_lines = { before = 1 } },
+
+                },
+                j = {
+                  description = 'Joaco',
+                  template = [==[
+* Tactical Joaco %t                                :tactical:Joaco:
+:PROPERTIES:
+:ID: %(return require'orgmode.org.id'.new())
+:DATE: %<%Y-%m-%d>
+:START: %^{Start time|%<%Y-%m-%d %a %H:%M>}
+:END:
+  - tags :: [[id:5262609C-3917-41B6-A334-DD25B5F91AF8][#tactical]] [[id:5A9AAA4B-3888-48D9-A936-BDA13C4E965B][Joaquin Miguel Molina Waldrop]]
+
+** %?
+]==],
+                  target = "daily/%<%Y-%m-%d>.org",
+                  properties = { empty_lines = { before = 1 } },
+
+                }
+              }
+            }
           },
         },
       },
@@ -139,7 +334,6 @@ local roam = {
   end
 }
 
--- * [[id:5262609C-3917-41B6-A334-DD25B5F91AF8][#tactical]]
 return {
   orgmode,
   roam,

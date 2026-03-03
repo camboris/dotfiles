@@ -1,8 +1,127 @@
+local go = {
+  "ray-x/go.nvim",
+  dependencies = { -- optional packages
+    "ray-x/guihua.lua",
+    -- "neovim/nvim-lspconfig",
+    "nvim-treesitter/nvim-treesitter",
+  },
+  opts = function()
+    require("go").setup(opts)
+    local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      pattern = "*.go",
+      callback = function()
+        require('go.format').goimports()
+      end,
+      group = format_sync_grp,
+    })
+    return {
+      -- lsp_keymaps = false,
+      -- other options
+    }
+  end,
+  event = { "CmdlineEnter" },
+  ft = { "go", 'gomod' },
+  build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+}
+local openingh = {
+  "almo7aya/openingh.nvim",
+  cmd = { "OpenInGHRepo", "OpenInGHFile", "OpenInGHFileLines" }
+}
 local plantuml = {
   "aklt/plantuml-syntax",
   ft = "plantuml"
 }
 
+local coverage = {
+  "mr-u0b0dy/crazy-coverage.nvim",
+  cmd = { "CoverageToggle" },
+  config = function()
+    require("crazy-coverage").setup()
+  end,
+}
+
+local agentic = {
+  "carlos-algms/agentic.nvim",
+
+  opts = {
+    -- Available by default: "claude-acp" | "gemini-acp" | "codex-acp" | "opencode-acp" | "cursor-acp" | "auggie-acp"
+    provider = "claude-acp", -- setting the name here is all you need to get started
+  },
+
+  -- these are just suggested keymaps; customize as desired
+  keys = {
+    {
+      "<leader>ao",
+      function() require("agentic").open() end,
+      mode = { "n", "v" },
+      desc = "Open Agentic Chat"
+    },
+    {
+      "<leader>ax",
+      function() require("agentic").close() end,
+      mode = { "n", "v" },
+      desc = "Close Agentic Chat"
+    },
+    {
+      "<leader>ai",
+      function() require("agentic").toggle() end,
+      mode = { "n", "v" },
+      desc = "Toggle Agentic Chat"
+    },
+    {
+      "<leader>ad",
+      function() require("agentic").add_selection() end,
+      mode = { "n", "v" },
+      desc = "Add selection to Agentic to Context"
+    },
+    {
+      "<leader>af",
+      function() require("agentic").add_file() end,
+      mode = { "n" },
+      desc = "Add file to Agentic to Context"
+    },
+    {
+      "<leader>ac",
+      function() require("agentic").add_selection_or_file_to_context() end,
+      mode = { "n", "v" },
+      desc = "Add file or selection to Agentic to Context"
+    },
+    {
+      "<leader>an",
+      function() require("agentic").new_session() end,
+      mode = { "n", "v" },
+      desc = "New Agentic Session"
+    },
+    {
+      "<leader>ar", -- ai Restore
+      function()
+        require("agentic").restore_session()
+      end,
+      desc = "Agentic Restore session",
+      silent = true,
+      mode = { "n", "v" },
+    },
+    {
+      "<C-\\>",
+      function() require("agentic").toggle() end,
+      mode = { "n", "v" },
+      desc = "Toggle Agentic Chat"
+    },
+    {
+      "<leader>as",
+      function() require("agentic").stop_generation() end,
+      mode = { "n", "v" },
+      desc = "Stop Generation"
+    },
+    {
+      "<leader>al",
+      function() require("agentic").rotate_layout() end,
+      mode = { "n" },
+      desc = "Rotate Layout"
+    },
+  },
+}
 local blink = {
   'saghen/blink.cmp',
   event = { "BufReadPre", "BufNewFile" },
@@ -97,4 +216,8 @@ return {
   dropbar,
   plantuml,
   treesitter,
+  agentic,
+  coverage,
+  openingh,
+  -- go,
 }
