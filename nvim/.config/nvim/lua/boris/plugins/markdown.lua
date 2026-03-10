@@ -1,3 +1,9 @@
+local markdown_plus = {
+  "yousefhadder/markdown-plus.nvim",
+  ft = "markdown",
+  opts = {},
+}
+
 local render_markdow = {
   'MeanderingProgrammer/render-markdown.nvim',
   dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
@@ -46,7 +52,8 @@ local markdown = {
 
 return {
   render_markdow,
-  markdown,
+  -- markdown,
   -- markview,
-  markdown_preview,
+  -- markdown_preview,
+  markdown_plus
 }

@@ -6,7 +6,63 @@ local superagenda = {
   },
   config = function()
     require('org-super-agenda').setup({
-      org_directories = { "~/orgfiles/" }
+      org_files           = {
+        '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/**/*',
+      },
+      org_directories     = {
+        '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/',
+      }, -- recurse for *.org
+      exclude_files       = {},
+      exclude_directories = {},
+      show_other_group    = true,
+      todo_states         = {
+        { name = 'TODO',      keymap = 'ot', color = '#FF5555', strike_through = false, fields = { 'filename', 'todo', 'headline', 'priority', 'date', 'tags' } },
+        { name = 'PING',      keymap = 'op', color = '#FFAA00', strike_through = false, fields = { 'filename', 'todo', 'headline', 'priority', 'date', 'tags' } },
+        { name = 'WAITING',   keymap = 'ow', color = '#BD93F9', strike_through = false, fields = { 'filename', 'todo', 'headline', 'priority', 'date', 'tags' } },
+        { name = 'NEXT',      keymap = 'on', color = '#BD93F9', strike_through = false, fields = { 'filename', 'todo', 'headline', 'priority', 'date', 'tags' } },
+        { name = 'FOLLOW',    keymap = 'of', color = '#BD93F9', strike_through = false, fields = { 'filename', 'todo', 'headline', 'priority', 'date', 'tags' } },
+        { name = 'DONE',      keymap = 'od', color = '#50FA7B', strike_through = true,  fields = { 'filename', 'todo', 'headline', 'priority', 'date', 'tags' } },
+        { name = 'PINGED',    keymap = 'os', color = '#50FA7B', strike_through = true,  fields = { 'filename', 'todo', 'headline', 'priority', 'date', 'tags' } },
+        { name = 'DELEGATED', keymap = 'oe', color = '#50FA7B', strike_through = true,  fields = { 'filename', 'todo', 'headline', 'priority', 'date', 'tags' } },
+      },
+      groups              = {
+        { name = '📅 Today', matcher = function(i) return i.scheduled and i.scheduled:is_today() end, sort = { by = 'scheduled_time', order = 'asc' } },
+        { name = '🗓️ Tomorrow', matcher = function(i) return i.scheduled and i.scheduled:days_from_today() == 1 end, sort = { by = 'scheduled_time', order = 'asc' } },
+        {
+          name = '☠️ Deadlines',
+          matcher = function(i)
+            return i.deadline and i.todo_state ~= 'DONE' and
+                not i:has_tag('personal')
+          end,
+          sort = { by = 'deadline', order = 'asc' }
+        },
+        { name = '⭐ Important', matcher = function(i) return i.priority == 'A' and (i.deadline or i.scheduled) end, sort = { by = 'date_nearest', order = 'asc' } },
+        {
+          name = '⏳ Overdue',
+          matcher = function(i)
+            return i.todo_state ~= 'DONE' and
+                ((i.deadline and i.deadline:is_past()) or (i.scheduled and i.scheduled:is_past()))
+          end,
+          sort = { by = 'date_nearest', order = 'asc' }
+        },
+        {
+          name = '📆 Upcoming',
+          matcher = function(i)
+            local days = require('org-super-agenda.config').get().upcoming_days or 10
+            local d1 = i.deadline and i.deadline:days_from_today()
+            local d2 = i.scheduled and i.scheduled:days_from_today()
+            return (d1 and d1 >= 0 and d1 <= days) or (d2 and d2 >= 0 and d2 <= days)
+          end,
+          sort = { by = 'date_nearest', order = 'asc' }
+        },
+      },
+      custom_views        = {
+        tactical_ivan = {
+          name = "Tactical Ivan",
+          keymap = "<leader>nti",
+          filter = "tag:Ivan todo:PING",
+        },
+      },
     })
   end
 }
@@ -70,6 +126,11 @@ local orgmode = {
   config = function()
     require('orgmode').setup({
       -- org_agenda_files = '~/orgfiles/**/*',
+      ui = {
+        input = {
+          use_vim_ui = true
+        }
+      },
       org_agenda_files =
       '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/**/*',
       org_default_notes_file =
@@ -135,8 +196,8 @@ local orgmode = {
           description = 'Vista Combinada', -- Description shown in the prompt for the shortcut
           types = {
             {
-              type = 'tags_todo',                   -- Type can be agenda | tags | tags_todo
-              match = '+PRIORITY="A"',              --Same as providing a "Match:" for tags view <leader>oa + m, See: https://orgmode.org/manual/Matching-tags-and-properties.html
+              type = 'tags_todo',                       -- Type can be agenda | tags | tags_todo
+              match = '+PRIORITY="A"',                  --Same as providing a "Match:" for tags view <leader>oa + m, See: https://orgmode.org/manual/Matching-tags-and-properties.html
               org_agenda_overriding_header = 'High priority todos',
               org_agenda_todo_ignore_deadlines = 'far', -- Ignore all deadlines that are too far in future (over org_deadline_warning_days). Possible values: all | near | far | past | future
             },
@@ -145,12 +206,12 @@ local orgmode = {
               org_agenda_overriding_header = 'My daily agenda',
               org_agenda_span = 'day' -- can be any value as org_agenda_span
             },
-           {
+            {
               type = 'agenda',
               org_agenda_overriding_header = 'Whole week overview',
-              org_agenda_span = 'week',    -- 'week' is default, so it's not necessary here, just an example
+              org_agenda_span = 'week',        -- 'week' is default, so it's not necessary here, just an example
               org_agenda_start_on_weekday = 1, -- Start on Monday
-              org_agenda_remove_tags = true -- Do not show tags only for this view
+              org_agenda_remove_tags = true    -- Do not show tags only for this view
             },
           }
         }
@@ -341,5 +402,5 @@ return {
   orgbullets,
   telescopeorgmode,
   telescopeorgroam,
-  -- superagenda,
+  superagenda,
 }
