@@ -18,3 +18,7 @@ keybind = ctrl+a>z=toggle_split_zoom
 
 keybind = ctrl+a>n=next_tab
 keybind = ctrl+a>p=previous_tab
+
+notify-on-command-finish = unfocused
+notify-on-command-finish-action = no-bell,notify
+notify-on-command-finish-after = 30s
