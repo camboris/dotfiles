@@ -68,6 +68,7 @@ alias ls='ls --color'
 alias la='ls -al'
 alias vim='nvim'
 alias c='clear'
+alias ci='rm -rf node_modules package-lock.json && npm i'
 
 # Shell integrations
 eval "$(fzf --zsh)"
@@ -105,3 +106,117 @@ export RANGER_FURY_VENV_LOCATION=/Users/mpozzo/.fury/fury_venv #Added by Fury CL
 export HOMEBREW_BIN_LOCATION="/opt/homebrew/bin"
 export PATH="$HOMEBREW_BIN_LOCATION:$PATH"
 # Added by Python Dev Environment Installer
+export ANTHROPIC_MODEL="claude-sonnet-4-6[1m]"
+
+# Added by git-ai installer on Fri Apr 17 15:18:42 CST 2026
+export PATH="/Users/mpozzo/.git-ai/bin:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# >>> es-wrapper initialize >>>
+# Agregado automáticamente por el instalador de es-wrapper
+# Para desinstalar, ejecuta: ~/.es-wrapper/uninstall.sh
+export PATH="$HOME/.es-wrapper/bin:$PATH"
+
+unalias source 2>/dev/null
+unalias . 2>/dev/null
+source() {
+    builtin source "$@"
+    local ret=$?
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        export PATH="$HOME/.es-wrapper/bin:$PATH"
+    fi
+    return $ret
+}
+alias .='source'
+
+_es_wrapper_guard() {
+    case ":$PATH:" in
+        *":$HOME/.es-wrapper/bin:"*)
+            if [[ "$PATH" != "$HOME/.es-wrapper/bin:"* ]]; then
+                export PATH="$HOME/.es-wrapper/bin:${PATH//$HOME\/.es-wrapper\/bin:/}"
+            fi
+            ;;
+        *)
+            export PATH="$HOME/.es-wrapper/bin:$PATH"
+            ;;
+    esac
+}
+precmd_functions+=(_es_wrapper_guard)
+# <<< es-wrapper initialize <<<
+
+# Internal Python Registry
+export PIP_INDEX_URL='https://pypi.artifacts.furycloud.io/simple'
+export UV_INDEX_URL='https://pypi.artifacts.furycloud.io/simple'
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"

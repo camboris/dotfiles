@@ -1,18 +1,20 @@
 local api = vim.api
 
-vim.api.nvim_create_autocmd('FileType', {
-    callback = function(args)
-        local treesitter = require('nvim-treesitter')
-        local lang = vim.treesitter.language.get_lang(args.match)
-        if vim.list_contains(treesitter.get_available(), lang) then
-            if not vim.list_contains(treesitter.get_installed(), lang) then
-                treesitter.install(lang):wait()
+if not vim.g.vscode then
+    vim.api.nvim_create_autocmd('FileType', {
+        callback = function(args)
+            local treesitter = require('nvim-treesitter')
+            local lang = vim.treesitter.language.get_lang(args.match)
+            if vim.list_contains(treesitter.get_available(), lang) then
+                if not vim.list_contains(treesitter.get_installed(), lang) then
+                    treesitter.install(lang):wait()
+                end
+                vim.treesitter.start(args.buf)
             end
-            vim.treesitter.start(args.buf)
-        end
-    end,
-    desc = "Enable nvim-treesitter and install parser if not installed"
-})
+        end,
+        desc = "Enable nvim-treesitter and install parser if not installed"
+    })
+end
 --- Remove all trailing whitespace on save
 local TrimWhiteSpaceGrp = api.nvim_create_augroup("TrimWhiteSpaceGrp", { clear = true })
 api.nvim_create_autocmd("BufWritePre", {
@@ -125,6 +127,18 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
     vim.opt.conceallevel=2
     vim.opt.concealcursor='nc'
   end,
+})
+
+local orgFormatGrp = api.nvim_create_augroup("OrgFormat", { clear = true })
+api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.org",
+  callback = function()
+    local view = vim.fn.winsaveview()
+    vim.cmd("silent! normal! gg=G")
+    vim.fn.winrestview(view)
+  end,
+  group = orgFormatGrp,
+  desc = "Re-indent org files on save",
 })
 -- vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 --   pattern = { "*.md", "*.json" },

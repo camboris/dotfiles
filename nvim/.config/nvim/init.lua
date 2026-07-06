@@ -1,6 +1,7 @@
 require("options")
 require("mappings")
 require("autocmd")
+require("commands")
 require("lsp")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

@@ -1,3 +1,13 @@
+local arc = {
+  "https://codeberg.org/knight9114/arc.nvim",
+  opts = {},   -- your configuration here
+}
+
+local gitsigns = {
+  "lewis6991/gitsigns.nvim",
+  event = "VeryLazy"
+}
+
 local go = {
   "ray-x/go.nvim",
   dependencies = { -- optional packages
@@ -219,5 +229,7 @@ return {
   agentic,
   coverage,
   openingh,
+  gitsigns,
   -- go,
+  arc,
 }

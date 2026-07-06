@@ -122,6 +122,8 @@ local orgmode = {
   event = 'VeryLazy',
   keys = {
     { "<leader>odc", ":lua require('orgmode').action('org_mappings.toggle_checkbox')<CR>", desc = "OrgMode toggle checkbox" },
+    { "<leader>os",  ":lua require('orgmode').action('org_mappings.todo_next_state')<CR>", desc = "OrgMode TODO next state", ft = "org" },
+    { "<leader>oS",  ":lua require('orgmode').action('org_mappings.todo_prev_state')<CR>", desc = "OrgMode TODO prev state", ft = "org" },
   },
   config = function()
     require('orgmode').setup({
@@ -138,7 +140,7 @@ local orgmode = {
       mappings = {
         org_return_uses_meta_return = true
       },
-      win_split_mode = 'float',
+      win_split_mode = 'auto',
       win_border = 'rounded',
       org_hide_emphasis_markers = true,
       -- TODO para tareas
@@ -218,7 +220,6 @@ local orgmode = {
       }
     })
 
-    vim.lsp.enable('org')
   end,
 }
 
@@ -335,6 +336,23 @@ local roam = {
             t = {
               description = 'Tactical',
               subtemplates = {
+                a = {
+                  description = 'Alejo',
+                  template = [==[
+* Tactical Alejo %t                                :tactical:Alejo:
+:PROPERTIES:
+:ID: %(return require'orgmode.org.id'.new())
+:DATE: %<%Y-%m-%d>
+:START: %^{Start time|%<%Y-%m-%d %a %H:%M>}
+:END:
+  - tags :: [[id:5262609C-3917-41B6-A334-DD25B5F91AF8][#tactical]] [[id:760BC61F-65AD-4D02-96EF-9FBA534DA377][Alejo Echeguia]]
+
+** %?
+]==],
+                  target = "daily/%<%Y-%m-%d>.org",
+                  properties = { empty_lines = { before = 1 } },
+
+                },
                 i = {
                   description = 'Ivan',
                   template = [==[
@@ -369,6 +387,23 @@ local roam = {
                   properties = { empty_lines = { before = 1 } },
 
                 },
+                e = {
+                  description = 'Eze',
+                  template = [==[
+* Tactical Eze %t                                :tactical:Eze:
+:PROPERTIES:
+:ID: %(return require'orgmode.org.id'.new())
+:DATE: %<%Y-%m-%d>
+:START: %^{Start time|%<%Y-%m-%d %a %H:%M>}
+:END:
+  - tags :: [[id:5262609C-3917-41B6-A334-DD25B5F91AF8][#tactical]] [[id:20F78B30-8C77-4832-87DC-B7CCCCC7E268][Eze]]
+
+** %?
+]==],
+                  target = "daily/%<%Y-%m-%d>.org",
+                  properties = { empty_lines = { before = 1 } },
+
+                },
                 j = {
                   description = 'Joaco',
                   template = [==[
@@ -380,6 +415,22 @@ local roam = {
 :END:
   - tags :: [[id:5262609C-3917-41B6-A334-DD25B5F91AF8][#tactical]] [[id:5A9AAA4B-3888-48D9-A936-BDA13C4E965B][Joaquin Miguel Molina Waldrop]]
 
+** %?
+]==],
+                  target = "daily/%<%Y-%m-%d>.org",
+                  properties = { empty_lines = { before = 1 } },
+
+                },
+                b = {
+                  description = 'Jona',
+                  template = [==[
+* Tactical Jona %t                                :tactical:Jona:
+:PROPERTIES:
+:ID: %(return require'orgmode.org.id'.new())
+:DATE: %<%Y-%m-%d>
+:START: %^{Start time|%<%Y-%m-%d %a %H:%M>}
+:END:
+  - tags :: [[id:5262609C-3917-41B6-A334-DD25B5F91AF8][#tactical]] [[id:C10B65D9-81F8-48AD-BD23-FDF976C6A77E][Jona]]
 ** %?
 ]==],
                   target = "daily/%<%Y-%m-%d>.org",
