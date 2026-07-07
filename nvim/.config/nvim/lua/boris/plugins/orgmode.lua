@@ -7,10 +7,10 @@ local superagenda = {
   config = function()
     require('org-super-agenda').setup({
       org_files           = {
-        '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/**/*',
+        '~/swat/orgfiles/**/*',
       },
       org_directories     = {
-        '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/',
+        '~/swat/orgfiles/',
       }, -- recurse for *.org
       exclude_files       = {},
       exclude_directories = {},
@@ -134,9 +134,9 @@ local orgmode = {
         }
       },
       org_agenda_files =
-      '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/**/*',
+      '~/swat/orgfiles/**/*',
       org_default_notes_file =
-      '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/refile.org',
+      '~/swat/orgfiles/refile.org',
       mappings = {
         org_return_uses_meta_return = true
       },
@@ -239,11 +239,11 @@ local roam = {
     require("org-roam").setup({
       -- directory = "~/org_roam_files",
       directory =
-      "~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles",
+      "~/swat/orgfiles",
       -- optional
       org_files = {
-        '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/**/*',
-        '~/Library/CloudStorage/GoogleDrive-mario.pozzo@mercadolibre.com/Otros ordenadores/Mi MacBook Pro/swat/orgfiles/*.org',
+        '~/swat/orgfiles/**/*',
+        '~/swat/orgfiles/*.org',
         --   "~/another_org_dir",
         --   "~/some/folder/*.org",
         --   "~/a/single/org_file.org"
