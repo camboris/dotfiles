@@ -1,6 +1,11 @@
+# --- Theme ---
+theme = Kanagawa Wave
+
+# --- Font ---
 font-family = JetBrains Mono
 font-size = 16
 
+# --- tabs / splits ---
 # keybind tmux like
 keybind = ctrl+a>c=new_tab
 
@@ -19,6 +24,31 @@ keybind = ctrl+a>z=toggle_split_zoom
 keybind = ctrl+a>n=next_tab
 keybind = ctrl+a>p=previous_tab
 
+keybind = ctrl+a>e=equalize_splits
+
+keybind = ctrl+a>t=prompt_tab_title
+
+# --- Notifications ---
 notify-on-command-finish = unfocused
 notify-on-command-finish-action = no-bell,notify
 notify-on-command-finish-after = 30s
+
+# --- General ---
+scrollback-limit = 2500000
+
+# --- Cursor ---
+cursor-style = bar
+cursor-style-blink = true
+cursor-opacity = 0.8
+
+# --- Mouse ---
+mouse-hide-while-typing = true
+
+# --- Window and Appearance ---
+background-opacity = 0.9
+background-blur-radius = 20
+macos-titlebar-style = transparent
+window-padding-x = 10
+window-padding-y = 8
+window-save-state = always
+window-theme = auto

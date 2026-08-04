@@ -77,3 +77,6 @@ map("n", "<leader>cs", "<cmd>noh<cr>", { silent = true, desc = "Clear Search hig
 
 -- format json files with jq
 map("n", "<leader>jf", "<cmd>%!jq '.' <cr>", { silent = true, desc = "Format JSON" })
+
+-- format markdown files with mdformat (GFM)
+map("n", "<leader>mf", "<cmd>%!mdformat -<cr>", { silent = true, desc = "Format Markdown (GFM)" })

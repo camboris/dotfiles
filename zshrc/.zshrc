@@ -108,8 +108,6 @@ export PATH="$HOMEBREW_BIN_LOCATION:$PATH"
 # Added by Python Dev Environment Installer
 export ANTHROPIC_MODEL="claude-sonnet-4-6[1m]"
 
-# Added by git-ai installer on Fri Apr 17 15:18:42 CST 2026
-export PATH="/Users/mpozzo/.git-ai/bin:$PATH"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -180,6 +178,79 @@ export PATH="$HOME/.fury/fury_venv/bin:$PATH"
 export PATH="$HOME/.fury/fury_venv/bin:$PATH"
 
 export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+export PATH="$HOME/.fury/fury_venv/bin:$PATH"
+
+# Added by git-ai installer on Tue Jul 21 15:33:44 CST 2026
+export PATH="/Users/mpozzo/.git-ai/bin:$PATH"
 
 export PATH="$HOME/.fury/fury_venv/bin:$PATH"
 

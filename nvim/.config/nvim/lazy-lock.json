@@ -12,9 +12,7 @@
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
   "live-server.nvim": { "branch": "main", "commit": "85915d0e7dd926a54b0082aaeafc10a82bfe8288" },
   "lualine.nvim": { "branch": "master", "commit": "221ce6b2d999187044529f49da6554a92f740a96" },
-  "markdown-plus.nvim": { "branch": "main", "commit": "59075587b4540abd5fac68232c39d5a46db6d44c" },
   "markdown-preview.nvim": { "branch": "main", "commit": "545cf3bc6c6425b33a9b25acef54f66e4035ca0f" },
-  "markview.nvim": { "branch": "main", "commit": "092c0872fd2437b3b862d253910981142d2465aa" },
   "noice.nvim": { "branch": "main", "commit": "7bfd942445fb63089b59f97ca487d605e715f155" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
   "nvim-autopairs": { "branch": "master", "commit": "7b9923abad60b903ece7c52940e1321d39eccc79" },
@@ -36,5 +34,6 @@
   "telescope-orgmode.nvim": { "branch": "main", "commit": "214fe56e105bb3d0638f33320ed959911a1bfcb1" },
   "telescope-ui-select.nvim": { "branch": "master", "commit": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2" },
   "telescope.nvim": { "branch": "master", "commit": "427b576c16792edad01a92b89721d923c19ad60f" },
+  "touchup.nvim": { "branch": "main", "commit": "9410a8640262f9b43ce04b0779d2c66134ae311b" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" }
 }
