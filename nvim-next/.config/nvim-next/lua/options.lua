@@ -1,0 +1,52 @@
+local o = vim.opt
+
+vim.g.mapleader = " "
+vim.g.maplocalleader = "/"
+
+o.autocomplete = true
+-- allows neovim to access the system clipboard
+o.clipboard = "unnamedplus"
+o.conceallevel=0
+o.cursorline = true -- Highlight cursor line
+o.fileencoding = 'utf-8' -- The encoding written to file
+o.expandtab = true -- Use spaces instead of tabs
+o.fileencoding = 'utf-8' -- The encoding written to file
+o.foldenable = false
+o.foldmethod = 'indent'
+o.formatoptions = 'crqnj' -- Automatic formatting options
+o.hidden = true -- Enable background buffers
+o.hlsearch = true -- Highlight found searches
+o.ignorecase = true -- Ignore case
+o.incsearch = true -- Shows the match while typing
+o.joinspaces = false -- No double spaces with join
+o.laststatus = 3 -- only shoy 1 status line
+o.linebreak = true -- Stop words being broken on wrap
+o.list = false -- Show some invisible characters
+o.mouse = 'a' -- Enable your mouse
+o.number = true -- Show line numbers
+o.numberwidth = 2 -- Make the gutter wider by default
+o.pumheight = 12 -- Max height of popup menu
+o.relativenumber = true -- Relative line numbers
+o.ruler = true -- Show the cursor position all the time
+o.scrolloff = 4 -- Lines of context
+o.shortmess:append "c"
+o.shiftround = true -- Round indent
+o.shiftwidth = 2 -- Size of an indent
+o.showmode = false -- Don't display mode
+o.showtabline = 2 -- Always show tabs
+o.sidescrolloff = 8 -- Columns of context
+o.signcolumn = 'yes' -- Show sign column
+o.smartcase = true -- Do not ignore case with capitals
+o.smartindent = true -- Insert indents automatically
+o.smarttab = true -- Makes tabbing smarter will realize you have 2 vs 4
+o.splitbelow = true -- Put new windows below current
+o.splitright = true -- Put new windows right of current
+o.tabstop = 2 -- Number of spaces tabs count for
+o.termguicolors = true -- True color support
+o.updatetime = 300 -- Delay before swap file is saved
+o.wildmode = {'longest:full', 'full'}  -- Command-line completion mode
+o.wrap = true
+o.cmdheight = 0
+o.spelllang = "es"
+o.completeopt = "fuzzy,menu,menuone,noselect"
+

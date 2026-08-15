@@ -68,6 +68,7 @@ alias ls='ls --color'
 alias la='ls -al'
 alias vim='nvim'
 alias c='clear'
+alias nnext='NVIM_APPNAME=nvim-next nvim'
 
 # Shell integrations
 eval "$(fzf --zsh)"
