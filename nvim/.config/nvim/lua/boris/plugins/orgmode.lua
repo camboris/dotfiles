@@ -1,3 +1,13 @@
+local org_roam_tags = {
+  dir = '~/desarrollo/plugins/org-roam-tags.nvim',
+  config = function()
+    require('org-roam-tags')
+  end,
+  dependencies = {
+    "chipsenkbeil/org-roam.nvim",
+  }
+}
+
 local superagenda = {
   'hamidi-dev/org-super-agenda.nvim',
   event = "VeryLazy",
@@ -139,7 +149,6 @@ local roam = {
   end
 }
 
--- * [[id:5262609C-3917-41B6-A334-DD25B5F91AF8][#tactical]]
 return {
   orgmode,
   roam,
@@ -148,4 +157,5 @@ return {
   telescopeorgmode,
   telescopeorgroam,
   -- superagenda,
+  org_roam_tags,
 }

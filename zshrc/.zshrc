@@ -83,9 +83,6 @@ export GOPROXY="https://proxy.golang.org,direct"
 # export GONOPROXY="github.com/mercadolibre,github.com/melisource"
 export GOPROXY='https://proxy.golang.org,direct'
 
-
-export PYENV_ROOT="$HOME/.pyenv"
-
 eval "$(fnm env --use-on-cd --shell zsh)"
 
 # pyenv
