@@ -1,7 +1,9 @@
 local snacks = {
   src = "gh:folke/snacks.nvim",
   setup = function()
-    require('snacks').setup({
+    local Snacks = require("snacks")
+
+    Snacks.setup({
       bigfile = { enabled = true },
       dashboard = {
         enabled = true,
@@ -10,15 +12,7 @@ local snacks = {
           { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
           { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
           { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
-          { section = "startup" },
-          {
-            section = "terminal",
-            cmd = "pokemon-colorscripts -r --no-title; sleep .1",
-            random = 10,
-            pane = 2,
-            indent = 4,
-            height = 30,
-          },
+          -- { section = "startup" },
         }
       },
       indent = { enabled = true },
@@ -32,8 +26,10 @@ local snacks = {
       -- statuscolumn = { enabled = true },
       words = { enabled = true },
     })
-  end,
 
+    vim.keymap.set('n', "<leader>gg", function() Snacks.lazygit() end, { desc = "Lazygit" })
+
+  end,
 }
 
 
