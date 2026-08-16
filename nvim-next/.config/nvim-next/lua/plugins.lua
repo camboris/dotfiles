@@ -1,5 +1,6 @@
 local ui = require('plugins.ui')
 local editor = require('plugins.editor')
+local code = require('plugins.code')
 
 local function map_keys(keymaps)
   for _, map in ipairs(keymaps) do
@@ -32,7 +33,7 @@ end
 
 local plugins = {}
 
-plugins = concat(editor, ui)
+plugins = concat(editor, ui, code)
 
 -- cycles the plugins table, install and setup the plugins
 vim.pack.add(vim.tbl_map(function(p)

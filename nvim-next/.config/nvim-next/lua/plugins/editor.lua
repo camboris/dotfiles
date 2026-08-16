@@ -1,31 +1,3 @@
---     Old text                    Command         New text
--- --------------------------------------------------------------------------------
---     surr*ound_words             ysiw)           (surround_words)
---     surr*ound_words             ysiw(           ( surround_words )
---     *make strings               ys$"            "make strings"
---     [delete ar*ound me!]        ds]             delete around me!
---     remove <b>HTML t*ags</b>    dst             remove HTML tags
---     'change quot*es'            cs'"            "change quotes"
---     <b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
---     delete(functi*on calls)     dsf             function calls
-local surround = {
-  src = "gh:kylechui/nvim-surround",
-  version = vim.version.range("4.x"), -- Use for stability; omit to use `main` branch for the latest features
-  setup = function()
-    require('nvim-surround').setup()
-  end
-}
-
-local autopairs = {
-  src = "gh:windwp/nvim-autopairs",
-  setup = function()
-    require("nvim-autopairs").setup {
-      check_ts = true,
-      fast_wrap = {},
-    }
-  end
-}
-
 local snacks = {
   src = "gh:folke/snacks.nvim",
   setup = function()
@@ -224,6 +196,4 @@ return {
   markdown_preview,
   md_touchup,
   snacks,
-  surround,
-  autopairs,
 }
