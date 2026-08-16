@@ -1,6 +1,26 @@
 local ui = require('plugins.ui')
 local editor = require('plugins.editor')
 
+local function map_keys(keymaps)
+  for _, map in ipairs(keymaps) do
+    local opts = { desc = map.desc }
+    if map.silent ~= nil then
+      opts.silent = map.silent
+    end
+    if map.noremap ~= nil then
+      opts.noremap = map.noremap
+    else
+      opts.noremap = true
+    end
+    if map.expr ~= nil then
+      opts.expr = map.expr
+    end
+
+    local mode = map.mode or "n"
+    vim.keymap.set(mode, map[1], map[2], opts)
+  end
+end
+
 -- helper function para concatenar los require
 local function concat(...)
   local result = {}
@@ -25,7 +45,9 @@ end, plugins))
 
 for _, p in ipairs(plugins) do
   _ = p.setup and p.setup()
+  _ = p.keys and map_keys(p.keys)
 end
+
 
 vim.keymap.set("n", "<leader>pu", function() vim.pack.update() end,
   { desc = "Pack Update - code action to skip some" })
@@ -34,4 +56,3 @@ vim.keymap.set("n", "<leader>pr", function() vim.pack.update(nil, { target = "lo
   { desc = "vimpack to lockfile versions" })
 
 vim.keymap.set("n", "<leader>pi", function() vim.pack.update(nil, { offline = true }) end, { desc = "vimpack info" })
-

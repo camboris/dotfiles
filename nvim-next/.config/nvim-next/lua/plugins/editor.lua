@@ -28,8 +28,51 @@ local snacks = {
     })
 
     vim.keymap.set('n', "<leader>gg", function() Snacks.lazygit() end, { desc = "Lazygit" })
-
   end,
+  keys = {
+    -- mas usados
+    { "<leader><space>",  function() Snacks.picker.smart() end,                                   desc = "Smart Find Files" },
+    { "<leader>ff",       function() Snacks.picker.files() end,                                   desc = "Find Files" },
+    { "<leader>f<space>", function() Snacks.picker.buffers() end,                                 desc = "Find Buffers" },
+    { "<leader>fd",       function() Snacks.picker.grep() end,                                    desc = "Grep String" },
+    { "<leader>fr",       function() Snacks.picker.resume() end,                                  desc = "Resume" },
+    { "<leader>f:",       function() Snacks.picker.command_history() end,                         desc = "Command History" },
+    { "<leader>fn",       function() Snacks.picker.notifications() end,                           desc = "Notification History" },
+    { "<leader>fe",       function() Snacks.explorer() end,                                       desc = "File Explorer" },
+    -- git
+    { "<leader>fgf",       function() Snacks.picker.git_files() end,                               desc = "Find Git Files" },
+    { "<leader>fgb",       function() Snacks.picker.git_branches() end,                            desc = "Git Branches" },
+    { "<leader>fgl",       function() Snacks.picker.git_log() end,                                 desc = "Git Log" },
+    { "<leader>fgL",       function() Snacks.picker.git_log_line() end,                            desc = "Git Log Line" },
+    { "<leader>fgs",       function() Snacks.picker.git_status() end,                              desc = "Git Status" },
+    { "<leader>fgS",       function() Snacks.picker.git_stash() end,                               desc = "Git Stash" },
+    { "<leader>fgd",       function() Snacks.picker.git_diff() end,                                desc = "Git Diff (Hunks)" },
+    -- Grep
+    { "<leader>fl",       function() Snacks.picker.lines() end,                                   desc = "Buffer Lines" },
+    { "<leader>fB",       function() Snacks.picker.grep_buffers() end,                            desc = "Grep Open Buffers" },
+    { "<leader>fw",       function() Snacks.picker.grep_word() end,                               desc = "Visual selection or word",   mode = { "n", "x" } },
+    -- search
+    { '<leader>fs"',       function() Snacks.picker.registers() end,                               desc = "Registers" },
+    { '<leader>fs/',       function() Snacks.picker.search_history() end,                          desc = "Search History" },
+    { "<leader>fsa",       function() Snacks.picker.autocmds() end,                                desc = "Autocmds" },
+    { "<leader>fsb",       function() Snacks.picker.lines() end,                                   desc = "Buffer Lines" },
+    { "<leader>fsc",       function() Snacks.picker.command_history() end,                         desc = "Command History" },
+    { "<leader>fsC",       function() Snacks.picker.commands() end,                                desc = "Commands" },
+    { "<leader>fsd",       function() Snacks.picker.diagnostics() end,                             desc = "Diagnostics" },
+    { "<leader>fsD",       function() Snacks.picker.diagnostics_buffer() end,                      desc = "Buffer Diagnostics" },
+    { "<leader>fsh",       function() Snacks.picker.help() end,                                    desc = "Help Pages" },
+    { "<leader>fsH",       function() Snacks.picker.highlights() end,                              desc = "Highlights" },
+    { "<leader>fsi",       function() Snacks.picker.icons() end,                                   desc = "Icons" },
+    { "<leader>fsj",       function() Snacks.picker.jumps() end,                                   desc = "Jumps" },
+    { "<leader>fsk",       function() Snacks.picker.keymaps() end,                                 desc = "Keymaps" },
+    { "<leader>fsl",       function() Snacks.picker.loclist() end,                                 desc = "Location List" },
+    { "<leader>fsm",       function() Snacks.picker.marks() end,                                   desc = "Marks" },
+    { "<leader>fsM",       function() Snacks.picker.man() end,                                     desc = "Man Pages" },
+    { "<leader>fsq",       function() Snacks.picker.qflist() end,                                  desc = "Quickfix List" },
+    { "<leader>fsR",       function() Snacks.picker.resume() end,                                  desc = "Resume" },
+    { "<leader>fsu",       function() Snacks.picker.undo() end,                                    desc = "Undo History" },
+    { "<leader>fuC",       function() Snacks.picker.colorschemes() end,                            desc = "Colorschemes" },
+  }
 }
 
 
@@ -99,8 +142,11 @@ local markdown_preview = {
   end
 }
 
-local markview = {
-  src = "https://github.com/OXY2DEV/markview.nvim"
+local md_touchup = {
+  src = "gh:noisesfromspace/touchup.nvim",
+  setup = function()
+    require('touchup').setup()
+  end
 }
 
 return {
@@ -108,6 +154,6 @@ return {
   which_key,
   live_server,
   markdown_preview,
-  markview,
+  md_touchup,
   snacks,
 }
