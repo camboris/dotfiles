@@ -1,3 +1,10 @@
+local treesitter = {
+  src = "gh:nvim-treesitter/nvim-treesitter",
+  setup = function()
+    require 'nvim-treesitter'.install { "lua", "vim", "markdown", "html", "javascript", "json", "python", "regex", "tsx",
+      "typescript", "css", "diff", "dockerfile", "dot", "go", "http", "bash", "markdown_inline" }
+  end
+}
 --     Old text                    Command         New text
 -- --------------------------------------------------------------------------------
 --     surr*ound_words             ysiw)           (surround_words)
@@ -94,8 +101,8 @@ local gitsigns = {
           { desc = "Diff This" })
 
         map('n', '<leader>hD', function()
-          gitsigns.diffthis('~')
-        end,
+            gitsigns.diffthis('~')
+          end,
           { desc = "Diff This ~" })
 
         map('n', '<leader>hQ', function() gitsigns.setqflist('all') end,
@@ -121,4 +128,5 @@ return {
   gitsigns,
   autopairs,
   surround,
+  treesitter,
 }
