@@ -3,7 +3,6 @@ local o = vim.opt
 vim.g.mapleader = " "
 vim.g.maplocalleader = "/"
 
-o.autocomplete = true
 -- allows neovim to access the system clipboard
 o.clipboard = "unnamedplus"
 o.conceallevel=0
@@ -48,5 +47,9 @@ o.wildmode = {'longest:full', 'full'}  -- Command-line completion mode
 o.wrap = true
 o.cmdheight = 0
 o.spelllang = "es"
-o.completeopt = "fuzzy,menu,menuone,noselect"
-
+-- completion
+-- o.completeopt = "fuzzy,menu,menuone,noselect"
+o.complete = '.,w,b,o'
+o.completeopt = { "menuone", "noselect", "popup" }
+o.autocomplete = true
+o.autocompletedelay = 250

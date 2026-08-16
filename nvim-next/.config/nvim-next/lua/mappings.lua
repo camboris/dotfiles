@@ -43,8 +43,8 @@ map("n", "<leader>|", "<C-W>v", { desc = "Split window right" })
 map('n', '<leader>tt', '<cmd>terminal<CR>')
 
 -- Tab to switch buffers in Normal mode
-map("n", "<Tab>", ":bnext<CR>")
-map("n", "<S-Tab>", ":bprevious<CR>")
+-- map("n", "<Tab>", ":bnext<CR>")
+-- map("n", "<S-Tab>", ":bprevious<CR>")
 
 -- Easier file save
 -- map("n", "<Leader>w", "<cd>:w<CR>")
@@ -75,3 +75,27 @@ map("n", "<leader>cs", "<cmd>noh<cr>", { silent = true, desc = "Clear Search hig
 
 -- format json files with jq
 map("n", "<leader>jf", "<cmd>%!jq '.' <cr>", { silent = true, desc = "Format JSON" })
+
+-- completion
+-- Tab to go down the menu (if visible), otherwise insert a normal tab
+vim.keymap.set("i", "<Tab>", function()
+  return vim.fn.pumvisible() ~= 0 and "<C-n>" or "<Tab>"
+end, { expr = true, desc = "Next completion item / Tab" })
+
+-- Shift-Tab to go up the menu
+vim.keymap.set("i", "<S-Tab>", function()
+  return vim.fn.pumvisible() ~= 0 and "<C-p>" or "<S-Tab>"
+end, { expr = true, desc = "Previous completion item" })
+
+vim.keymap.set("i", "<CR>", function()
+  if vim.fn.pumvisible() ~= 0 then
+    -- If an item is actively highlighted, confirm with Ctrl-Y
+    if vim.fn.complete_info()["selected"] ~= -1 then
+      return "<C-y>"
+    else
+      -- If menu is open but nothing is chosen, close menu and insert newline
+      return "<C-e><CR>"
+    end
+  end
+  return "<CR>"
+end, { expr = true, desc = "Confirm completion / Newline" })
