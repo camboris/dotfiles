@@ -9,19 +9,19 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "kanagawa.nvim": {
-      "rev": "8ad3b4cdcc804b332c32db8f9743667e1bb82b99",
+      "rev": "bb85e4bfc8d89b0e62c8fa53ccdd13d12e2f77b3",
       "src": "https://github.com/rebelot/kanagawa.nvim"
     },
     "live-server.nvim": {
-      "rev": "084d69b63610803c18ddd7541294d83ca748d1dc",
+      "rev": "f98bae79fd30274524412f7514549d84391d6bb2",
       "src": "https://github.com/selimacerbas/live-server.nvim"
     },
     "lualine.nvim": {
-      "rev": "131a558e13f9f28b15cd235557150ccb23f89286",
+      "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "markdown-preview.nvim": {
-      "rev": "29234edae5b8b7db5ae05061ff7197f95ef0ffd5",
+      "rev": "faf50b5e233df953a1fd6946d0a8d758bf2e38a1",
       "src": "https://github.com/selimacerbas/markdown-preview.nvim"
     },
     "nvim-autopairs": {
@@ -34,19 +34,19 @@
       "version": "4.0.0 - 5.0.0"
     },
     "nvim-web-devicons": {
-      "rev": "4fc505ac7bd7692824a142e96e5f529c133862f8",
+      "rev": "2ae6958df7ced50baac5035cec0c15799eedfbf7",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "oil.nvim": {
-      "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
+      "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "snacks.nvim": {
-      "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
+      "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
       "src": "https://github.com/folke/snacks.nvim"
     },
     "tiny-cmdline.nvim": {
-      "rev": "ad58747b955d0743ccfd56e97da1a4c1fac89f58",
+      "rev": "e247d9ee4c980734f8f8bf616d31e0ab7c27485d",
       "src": "https://github.com/rachartier/tiny-cmdline.nvim"
     },
     "touchup.nvim": {
